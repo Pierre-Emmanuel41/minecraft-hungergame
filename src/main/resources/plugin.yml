@@ -1,0 +1,11 @@
+main: fr.pederobien.minecrafthungergame.HGPlugin
+name: minecraft-hungergame
+version: 1.0-SNAPSHOT
+api-version: 1.13
+softdepend: [minecraft-game-plateform]
+
+description:
+commands:
+  hg:
+    description: This command is used to configure an hunger game.
+    permission: HGPlugin.permission
