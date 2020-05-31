@@ -32,7 +32,6 @@ public interface IGameState extends ITimeLineObserver {
 
 	/**
 	 * @return The listener that interact with minecraft events.
-	 * 
 	 */
-	<T extends IEventListener> T getListener();
+	IEventListener getListener();
 }
