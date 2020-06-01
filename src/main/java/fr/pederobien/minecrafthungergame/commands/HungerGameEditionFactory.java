@@ -39,4 +39,11 @@ public class HungerGameEditionFactory {
 	public static IMapPersistenceEdition<IHungerGameConfiguration> deleteHungerGame() {
 		return new DeleteHungerGame();
 	}
+
+	/**
+	 * @return An edition to display the characteristics of the current hunger game configuration.
+	 */
+	public static IMapPersistenceEdition<IHungerGameConfiguration> currentHungerGame() {
+		return new CurrentHungerGame();
+	}
 }
