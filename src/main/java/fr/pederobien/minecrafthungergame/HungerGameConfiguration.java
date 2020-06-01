@@ -43,18 +43,17 @@ public class HungerGameConfiguration extends AbstractGameBorderConfiguration imp
 	public String toString() {
 		StringJoiner joiner = new StringJoiner("\n");
 		joiner.add("Name : " + getName());
-		joiner.add("Teams :" + (getTeams().isEmpty() ? "" : " none"));
+		joiner.add("Teams :" + (getTeams().isEmpty() ? " none" : ""));
 		for (ITeam team : getTeams())
 			joiner.add(team.toString());
 
-		if (getBorders().isEmpty())
-			joiner.add("Borders :" + (getBorders().size() > 0 ? "" : " none"));
-		else {
+		joiner.add("Borders :" + (getBorders().isEmpty() ? "none" : ""));
+		if (!getBorders().isEmpty()) {
 			joiner.add(getWorldBorders(WorldManager.OVERWORLD));
 			joiner.add(getWorldBorders(WorldManager.NETHER_WORLD));
 			joiner.add(getWorldBorders(WorldManager.END_WORLD));
 		}
-		joiner.add("Player don't revive time : " + display(playerDontReviveTime, DisplayHelper.toString(getPlayerDontReviveTime())));
-		return super.toString();
+		joiner.add("Player don't revive time : " + display(playerDontReviveTime, DisplayHelper.toString(getPlayerDontReviveTime(), true)));
+		return joiner.toString();
 	}
 }
