@@ -5,20 +5,28 @@ import java.util.StringJoiner;
 
 import fr.pederobien.minecraftdevelopmenttoolkit.utils.DisplayHelper;
 import fr.pederobien.minecraftgameplateform.border.BorderConfiguration;
-import fr.pederobien.minecraftgameplateform.impl.element.GameBorderConfiguration;
+import fr.pederobien.minecraftgameplateform.impl.element.AbstractGameBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IGame;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
+import fr.pederobien.minecrafthungergame.impl.HungerGame;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecraftmanagers.WorldManager;
 
-public class HungerGameConfiguration extends GameBorderConfiguration implements IHungerGameConfiguration {
+public class HungerGameConfiguration extends AbstractGameBorderConfiguration implements IHungerGameConfiguration {
 	private static final LocalTime DEFAULT_PLAYER_DONT_REVIVE_TIME = LocalTime.of(0, 0, 0);
 
+	private IGame game;
 	private LocalTime playerDontReviveTime;
 
-	protected HungerGameConfiguration(String name, IGame game) {
-		super(name, game);
+	public HungerGameConfiguration(String name) {
+		super(name);
 		add(new BorderConfiguration("DefaultHGOverworldBorder"));
+		game = new HungerGame(this);
+	}
+
+	@Override
+	public IGame getGame() {
+		return game;
 	}
 
 	@Override
