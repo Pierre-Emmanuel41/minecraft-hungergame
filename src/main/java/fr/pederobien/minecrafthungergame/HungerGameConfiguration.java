@@ -1,4 +1,4 @@
-package fr.pederobien.minecrafthungergame.impl;
+package fr.pederobien.minecrafthungergame;
 
 import java.time.LocalTime;
 import java.util.StringJoiner;
