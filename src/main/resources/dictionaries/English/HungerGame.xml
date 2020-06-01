@@ -70,6 +70,22 @@
 			<value>List of registered hunger game configurations :%n%s</value>
 		</message>
 		<message>
+			<code>DELETE_HG__EXPLANATION</code>
+			<value>To delete the file of an hunger game configuration</value>
+		</message>
+		<message>
+			<code>DELETE_HG__NAME_IS_MISSING</code>
+			<value>Cannot delete the file of an hunger game configuration, the name is missing</value>
+		</message>
+		<message>
+			<code>DELETE_HG__DID_NOT_DELETE</code>
+			<value>The deletion of the %s hunger game configuration file was not successful</value>
+		</message>
+		<message>
+			<code>DELETE_HG__CONFIGURATION_DELETED</code>
+			<value>The %s hunger game configuration file has been deleted</value>
+		</message>
+		<message>
 			<code>PVP_ENABLED</code>
 			<value>Pvp enabled</value>
 		</message>

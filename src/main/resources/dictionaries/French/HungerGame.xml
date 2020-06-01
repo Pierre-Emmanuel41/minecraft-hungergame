@@ -69,6 +69,22 @@
 			<value>Liste des configurations de jeu hunger game :%n%s</value>
 		</message>
 		<message>
+			<code>DELETE_HG__EXPLANATION</code>
+			<value>Pour supprimer le fichier d'une configuration de jeu hunger game</value>
+		</message>
+		<message>
+			<code>DELETE_HG__NAME_IS_MISSING</code>
+			<value>Impossible de supprimer le fichier d'une configuration de jeu hunger game, il manque le nom</value>
+		</message>
+		<message>
+			<code>DELETE_HG__DID_NOT_DELETE</code>
+			<value>La suppression de la configuration de jeu hunger game %s n'a pas pu s'effectuer correctement</value>
+		</message>
+		<message>
+			<code>DELETE_HG__CONFIGURATION_DELETED</code>
+			<value>Le fichier de la configuration de jeu hunger game %s a été supprimé</value>
+		</message>
+		<message>
 			<code>PVP_ENABLED</code>
 			<value>Pvp activé</value>
 		</message>

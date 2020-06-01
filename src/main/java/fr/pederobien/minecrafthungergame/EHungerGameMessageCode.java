@@ -18,6 +18,9 @@ public enum EHungerGameMessageCode implements IMinecraftMessageCode {
 	// Code for command list
 	LIST_HG__EXPLANATION, LIST_HG__NO_REGISTERED_CONFIGURATION, LIST_HG__ONE_REGISTERED_CONFIGURATION, LIST_HG__SEVERAL_ELEMENTS,
 
+	// Code for command delete
+	DELETE_HG__EXPLANATION, DELETE_HG__NAME_IS_MISSING, DELETE_HG__DID_NOT_DELETE, DELETE_HG__CONFIGURATION_DELETED,
+
 	// Code for in game messages
 	PVP_ENABLED(Permission.ALL), PLAYER_DONT_REVIVE(Permission.ALL);
 
