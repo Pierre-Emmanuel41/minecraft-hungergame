@@ -26,7 +26,7 @@
 		</message>
 		<message>
 			<code>NEW_HG__CONFIGURATION_CREATED</code>
-			<value>La configuration de jeu hunger game %s créé</value>
+			<value>La configuration de jeu hunger game %s a été créée</value>
 		</message>
 		<message>
 			<code>RENAME_HG__EXPLANATION</code>
@@ -93,6 +93,18 @@
 			<value>Caractéristiques de la configuration hunger game courante :%n%s</value>
 		</message>
 		<message>
+			<code>LOAD_HG__EXPLANATION</code>
+			<value>Pour charger une configuration de jeu hunger game</value>
+		</message>
+		<message>
+			<code>LOAD_HG__NAME_IS_MISSING</code>
+			<value>Impossible de charge une configuration de jeu hunger game, il manque le nom</value>
+		</message>
+		<message>
+			<code>LOAD_HG__CONFIGURATION_LOADED</code>
+			<value>La configuration %s a été chargée</value>
+		</message>
+		<message>
 			<code>PVP_ENABLED</code>
 			<value>Pvp activé</value>
 		</message>
@@ -100,6 +112,5 @@
 			<code>PLAYER_DONT_REVIVE</code>
 			<value>Plus de résurrection</value>
 		</message>
-		
 	</messages>
 </dictionary>

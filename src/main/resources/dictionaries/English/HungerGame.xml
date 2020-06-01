@@ -94,6 +94,18 @@
 			<value>Characteristics of the current hunger game configuration :%n%s</value>
 		</message>
 		<message>
+			<code>LOAD_HG__EXPLANATION</code>
+			<value>To load an hunger game configuration</value>
+		</message>
+		<message>
+			<code>LOAD_HG__NAME_IS_MISSING</code>
+			<value>Cannot load an hunger game configuration, the name is missing</value>
+		</message>
+		<message>
+			<code>LOAD_HG__CONFIGURATION_LOADED</code>
+			<value>The configuration %s has been loaded</value>
+		</message>
+		<message>
 			<code>PVP_ENABLED</code>
 			<value>Pvp enabled</value>
 		</message>
@@ -101,6 +113,5 @@
 			<code>PLAYER_DONT_REVIVE</code>
 			<value>No more resurrection</value>
 		</message>
-		
 	</messages>
 </dictionary>

@@ -46,4 +46,11 @@ public class HungerGameEditionFactory {
 	public static IMapPersistenceEdition<IHungerGameConfiguration> currentHungerGame() {
 		return new CurrentHungerGame();
 	}
+
+	/**
+	 * @return An edition to load an hunger game configuration.
+	 */
+	public static IMapPersistenceEdition<IHungerGameConfiguration> loadHungerGame() {
+		return new LoadHungerGame();
+	}
 }

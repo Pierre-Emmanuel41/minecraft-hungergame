@@ -24,6 +24,9 @@ public enum EHungerGameMessageCode implements IMinecraftMessageCode {
 	// Code for command current
 	CURRENT_HG__EXPLANATION, CURRENT_HG__ON_CURRENT,
 
+	// Code for command load
+	LOAD_HG__EXPLANATION, LOAD_HG__NAME_IS_MISSING, LOAD_HG__CONFIGURATION_LOADED,
+
 	// Code for in game messages
 	PVP_ENABLED(Permission.ALL), PLAYER_DONT_REVIVE(Permission.ALL);
 
