@@ -4,6 +4,9 @@ import fr.pederobien.minecraftdictionary.impl.Permission;
 import fr.pederobien.minecraftdictionary.interfaces.IMinecraftMessageCode;
 
 public enum EHungerGameMessageCode implements IMinecraftMessageCode {
+	HG_EXPLANATION,
+
+	// Code for in game messages
 	PVP_ENABLED(Permission.ALL), PLAYER_DONT_REVIVE(Permission.ALL);
 
 	private Permission permission;

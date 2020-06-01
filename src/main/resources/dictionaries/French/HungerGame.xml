@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dictionary>
+	<name>HungerGame</name>
+	<version>1.0</version>
+	<locales>
+		<locale>fr</locale>
+		<locale>fr-FR</locale>
+		<locale>fr-CA</locale>
+	</locales>
+	<messages>
+		<message>
+			<code>HG_EXPLANATION</code>
+			<value>Pour configurer un style de jeu hunger game</value>
+		</message>
+		<message>
+			<code>PVP_ENABLED</code>
+			<value>Pvp activé</value>
+		</message>
+		<message>
+			<code>PLAYER_DONT_REVIVE</code>
+			<value>Plus de résurrection</value>
+		</message>
+		
+	</messages>
+</dictionary>

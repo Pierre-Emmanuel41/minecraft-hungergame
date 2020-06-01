@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dictionary>
+	<name>Game</name>
+	<version>1.0</version>
+	<locales>
+		<locale>en</locale>
+		<locale>en-EN</locale>
+		<locale>en-UK</locale>
+		<locale>en-CA</locale>
+	</locales>
+	<messages>
+		<message>
+			<code>HG_EXPLANATION</code>
+			<value>To configure an hunger game style</value>
+		</message>
+		<message>
+			<code>PVP_ENABLED</code>
+			<value>Pvp enabled</value>
+		</message>
+		<message>
+			<code>PLAYER_DONT_REVIVE</code>
+			<value>No more resurrection</value>
+		</message>
+		
+	</messages>
+</dictionary>
