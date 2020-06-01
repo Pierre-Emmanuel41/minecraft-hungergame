@@ -24,6 +24,6 @@ public class RenameHungerGame extends CommonRename<IHungerGameConfiguration> {
 
 	@Override
 	protected void onRenamed(CommandSender sender, String oldName, String newName) {
-		sendMessageToSender(sender, EHungerGameMessageCode.RENAME_HG__STYLE_RENAMED, oldName, newName);
+		sendMessageToSender(sender, EHungerGameMessageCode.RENAME_HG__CONFIGURATION_RENAMED, oldName, newName);
 	}
 }

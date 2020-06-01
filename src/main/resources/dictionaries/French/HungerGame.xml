@@ -10,39 +10,39 @@
 	<messages>
 		<message>
 			<code>HG_EXPLANATION</code>
-			<value>Pour configurer un style de jeu hunger game</value>
+			<value>Pour configurer une configuration de jeu hunger game</value>
 		</message>
 		<message>
 			<code>NEW_HG__EXPLANATION</code>
-			<value>Pour créer un nouveau style de jeu hunger game</value>
+			<value>Pour créer une nouvelle configuration de jeu hunger game</value>
 		</message>
 		<message>
 			<code>NEW_HG__NAME_IS_MISSING</code>
-			<value>Impossible de créer un nouveau style hunger game, il manque le nom</value>
+			<value>Impossible de créer une nouvelle configuration de jeu hunger game, il manque le nom</value>
 		</message>
 		<message>
 			<code>NEW_HG__NAME_ALREADY_TAKEN</code>
-			<value>Le style hunger game %s existe déjà</value>
+			<value>La configuration de jeu hunger game %s existe déjà</value>
 		</message>
 		<message>
-			<code>NEW_HG__STYLE_CREATED</code>
-			<value>Style hunger game %s créé</value>
+			<code>NEW_HG__CONFIGURATION_CREATED</code>
+			<value>La configuration de jeu hunger game %s créé</value>
 		</message>
 		<message>
 			<code>RENAME_HG__EXPLANATION</code>
-			<value>Pour renommer le style hunger game courant</value>
+			<value>Pour renommer la configuration de jeu hunger game courante</value>
 		</message>
 		<message>
 			<code>RENAME_HG__NAME_IS_MISSING</code>
-			<value>Impossible de renommer le style hunger game %s, il manque le nom</value>
+			<value>Impossible de renommer la configuration de jeu hunger game %s, il manque le nom</value>
 		</message>
 		<message>
 			<code>RENAME_HG__NAME_ALREADY_TAKEN</code>
-			<value>Impossible de renommer le style hunger game %s en %s, ce style existe déjà</value>
+			<value>Impossible de renommer la configuration de jeu hunger game %s en %s, cette configuration existe déjà</value>
 		</message>
 		<message>
-			<code>RENAME_HG__STYLE_RENAMED</code>
-			<value>Le style hunger game %s a été renommé en %s</value>
+			<code>RENAME_HG__CONFIGURATION_RENAMED</code>
+			<value>La configuration de jeu hunger game %s a été renommé en %s</value>
 		</message>
 		<message>
 			<code>PVP_ENABLED</code>

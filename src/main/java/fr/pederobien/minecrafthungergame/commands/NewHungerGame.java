@@ -30,6 +30,6 @@ public class NewHungerGame extends CommonNew<IHungerGameConfiguration> {
 
 	@Override
 	protected void onCreated(CommandSender sender, String name) {
-		sendMessageToSender(sender, EHungerGameMessageCode.NEW_HG__STYLE_CREATED, name);
+		sendMessageToSender(sender, EHungerGameMessageCode.NEW_HG__CONFIGURATION_CREATED, name);
 	}
 }
