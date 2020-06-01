@@ -14,6 +14,22 @@
 			<value>To configure an hunger game style</value>
 		</message>
 		<message>
+			<code>NEW_HG__EXPLANATION</code>
+			<value>To create a new hunger game style</value>
+		</message>
+		<message>
+			<code>NEW_HG__NAME_IS_MISSING</code>
+			<value>Cannot create a new hunger game style, the name is missing</value>
+		</message>
+		<message>
+			<code>NEW_HG__NAME_ALREADY_TAKEN</code>
+			<value>The hunger game style %s already exist</value>
+		</message>
+		<message>
+			<code>NEW_HG__STYLE_CREATED</code>
+			<value>Hunger game style %s created</value>
+		</message>
+		<message>
 			<code>PVP_ENABLED</code>
 			<value>Pvp enabled</value>
 		</message>
