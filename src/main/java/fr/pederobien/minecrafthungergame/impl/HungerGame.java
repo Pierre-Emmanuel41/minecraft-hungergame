@@ -6,6 +6,7 @@ import fr.pederobien.minecraftdictionary.impl.MinecraftMessageEvent;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.EHungerGameMessageCode;
+import fr.pederobien.minecrafthungergame.HGPlugin;
 import fr.pederobien.minecrafthungergame.impl.state.InGameState;
 import fr.pederobien.minecrafthungergame.impl.state.InitialState;
 import fr.pederobien.minecrafthungergame.impl.state.StartState;
@@ -26,7 +27,7 @@ public class HungerGame implements IHungerGame {
 		startState = new StartState(this);
 		inGameState = new InGameState(this);
 		stopState = new StopState(this);
-		setCurrentState(initialState);
+		current = initialState;
 	}
 
 	@Override
@@ -73,6 +74,9 @@ public class HungerGame implements IHungerGame {
 
 	@Override
 	public IGameState setCurrentState(IGameState current) {
+		this.current.getListener().setActivated(false);
+		current.getListener().register(Plateform.getPluginManager().getPlugin(HGPlugin.NAME).get());
+		current.getListener().setActivated(true);
 		return this.current = current;
 	}
 
