@@ -11,4 +11,11 @@ public class HungerGameEditionFactory {
 	public static IMapPersistenceEdition<IHungerGameConfiguration> newHungerGame() {
 		return new NewHungerGame();
 	}
+
+	/**
+	 * @return An edition to rename an hunger game style.
+	 */
+	public static IMapPersistenceEdition<IHungerGameConfiguration> renameHungerGame() {
+		return new RenameHungerGame();
+	}
 }

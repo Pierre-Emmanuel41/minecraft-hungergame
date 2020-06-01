@@ -9,6 +9,9 @@ public enum EHungerGameMessageCode implements IMinecraftMessageCode {
 	// Code for command new
 	NEW_HG__EXPLANATION, NEW_HG__NAME_IS_MISSING, NEW_HG__NAME_ALREADY_TAKEN, NEW_HG__STYLE_CREATED,
 
+	// Code for command rename
+	RENAME_HG__EXPLANATION, RENAME_HG__NAME_IS_MISSING, RENAME_HG__NAME_ALREADY_TAKEN, RENAME_HG__STYLE_RENAMED,
+
 	// Code for in game messages
 	PVP_ENABLED(Permission.ALL), PLAYER_DONT_REVIVE(Permission.ALL);
 

@@ -29,6 +29,22 @@
 			<value>Style hunger game %s créé</value>
 		</message>
 		<message>
+			<code>RENAME_HG__EXPLANATION</code>
+			<value>Pour renommer le style hunger game courant</value>
+		</message>
+		<message>
+			<code>RENAME_HG__NAME_IS_MISSING</code>
+			<value>Impossible de renommer le style hunger game %s, il manque le nom</value>
+		</message>
+		<message>
+			<code>RENAME_HG__NAME_ALREADY_TAKEN</code>
+			<value>Impossible de renommer le style hunger game %s en %s, ce style existe déjà</value>
+		</message>
+		<message>
+			<code>RENAME_HG__STYLE_RENAMED</code>
+			<value>Le style hunger game %s a été renommé en %s</value>
+		</message>
+		<message>
 			<code>PVP_ENABLED</code>
 			<value>Pvp activé</value>
 		</message>

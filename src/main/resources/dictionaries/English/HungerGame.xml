@@ -30,6 +30,18 @@
 			<value>Hunger game style %s created</value>
 		</message>
 		<message>
+			<code>RENAME_HG__EXPLANATION</code>
+			<value>To rename the current hunger game style</value>
+		</message>
+		<message>
+			<code>RENAME_HG__NAME_IS_MISSING</code>
+			<value>Cannot rename hunger game style %s, The name is missing</value>
+		</message>
+		<message>
+			<code>RENAME_HG__NAME_ALREADY_TAKEN</code>
+			<value>Cannot rename hunger game style %s as %s, this style already exists</value>
+		</message>
+		<message>
 			<code>PVP_ENABLED</code>
 			<value>Pvp enabled</value>
 		</message>
