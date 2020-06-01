@@ -15,6 +15,9 @@ public enum EHungerGameMessageCode implements IMinecraftMessageCode {
 	// Code for command save
 	SAVE_HG__EXPLANATION, SAVE_HG__CONFIGURATION_SAVED,
 
+	// Code for command list
+	LIST_HG__EXPLANATION, LIST_HG__NO_REGISTERED_CONFIGURATION, LIST_HG__ONE_REGISTERED_CONFIGURATION, LIST_HG__SEVERAL_ELEMENTS,
+
 	// Code for in game messages
 	PVP_ENABLED(Permission.ALL), PLAYER_DONT_REVIVE(Permission.ALL);
 

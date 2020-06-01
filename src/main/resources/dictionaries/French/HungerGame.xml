@@ -53,6 +53,22 @@
 			<value>La configuration de jeu hunger game %s a été sauvegardée</value>
 		</message>
 		<message>
+			<code>LIST_HG__EXPLANATION</code>
+			<value>Pour afficher le nom des configurations de jeu hunger game existantes</value>
+		</message>
+		<message>
+			<code>LIST_HG__NO_REGISTERED_CONFIGURATION</code>
+			<value>Il n'existe aucune configuration de jeu hunger game</value>
+		</message>
+		<message>
+			<code>LIST_HG__ONE_REGISTERED_CONFIGURATION</code>
+			<value>Il existe une configuration de jeu hunger game :%n%s</value>
+		</message>
+		<message>
+			<code>LIST_HG__SEVERAL_ELEMENTS</code>
+			<value>Liste des configurations de jeu hunger game :%n%s</value>
+		</message>
+		<message>
 			<code>PVP_ENABLED</code>
 			<value>Pvp activé</value>
 		</message>

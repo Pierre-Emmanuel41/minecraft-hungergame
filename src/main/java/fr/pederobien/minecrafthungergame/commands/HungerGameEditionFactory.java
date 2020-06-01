@@ -25,4 +25,11 @@ public class HungerGameEditionFactory {
 	public static IMapPersistenceEdition<IHungerGameConfiguration> saveHungerGame() {
 		return new SaveHungerGame();
 	}
+
+	/**
+	 * @return An edition to display the name of all registered hunger game configurations.
+	 */
+	public static IMapPersistenceEdition<IHungerGameConfiguration> listHungerGame() {
+		return new ListHungerGame();
+	}
 }

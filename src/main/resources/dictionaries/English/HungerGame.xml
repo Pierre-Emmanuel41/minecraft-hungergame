@@ -54,6 +54,22 @@
 			<value>The hunger game configuration %s has been saved</value>
 		</message>
 		<message>
+			<code>LIST_HG__EXPLANATION</code>
+			<value>To display the name of registered hunger game configurations</value>
+		</message>
+		<message>
+			<code>LIST_HG__NO_REGISTERED_CONFIGURATION</code>
+			<value>There is any registered hunger game configuration</value>
+		</message>
+		<message>
+			<code>LIST_HG__ONE_REGISTERED_CONFIGURATION</code>
+			<value>There is one registered hunger game configuration :%n%s</value>
+		</message>
+		<message>
+			<code>LIST_HG__SEVERAL_ELEMENTS</code>
+			<value>List of registered hunger game configurations :%n%s</value>
+		</message>
+		<message>
 			<code>PVP_ENABLED</code>
 			<value>Pvp enabled</value>
 		</message>
