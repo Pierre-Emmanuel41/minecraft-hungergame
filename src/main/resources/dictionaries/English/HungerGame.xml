@@ -46,6 +46,14 @@
 			<value>The hunger game configuration %s has been renamed as %s</value>
 		</message>
 		<message>
+			<code>SAVE_HG__EXPLANATION</code>
+			<value>To save the current hunger game configuration</value>
+		</message>
+		<message>
+			<code>SAVE_HG__CONFIGURATION_SAVED</code>
+			<value>The hunger game configuration %s has been saved</value>
+		</message>
+		<message>
 			<code>PVP_ENABLED</code>
 			<value>Pvp enabled</value>
 		</message>
