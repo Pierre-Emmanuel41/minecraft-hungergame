@@ -12,15 +12,15 @@ import fr.pederobien.minecrafthungergame.impl.state.InitialState;
 import fr.pederobien.minecrafthungergame.impl.state.StartState;
 import fr.pederobien.minecrafthungergame.impl.state.StopState;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
-import fr.pederobien.minecrafthungergame.interfaces.IUnmodifiableHungerGameConfiguration;
+import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.interfaces.state.IGameState;
 import fr.pederobien.minecraftmanagers.PlayerManager;
 
 public class HungerGame implements IHungerGame {
 	private IGameState initialState, startState, inGameState, stopState, current;
-	private IUnmodifiableHungerGameConfiguration configuration;
+	private IHungerGameConfiguration configuration;
 
-	public HungerGame(IUnmodifiableHungerGameConfiguration configuration) {
+	public HungerGame(IHungerGameConfiguration configuration) {
 		this.configuration = configuration;
 
 		initialState = new InitialState(this);
@@ -106,7 +106,7 @@ public class HungerGame implements IHungerGame {
 	}
 
 	@Override
-	public IUnmodifiableHungerGameConfiguration getConfiguration() {
+	public IHungerGameConfiguration getConfiguration() {
 		return configuration;
 	}
 }

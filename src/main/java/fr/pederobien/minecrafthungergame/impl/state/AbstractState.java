@@ -6,18 +6,21 @@ import fr.pederobien.minecraftdictionary.impl.MinecraftMessageEvent;
 import fr.pederobien.minecraftgameplateform.exceptions.StateException;
 import fr.pederobien.minecraftgameplateform.impl.element.EventListener;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
+import fr.pederobien.minecraftgameplateform.interfaces.helpers.IGameConfigurationHelper;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.EHungerGameMessageCode;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
-import fr.pederobien.minecrafthungergame.interfaces.IUnmodifiableHungerGameConfiguration;
+import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.interfaces.state.IGameState;
 import fr.pederobien.minecraftmanagers.PlayerManager;
 
 public abstract class AbstractState implements IGameState {
 	private IHungerGame game;
+	private IGameConfigurationHelper helper;
 
 	protected AbstractState(IHungerGame game) {
 		this.game = game;
+		helper = Plateform.getOrCreateConfigurationHelper(getConfiguration());
 	}
 
 	@Override
@@ -68,7 +71,16 @@ public abstract class AbstractState implements IGameState {
 	/**
 	 * @return The configuration associated to this game.
 	 */
-	protected IUnmodifiableHungerGameConfiguration getConfiguration() {
+	protected IHungerGameConfiguration getConfiguration() {
 		return getGame().getConfiguration();
+	}
+
+	/**
+	 * @return A game configuration helper associated to the configuration returned by {@link #getConfiguration()}. The helper is
+	 *         defined in the constructor of this state. This means that if the configuration changed, the helper could have bad
+	 *         result.
+	 */
+	protected IGameConfigurationHelper getConfigurationHelper() {
+		return helper;
 	}
 }

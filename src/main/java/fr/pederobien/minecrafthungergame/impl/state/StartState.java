@@ -12,7 +12,6 @@ import fr.pederobien.minecraftgameplateform.helpers.TeamHelper;
 import fr.pederobien.minecraftgameplateform.impl.element.EventListener;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
-import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.HGPlugin;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
@@ -70,8 +69,7 @@ public class StartState extends AbstractState {
 	private void teleport() {
 		TeamHelper.createTeamsOnServer(getConfiguration().getTeams());
 		IBorderConfiguration conf = getConfiguration().getBorders(WorldManager.OVERWORLD).get(0);
-		for (ITeam team : getConfiguration().getTeams())
-			TeamHelper.teleportTeamRandomly(team, WorldManager.OVERWORLD, conf.getBorderCenter(), conf.getInitialBorderDiameter());
+		getConfigurationHelper().teleportTeamsRandomly(WorldManager.OVERWORLD, conf.getBorderCenter(), conf.getInitialBorderDiameter());
 	}
 
 	private class StartEventListener extends EventListener {

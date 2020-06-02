@@ -5,5 +5,8 @@ import fr.pederobien.minecrafthungergame.interfaces.state.IStateGame;
 
 public interface IHungerGame extends IGame, IStateGame {
 
-	IUnmodifiableHungerGameConfiguration getConfiguration();
+	/**
+	 * @return The configuration associated to this game.
+	 */
+	IHungerGameConfiguration getConfiguration();
 }
