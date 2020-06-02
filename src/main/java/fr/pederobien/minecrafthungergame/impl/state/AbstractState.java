@@ -2,6 +2,8 @@ package fr.pederobien.minecrafthungergame.impl.state;
 
 import java.time.LocalTime;
 
+import org.bukkit.plugin.Plugin;
+
 import fr.pederobien.minecraftdictionary.impl.MinecraftMessageEvent;
 import fr.pederobien.minecraftgameplateform.exceptions.StateException;
 import fr.pederobien.minecraftgameplateform.impl.element.EventListener;
@@ -9,6 +11,7 @@ import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
 import fr.pederobien.minecraftgameplateform.interfaces.helpers.IGameConfigurationHelper;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.EHungerGameMessageCode;
+import fr.pederobien.minecrafthungergame.HGPlugin;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.interfaces.state.IGameState;
@@ -25,10 +28,12 @@ public abstract class AbstractState implements IGameState {
 
 	@Override
 	public void timeChanged(LocalTime time) {
-		if (time.equals(getConfiguration().getPlayerDontReviveTime()))
+		if (time.equals(getConfiguration().getPlayerDontReviveTime())) {
 			PlayerManager.getPlayers().parallel().forEach(player -> {
 				Plateform.getNotificationCenter().sendMessage(new MinecraftMessageEvent(player, EHungerGameMessageCode.PLAYER_DONT_REVIVE));
 			});
+			onPlayerDontRevive();
+		}
 	}
 
 	@Override
@@ -82,5 +87,21 @@ public abstract class AbstractState implements IGameState {
 	 */
 	protected IGameConfigurationHelper getConfigurationHelper() {
 		return helper;
+	}
+
+	/**
+	 * Method called when the time returned by {@link IHungerGameConfiguration#getPlayerDontReviveTime()} is exceeded. Do nothing if
+	 * not overrided.
+	 */
+	protected void onPlayerDontRevive() {
+	}
+
+	/**
+	 * This is a convenient method and is equivalent to <code>Plateform.getPluginManager().getPlugin(HGPlugin.NAME).get()</code>.
+	 * 
+	 * @return This plugin registered in the plateform.
+	 */
+	protected Plugin getPlugin() {
+		return Plateform.getPluginManager().getPlugin(HGPlugin.NAME).get();
 	}
 }

@@ -12,8 +12,6 @@ import fr.pederobien.minecraftgameplateform.helpers.TeamHelper;
 import fr.pederobien.minecraftgameplateform.impl.element.EventListener;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
-import fr.pederobien.minecraftgameplateform.utils.Plateform;
-import fr.pederobien.minecrafthungergame.HGPlugin;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
 import fr.pederobien.minecraftmanagers.BukkitManager;
 import fr.pederobien.minecraftmanagers.PlayerManager;
@@ -35,7 +33,7 @@ public class StartState extends AbstractState {
 		updatePlayers();
 		updateOverWorld();
 		teleport();
-		BukkitManager.getScheduler().runTaskLater(Plateform.getPluginManager().getPlugin(HGPlugin.NAME).get(), new ChangeGameState(), 40);
+		BukkitManager.getScheduler().runTaskLater(getPlugin(), new ChangeGameState(), 40);
 		getListener().setActivated(true);
 	}
 
