@@ -36,7 +36,7 @@ public class StartState extends AbstractState {
 		updatePlayers();
 		updateOverWorld();
 		teleport();
-		BukkitManager.getScheduler().runTaskLater(Plateform.getPluginManager().getPlugin(HGPlugin.NAME).get(), new ChangeGameState(), 200);
+		BukkitManager.getScheduler().runTaskLater(Plateform.getPluginManager().getPlugin(HGPlugin.NAME).get(), new ChangeGameState(), 40);
 		getListener().setActivated(true);
 	}
 
