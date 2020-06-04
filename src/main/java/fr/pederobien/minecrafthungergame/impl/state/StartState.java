@@ -2,44 +2,29 @@ package fr.pederobien.minecrafthungergame.impl.state;
 
 import org.bukkit.GameMode;
 import org.bukkit.GameRule;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import fr.pederobien.minecraftgameplateform.helpers.TeamHelper;
-import fr.pederobien.minecraftgameplateform.impl.element.EventListener;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IBorderConfiguration;
-import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
-import fr.pederobien.minecraftmanagers.BukkitManager;
 import fr.pederobien.minecraftmanagers.PlayerManager;
 import fr.pederobien.minecraftmanagers.PotionManager;
 import fr.pederobien.minecraftmanagers.WorldManager;
 
 public class StartState extends AbstractState {
-	private IEventListener listener;
 
 	public StartState(IHungerGame game) {
 		super(game);
-		listener = new StartEventListener();
 	}
 
 	@Override
 	public void start() {
-		getListener().setActivated(false);
 		giveEffects();
 		updatePlayers();
 		updateOverWorld();
 		teleport();
-		BukkitManager.getScheduler().runTaskLater(getPlugin(), new ChangeGameState(), 40);
-		getListener().setActivated(true);
-	}
-
-	@Override
-	public IEventListener getListener() {
-		return listener;
+		getGame().setCurrentState(getGame().getInGameState());
 	}
 
 	private void giveEffects() {
@@ -54,6 +39,7 @@ public class StartState extends AbstractState {
 		PlayerManager.resetMaxHealthOfPlayers();
 		PlayerManager.maxLifeToPlayers();
 		PlayerManager.removeInventoryOfPlayers();
+		PlayerManager.resetLevelOfPlayers();
 		PlayerManager.setGameModeOfAllPlayers(GameMode.SURVIVAL);
 	}
 
@@ -68,22 +54,5 @@ public class StartState extends AbstractState {
 		TeamHelper.createTeamsOnServer(getConfiguration().getTeams());
 		IBorderConfiguration conf = getConfiguration().getBorders(WorldManager.OVERWORLD).get(0);
 		getConfigurationHelper().teleportTeamsRandomly(WorldManager.OVERWORLD, conf.getBorderCenter(), conf.getInitialBorderDiameter());
-	}
-
-	private class StartEventListener extends EventListener {
-
-		@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-		public void onPlayerMoveEvent(PlayerMoveEvent event) {
-			if (isActivated())
-				event.setCancelled(true);
-		}
-	}
-
-	private class ChangeGameState implements Runnable {
-
-		@Override
-		public void run() {
-			getGame().setCurrentState(getGame().getInGameState());
-		}
 	}
 }
