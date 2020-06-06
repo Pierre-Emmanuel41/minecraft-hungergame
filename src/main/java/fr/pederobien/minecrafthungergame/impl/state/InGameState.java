@@ -85,7 +85,7 @@ public class InGameState extends AbstractState {
 				return;
 			}
 
-			Optional<IBorderConfiguration> optConf = getConfiguration().getCurrent(WorldManager.OVERWORLD);
+			Optional<IBorderConfiguration> optConf = getConfiguration().getBorder(WorldManager.OVERWORLD);
 			if (optConf.isPresent()) {
 				IBorderConfiguration conf = optConf.get();
 				event.setRespawnLocation(WorldManager.getRandomlyLocationInOverworld(conf.getBorderCenter(), (int) conf.getWorld().getWorldBorder().getSize()));
