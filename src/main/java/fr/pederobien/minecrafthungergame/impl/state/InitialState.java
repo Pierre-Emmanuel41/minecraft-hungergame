@@ -3,6 +3,8 @@ package fr.pederobien.minecrafthungergame.impl.state;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
+import fr.pederobien.minecraftmanagers.PlayerManager;
+import fr.pederobien.minecraftmanagers.ScoreboardManager;
 
 public class InitialState extends AbstractState {
 
@@ -18,6 +20,7 @@ public class InitialState extends AbstractState {
 		}
 
 		Plateform.getTimeLine().addObserver(getConfiguration().getPlayerDontReviveTime(), getGame());
+		PlayerManager.getPlayers().parallel().forEach(player -> getGame().createObjective(ScoreboardManager.createScoreboard(), player));
 		return true;
 	}
 

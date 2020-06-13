@@ -1,6 +1,13 @@
 package fr.pederobien.minecrafthungergame.impl;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.scoreboard.Scoreboard;
 
 import fr.pederobien.minecraftdictionary.impl.MinecraftMessageEvent;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
@@ -13,12 +20,15 @@ import fr.pederobien.minecrafthungergame.impl.state.StartState;
 import fr.pederobien.minecrafthungergame.impl.state.StopState;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
+import fr.pederobien.minecrafthungergame.interfaces.IHungerGameObjective;
 import fr.pederobien.minecrafthungergame.interfaces.state.IGameState;
 import fr.pederobien.minecraftmanagers.PlayerManager;
 
 public class HungerGame implements IHungerGame {
 	private IGameState initialState, startState, inGameState, stopState, current;
 	private IHungerGameConfiguration configuration;
+
+	private List<IHungerGameObjective> objectives;
 
 	public HungerGame(IHungerGameConfiguration configuration) {
 		this.configuration = configuration;
@@ -28,6 +38,8 @@ public class HungerGame implements IHungerGame {
 		inGameState = new InGameState(this);
 		stopState = new StopState(this);
 		current = initialState;
+
+		objectives = new ArrayList<IHungerGameObjective>();
 	}
 
 	@Override
@@ -108,5 +120,27 @@ public class HungerGame implements IHungerGame {
 	@Override
 	public IHungerGameConfiguration getConfiguration() {
 		return configuration;
+	}
+
+	@Override
+	public void createObjective(Scoreboard scoreboard, Player player) {
+		IHungerGameObjective objective = new HungerGameObjective(getPlugin(), player, "Side bar", "Hunger Game", getConfiguration());
+		objective.setScoreboard(scoreboard);
+		objectives.add(objective);
+		Plateform.getObjectiveUpdater().register(objective);
+	}
+
+	@Override
+	public List<IHungerGameObjective> getObjectives() {
+		return Collections.unmodifiableList(objectives);
+	}
+
+	/**
+	 * This is a convenient method and is equivalent to <code>Plateform.getPluginManager().getPlugin(HGPlugin.NAME).get()</code>.
+	 * 
+	 * @return This plugin registered in the plateform.
+	 */
+	private Plugin getPlugin() {
+		return Plateform.getPluginManager().getPlugin(HGPlugin.NAME).get();
 	}
 }
