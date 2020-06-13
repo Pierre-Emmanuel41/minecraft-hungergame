@@ -1,5 +1,7 @@
 package fr.pederobien.minecrafthungergame.impl.state;
 
+import java.util.Optional;
+
 import org.bukkit.GameMode;
 import org.bukkit.GameRule;
 import org.bukkit.potion.PotionEffect;
@@ -7,6 +9,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import fr.pederobien.minecraftgameplateform.helpers.TeamHelper;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IBorderConfiguration;
+import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
 import fr.pederobien.minecraftmanagers.PlayerManager;
 import fr.pederobien.minecraftmanagers.PotionManager;
@@ -24,6 +27,7 @@ public class StartState extends AbstractState {
 		updatePlayers();
 		updateOverWorld();
 		teleport();
+		Plateform.getObjectiveUpdater().start();
 		getGame().setCurrentState(getGame().getInGameState());
 	}
 
@@ -52,7 +56,10 @@ public class StartState extends AbstractState {
 
 	private void teleport() {
 		TeamHelper.createTeamsOnServer(getConfiguration().getTeams());
-		IBorderConfiguration conf = getConfiguration().getBorders(WorldManager.OVERWORLD).get(0);
-		getConfigurationHelper().teleportTeamsRandomly(WorldManager.OVERWORLD, conf.getBorderCenter(), conf.getInitialBorderDiameter());
+		Optional<IBorderConfiguration> optConf = getConfiguration().getBorder(WorldManager.OVERWORLD);
+		if (!optConf.isPresent())
+			return;
+
+		getConfigurationHelper().teleportTeamsRandomly(WorldManager.OVERWORLD, optConf.get().getBorderCenter(), optConf.get().getInitialBorderDiameter());
 	}
 }
