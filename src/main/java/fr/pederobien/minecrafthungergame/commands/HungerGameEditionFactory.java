@@ -53,4 +53,11 @@ public class HungerGameEditionFactory {
 	public static IMapPersistenceEdition<IHungerGameConfiguration> loadHungerGame() {
 		return new LoadHungerGame();
 	}
+
+	/**
+	 * @return An edition to set the time after which players respawn in spectator mode.
+	 */
+	public static IMapPersistenceEdition<IHungerGameConfiguration> playerDontReviveTime() {
+		return new PlayerDontReviveTime();
+	}
 }

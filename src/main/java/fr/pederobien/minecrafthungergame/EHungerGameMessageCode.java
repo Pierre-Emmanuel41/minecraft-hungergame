@@ -27,6 +27,9 @@ public enum EHungerGameMessageCode implements IMinecraftMessageCode {
 	// Code for command load
 	LOAD_HG__EXPLANATION, LOAD_HG__NAME_IS_MISSING, LOAD_HG__CONFIGURATION_LOADED,
 
+	// Code for command playerDontRevive
+	PLAYER_DONT_REVIVE_TIME__EXPLANATION, PLAYER_DONT_REVIVE_TIME__TIME_IS_MISSING, PLAYER_DONT_REVIVE_TIME__FROM_THE_BEGINNING, PLAYER_DONT_REVIVE_TIME__TIME_DEFINED,
+
 	// Code for in game messages
 	PVP_ENABLED(Permission.ALL), PLAYER_DONT_REVIVE(Permission.ALL);
 

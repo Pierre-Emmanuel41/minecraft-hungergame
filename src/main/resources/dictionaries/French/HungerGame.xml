@@ -105,6 +105,22 @@
 			<value>La configuration %s a été chargée</value>
 		</message>
 		<message>
+			<code>PLAYER_DONT_REVIVE_TIME__EXPLANATION</code>
+			<value>Pour définir le temps au bout duquel les joueurs réapparaissent en mode spectateur</value>
+		</message>
+		<message>
+			<code>PLAYER_DONT_REVIVE_TIME__TIME_IS_MISSING</code>
+			<value>Impossible de définir le temps au bout duquel les joueurs réapparaissent en mode spectateur, il manque le temps</value>
+		</message>
+		<message>
+			<code>PLAYER_DONT_REVIVE_TIME__FROM_THE_BEGINNING</code>
+			<value>Les joueurs réapparaissent en mode spectateur dès le début de la partie</value>
+		</message>
+		<message>
+			<code>PLAYER_DONT_REVIVE_TIME__TIME_DEFINED</code>
+			<value>Les joueurs réapparaissent en mode spectateur après %s de jeu</value>
+		</message>
+		<message>
 			<code>PVP_ENABLED</code>
 			<value>Pvp activé</value>
 		</message>

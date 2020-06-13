@@ -106,6 +106,22 @@
 			<value>The configuration %s has been loaded</value>
 		</message>
 		<message>
+			<code>PLAYER_DONT_REVIVE_TIME__EXPLANATION</code>
+			<value>To set the time after which players respawn in spectator mode</value>
+		</message>
+		<message>
+			<code>PLAYER_DONT_REVIVE_TIME__TIME_IS_MISSING</code>
+			<value>Cannot set the time after which players respawn in spectator mode, the time is missing</value>
+		</message>
+		<message>
+			<code>PLAYER_DONT_REVIVE_TIME__FROM_THE_BEGINNING</code>
+			<value>Players respawn in spectator mode from the beginning of the game</value>
+		</message>
+		<message>
+			<code>PLAYER_DONT_REVIVE_TIME__TIME_DEFINED</code>
+			<value>Players respawn in spectator mode after %s of play</value>
+		</message>
+		<message>
 			<code>PVP_ENABLED</code>
 			<value>Pvp enabled</value>
 		</message>

@@ -42,5 +42,7 @@ public class NewHungerGame extends CommonNew<IHungerGameConfiguration> {
 			setAvailableLabelEdition(label);
 		for (ILabel label : EGameConfigurationLabel.values())
 			setAvailableLabelEdition(label);
+		for (ILabel label : EHungerGameLabel.values())
+			setAvailableLabelEdition(label);
 	}
 }
