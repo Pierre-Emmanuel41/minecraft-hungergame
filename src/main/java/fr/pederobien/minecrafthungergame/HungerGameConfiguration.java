@@ -6,8 +6,10 @@ import java.util.StringJoiner;
 import fr.pederobien.minecraftdevelopmenttoolkit.utils.DisplayHelper;
 import fr.pederobien.minecraftgameplateform.border.BorderConfiguration;
 import fr.pederobien.minecraftgameplateform.impl.element.AbstractGameBorderConfiguration;
+import fr.pederobien.minecraftgameplateform.impl.element.PlateformTeam;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IGame;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
+import fr.pederobien.minecraftgameplateform.utils.EColor;
 import fr.pederobien.minecrafthungergame.impl.HungerGame;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecraftmanagers.WorldManager;
@@ -20,8 +22,13 @@ public class HungerGameConfiguration extends AbstractGameBorderConfiguration imp
 
 	public HungerGameConfiguration(String name) {
 		super(name);
-		add(new BorderConfiguration("DefaultHGOverworldBorder"));
 		game = new HungerGame(this);
+
+		add(new BorderConfiguration("DefaultHGOverworldBorder"));
+		add(PlateformTeam.of("knights", EColor.DARK_AQUA));
+		add(PlateformTeam.of("vikings", EColor.GREEN));
+		add(PlateformTeam.of("barbarics", EColor.DARK_RED));
+		add(PlateformTeam.of("spartiates", EColor.GOLD));
 	}
 
 	@Override
