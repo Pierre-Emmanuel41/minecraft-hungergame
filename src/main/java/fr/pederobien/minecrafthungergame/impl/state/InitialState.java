@@ -15,7 +15,8 @@ public class InitialState extends AbstractState {
 	@Override
 	public boolean initiate() {
 		for (IBorderConfiguration configuration : getConfiguration().getBorders()) {
-			Plateform.getTimeLine().addObserver(configuration.getInitialTime(), configuration);
+			configuration.getWorld().getWorldBorder().setCenter(configuration.getBorderCenter().getLocation());
+			configuration.getWorld().getWorldBorder().setSize(configuration.getInitialBorderDiameter());
 			Plateform.getTimeLine().addObserver(configuration.getStartTime(), configuration);
 		}
 
