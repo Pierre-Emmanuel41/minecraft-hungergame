@@ -6,7 +6,6 @@ import fr.pederobien.minecraftgameplateform.helpers.TeamHelper;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
 import fr.pederobien.minecraftmanagers.PlayerManager;
-import fr.pederobien.minecraftmanagers.WorldManager;
 
 public class StopState extends AbstractState {
 
@@ -16,9 +15,7 @@ public class StopState extends AbstractState {
 
 	@Override
 	public void stop() {
-		WorldManager.OVERWORLD.getWorldBorder().reset();
-		WorldManager.NETHER_WORLD.getWorldBorder().reset();
-		WorldManager.END_WORLD.getWorldBorder().reset();
+		getConfiguration().getBorders().forEach(border -> border.reset());
 		TeamHelper.removeTeamsFromServer(getConfiguration().getTeams());
 		PlayerManager.setGameModeOfAllPlayers(GameMode.CREATIVE);
 		Plateform.getObjectiveUpdater().stop(true);

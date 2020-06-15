@@ -1,6 +1,5 @@
 package fr.pederobien.minecrafthungergame.impl.state;
 
-import fr.pederobien.minecraftgameplateform.interfaces.element.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
 import fr.pederobien.minecraftmanagers.PlayerManager;
@@ -14,12 +13,7 @@ public class InitialState extends AbstractState {
 
 	@Override
 	public boolean initiate() {
-		for (IBorderConfiguration configuration : getConfiguration().getBorders()) {
-			configuration.getWorld().getWorldBorder().setCenter(configuration.getBorderCenter().getLocation());
-			configuration.getWorld().getWorldBorder().setSize(configuration.getInitialBorderDiameter());
-			Plateform.getTimeLine().addObserver(configuration.getStartTime(), configuration);
-		}
-
+		getConfiguration().getBorders().forEach(border -> border.apply(Plateform.getTimeLine()));
 		Plateform.getTimeLine().addObserver(getConfiguration().getPlayerDontReviveTime(), getGame());
 		PlayerManager.getPlayers().parallel().forEach(player -> getGame().createObjective(ScoreboardManager.createScoreboard(), player));
 		return true;
