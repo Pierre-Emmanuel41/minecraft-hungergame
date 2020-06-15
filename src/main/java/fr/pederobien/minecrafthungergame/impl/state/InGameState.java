@@ -1,6 +1,8 @@
 package fr.pederobien.minecrafthungergame.impl.state;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -44,7 +46,8 @@ public class InGameState extends AbstractState {
 
 	@Override
 	public void stop() {
-		pauseGameListener.setActivated(false);
+		if (pauseGameListener.isActivated())
+			pauseGameListener.setActivated(false);
 		getGame().setCurrentState(getGame().getStopState()).stop();
 	}
 
@@ -94,14 +97,19 @@ public class InGameState extends AbstractState {
 	}
 
 	private class PauseGameListener extends EventListener {
+		private List<Player> players;
 
 		@Override
 		public void setActivated(boolean isActivated) {
 			super.setActivated(isActivated);
-			if (isActivated())
+			if (isActivated()) {
+				players = PlayerManager.getPlayersOnMode(GameMode.SURVIVAL).collect(Collectors.toList());
 				PlayerManager.setGameModeOfPlayersOnMode(GameMode.SURVIVAL, GameMode.SPECTATOR);
-			else
-				PlayerManager.setGameModeOfPlayersOnMode(GameMode.SPECTATOR, GameMode.SURVIVAL);
+				getConfiguration().getBorders().forEach(border -> border.pause());
+			} else {
+				players.forEach(player -> PlayerManager.setGameModeOfPlayer(player, GameMode.SURVIVAL));
+				getConfiguration().getBorders().forEach(border -> border.relaunched());
+			}
 		}
 
 		@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
