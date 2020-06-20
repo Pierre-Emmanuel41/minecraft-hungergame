@@ -10,8 +10,13 @@ public abstract class AbstractHungerGameLoader extends AbstractXmlPersistenceLoa
 	private IPersistence<IBorderConfiguration> borderPersistence;
 
 	protected AbstractHungerGameLoader(Double version, IPersistence<IBorderConfiguration> borderPersistence) {
-		super(version, new HungerGameConfiguration("DefaultHungerGameConfiguration"));
+		super(version);
 		this.borderPersistence = borderPersistence;
+	}
+
+	@Override
+	protected IHungerGameConfiguration create() {
+		return new HungerGameConfiguration("DefaultHungerGameConfiguration");
 	}
 
 	/**

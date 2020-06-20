@@ -23,6 +23,8 @@ public class HungerGameLoaderV10 extends AbstractHungerGameLoader {
 
 	@Override
 	public IXmlPersistenceLoader<IHungerGameConfiguration> load(Element root) {
+		createNewElement();
+
 		// Getting configuration name
 		Node name = getElementsByTagName(root, HungerGameXmlTag.NAME).item(0);
 		get().setName(name.getChildNodes().item(0).getNodeValue());
