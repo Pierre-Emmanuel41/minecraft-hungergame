@@ -35,7 +35,7 @@ public class StartState extends AbstractState {
 		PotionEffect resistance = PotionManager.createEffect(PotionEffectType.DAMAGE_RESISTANCE, 600, 1);
 		PotionEffect regeneration = PotionManager.createEffect(PotionEffectType.REGENERATION, 600, 1);
 		PotionEffect saturation = PotionManager.createEffect(PotionEffectType.SATURATION, 600, 1);
-		PlayerManager.getPlayers().parallel().forEach(player -> PotionManager.giveEffects(player, resistance, regeneration, saturation));
+		PlayerManager.getPlayers().forEach(player -> PotionManager.giveEffects(player, resistance, regeneration, saturation));
 	}
 
 	private void updatePlayers() {

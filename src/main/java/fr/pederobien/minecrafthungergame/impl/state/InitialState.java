@@ -22,7 +22,7 @@ public class InitialState extends AbstractState {
 		getConfiguration().getBorders().forEach(border -> border.apply(Plateform.getTimeLine()));
 		Plateform.getTimeLine().addObserver(getConfiguration().getPlayerDontReviveTime(), getGame());
 		Plateform.getTimeLine().addObserver(getConfiguration().getBorder(WorldManager.OVERWORLD).get().getStartTime(), teamObjective);
-		PlayerManager.getPlayers().parallel().forEach(player -> getGame().createObjective(ScoreboardManager.createScoreboard(), player));
+		PlayerManager.getPlayers().forEach(player -> getGame().createObjective(ScoreboardManager.createScoreboard(), player));
 		return true;
 	}
 
