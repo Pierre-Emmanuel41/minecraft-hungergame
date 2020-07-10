@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scoreboard.DisplaySlot;
 
+import fr.pederobien.minecraftgameplateform.border.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.entries.auto.LocationAutoUpdater;
 import fr.pederobien.minecraftgameplateform.entries.auto.OrientationAutoUpdater;
 import fr.pederobien.minecraftgameplateform.entries.auto.TeamPlayerOnModeAutoUpdater;
@@ -15,7 +16,6 @@ import fr.pederobien.minecraftgameplateform.entries.simple.CenterEntry;
 import fr.pederobien.minecraftgameplateform.entries.simple.LocationEntry;
 import fr.pederobien.minecraftgameplateform.entries.simple.WorldBorderSizeCountDownEntry;
 import fr.pederobien.minecraftgameplateform.impl.element.GameObjective;
-import fr.pederobien.minecraftgameplateform.interfaces.element.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameObjective;
