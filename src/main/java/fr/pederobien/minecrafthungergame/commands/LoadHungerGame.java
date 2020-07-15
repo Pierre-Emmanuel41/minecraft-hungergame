@@ -31,5 +31,7 @@ public class LoadHungerGame extends CommonLoad<IHungerGameConfiguration> {
 			setAvailableLabelEdition(label);
 		for (ILabel label : EGameConfigurationLabel.values())
 			setAvailableLabelEdition(label);
+		for (ILabel label : EHungerGameLabel.values())
+			setAvailableLabelEdition(label);
 	}
 }
