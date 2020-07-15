@@ -71,7 +71,7 @@ public class HungerGamePersistence extends AbstractMinecraftPersistence<IHungerG
 
 		Element times = createElement(doc, HungerGameXmlTag.TIMES);
 		setAttribute(times, HungerGameXmlTag.PVP, get().getPvpTime());
-		setAttribute(times, HungerGameXmlTag.PLAYER_DONT_REVIVE, get().getPvpTime());
+		setAttribute(times, HungerGameXmlTag.PLAYER_DONT_REVIVE, get().getPlayerDontReviveTime());
 		root.appendChild(times);
 
 		Element teams = createElement(doc, HungerGameXmlTag.TEAMS);
