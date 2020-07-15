@@ -61,6 +61,7 @@ public class HungerGameConfiguration extends AbstractGameBorderConfiguration imp
 			joiner.add(getWorldBorders(WorldManager.END_WORLD));
 		}
 		joiner.add("Player don't revive time : " + display(playerDontReviveTime, DisplayHelper.toString(getPlayerDontReviveTime(), true)));
+		joiner.add("Pvp time : " + DisplayHelper.toString(getPvpTime(), true));
 		return joiner.toString();
 	}
 }
