@@ -22,6 +22,7 @@ import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameObjective;
 import fr.pederobien.minecrafthungergame.interfaces.state.IGameState;
+import fr.pederobien.minecraftmanagers.MessageManager;
 import fr.pederobien.minecraftmanagers.PlayerManager;
 
 public class HungerGame implements IHungerGame {
@@ -75,7 +76,7 @@ public class HungerGame implements IHungerGame {
 	@Override
 	public void onPvpEnabled() {
 		PlayerManager.getPlayers().parallel().forEach(player -> {
-			Plateform.getNotificationCenter().sendMessage(new MinecraftMessageEvent(player, EHungerGameMessageCode.PVP_ENABLED));
+			MessageManager.sendMessage(player, Plateform.getNotificationCenter().getMessage(new MinecraftMessageEvent(player, EHungerGameMessageCode.PVP_ENABLED)));
 		});
 	}
 
