@@ -44,7 +44,7 @@ public class HungerGameEditionFactory {
 	 * @return An edition to display the characteristics of the current hunger game configuration.
 	 */
 	public static IMapPersistenceEdition<IHungerGameConfiguration> currentHungerGame() {
-		return new CurrentHungerGame();
+		return new DetailsHungerGame();
 	}
 
 	/**

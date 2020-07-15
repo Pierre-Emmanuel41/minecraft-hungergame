@@ -86,11 +86,11 @@
 			<value>The %s hunger game configuration file has been deleted</value>
 		</message>
 		<message>
-			<code>CURRENT_HG__EXPLANATION</code>
+			<code>DETAILS_HG__EXPLANATION</code>
 			<value>To display the current hunger game configuration characteristics</value>
 		</message>
 		<message>
-			<code>CURRENT_HG__ON_CURRENT</code>
+			<code>DETAILS_HG__ON_DETAILS</code>
 			<value>Characteristics of the current hunger game configuration :%n%s</value>
 		</message>
 		<message>

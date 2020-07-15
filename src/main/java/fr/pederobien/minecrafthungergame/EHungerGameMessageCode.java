@@ -21,8 +21,8 @@ public enum EHungerGameMessageCode implements IMinecraftMessageCode {
 	// Code for command delete
 	DELETE_HG__EXPLANATION, DELETE_HG__NAME_IS_MISSING, DELETE_HG__DID_NOT_DELETE, DELETE_HG__CONFIGURATION_DELETED,
 
-	// Code for command current
-	CURRENT_HG__EXPLANATION, CURRENT_HG__ON_CURRENT,
+	// Code for command details
+	DETAILS_HG__EXPLANATION, DETAILS_HG__ON_DETAILS,
 
 	// Code for command load
 	LOAD_HG__EXPLANATION, LOAD_HG__NAME_IS_MISSING, LOAD_HG__CONFIGURATION_LOADED,
