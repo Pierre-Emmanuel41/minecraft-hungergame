@@ -102,6 +102,6 @@ public abstract class AbstractState implements IGameState {
 	 * @return This plugin registered in the plateform.
 	 */
 	protected Plugin getPlugin() {
-		return Plateform.getPluginManager().getPlugin(HGPlugin.NAME).get();
+		return Plateform.getPluginHelper().getPlugin(HGPlugin.NAME).get();
 	}
 }

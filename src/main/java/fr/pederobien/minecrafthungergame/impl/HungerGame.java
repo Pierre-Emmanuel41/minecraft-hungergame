@@ -88,7 +88,7 @@ public class HungerGame implements IHungerGame {
 	@Override
 	public IGameState setCurrentState(IGameState current) {
 		this.current.getListener().setActivated(false);
-		current.getListener().register(Plateform.getPluginManager().getPlugin(HGPlugin.NAME).get());
+		current.getListener().register(Plateform.getPluginHelper().getPlugin(HGPlugin.NAME).get());
 		current.getListener().setActivated(true);
 		return this.current = current;
 	}
@@ -142,6 +142,6 @@ public class HungerGame implements IHungerGame {
 	 * @return This plugin registered in the plateform.
 	 */
 	private Plugin getPlugin() {
-		return Plateform.getPluginManager().getPlugin(HGPlugin.NAME).get();
+		return Plateform.getPluginHelper().getPlugin(HGPlugin.NAME).get();
 	}
 }

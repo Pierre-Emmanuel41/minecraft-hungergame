@@ -13,7 +13,7 @@ public class HGPlugin extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		Plateform.getPluginManager().register(this);
+		Plateform.getPluginHelper().register(this);
 		new HungerGameCommand(this);
 		registerDictionaries();
 	}
