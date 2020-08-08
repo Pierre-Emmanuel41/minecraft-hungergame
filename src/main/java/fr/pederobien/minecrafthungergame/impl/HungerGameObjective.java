@@ -8,19 +8,17 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.scoreboard.DisplaySlot;
 
 import fr.pederobien.minecraftgameplateform.border.IBorderConfiguration;
-import fr.pederobien.minecraftgameplateform.entries.auto.LocationAutoUpdater;
-import fr.pederobien.minecraftgameplateform.entries.auto.OrientationAutoUpdater;
-import fr.pederobien.minecraftgameplateform.entries.auto.TeamPlayerOnModeAutoUpdater;
-import fr.pederobien.minecraftgameplateform.entries.auto.WorldBorderSizeCountDownAutoUpdater;
 import fr.pederobien.minecraftgameplateform.entries.simple.CenterEntry;
 import fr.pederobien.minecraftgameplateform.entries.simple.LocationEntry;
+import fr.pederobien.minecraftgameplateform.entries.simple.TeamPlayerOnModeEntry;
 import fr.pederobien.minecraftgameplateform.entries.simple.WorldBorderSizeCountDownEntry;
+import fr.pederobien.minecraftgameplateform.entries.updaters.TimeTaskObserverEntryUpdater;
 import fr.pederobien.minecraftgameplateform.impl.element.GameObjective;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameObjective;
-import fr.pederobien.minecraftmanagers.TeamManager;
 import fr.pederobien.minecraftmanagers.WorldManager;
+import fr.pederobien.minecraftscoreboards.impl.updaters.UpdatersFactory;
 import fr.pederobien.minecraftscoreboards.interfaces.IEntry;
 
 public class HungerGameObjective extends GameObjective<IHungerGameConfiguration> implements IHungerGameObjective {
@@ -79,11 +77,12 @@ public class HungerGameObjective extends GameObjective<IHungerGameConfiguration>
 
 	@Override
 	public void initiate() {
-		add(score -> new LocationAutoUpdater(this, new LocationEntry(score)));
-		add(score -> new OrientationAutoUpdater(this, new CenterEntry(score, getConfiguration().getBorder(WorldManager.OVERWORLD).get().getBorderCenter())));
+		add(score -> new LocationEntry(score).addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
+		add(score -> new CenterEntry(score, getConfiguration().getBorder(WorldManager.OVERWORLD).get().getBorderCenter())
+				.addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
 		emptyEntry(score--);
 		for (IBorderConfiguration border : getConfiguration().getBorders())
-			add(score -> new WorldBorderSizeCountDownAutoUpdater(this, new WorldBorderSizeCountDownEntry(score, border, "#").setDisplayHalfSize(true)));
+			add(score -> new WorldBorderSizeCountDownEntry(score, border, "#").setDisplayHalfSize(true).addUpdater(new TimeTaskObserverEntryUpdater()));
 	}
 
 	@Override
@@ -91,7 +90,7 @@ public class HungerGameObjective extends GameObjective<IHungerGameConfiguration>
 		emptyEntry(score--);
 		for (ITeam team : getConfiguration().getTeams())
 			if (!team.getPlayers().isEmpty())
-				add(score -> new TeamPlayerOnModeAutoUpdater(this, score, TeamManager.getTeam(team.getName()).get(), GameMode.SURVIVAL, true));
+				add(score -> new TeamPlayerOnModeEntry(score, team, GameMode.SURVIVAL, true).addUpdater(UpdatersFactory.playerGameModeChange()));
 	}
 
 	private void add(Function<Integer, IEntry> constructor) {
