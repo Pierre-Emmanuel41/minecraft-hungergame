@@ -81,6 +81,11 @@ public class HungerGame implements IHungerGame {
 	}
 
 	@Override
+	public boolean isRunning() {
+		return current == inGameState;
+	}
+
+	@Override
 	public IGameState getCurrentState() {
 		return current;
 	}
