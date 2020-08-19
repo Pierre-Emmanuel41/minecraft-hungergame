@@ -41,8 +41,8 @@ public class HungerGameParent extends AbstractGameBorderConfigurationParent<IHun
 	}
 
 	@Override
-	protected IMapPersistenceEdition<IHungerGameConfiguration> getCurrentEdition() {
-		return HungerGameEditionFactory.currentHungerGame();
+	protected IMapPersistenceEdition<IHungerGameConfiguration> getDetailsEdition() {
+		return HungerGameEditionFactory.detailsHungerGame();
 	}
 
 	@Override
