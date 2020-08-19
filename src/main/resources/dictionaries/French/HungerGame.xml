@@ -85,11 +85,11 @@
 			<value>Le fichier de la configuration de jeu hunger game %s a été supprimé</value>
 		</message>
 		<message>
-			<code>CURRENT_HG__EXPLANATION</code>
+			<code>DETAILS_HG__EXPLANATION</code>
 			<value>Pour afficher les caractéristiques de la configuration hunger game courante</value>
 		</message>
 		<message>
-			<code>CURRENT_HG__ON_CURRENT</code>
+			<code>DETAILS_HG__ON_DETAILS</code>
 			<value>Caractéristiques de la configuration hunger game courante :%n%s</value>
 		</message>
 		<message>
