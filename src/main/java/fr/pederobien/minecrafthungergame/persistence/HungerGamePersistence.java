@@ -5,9 +5,11 @@ import org.w3c.dom.Element;
 
 import fr.pederobien.minecraftgameplateform.border.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.border.persistence.BorderPersistence;
+import fr.pederobien.minecraftgameplateform.impl.element.PlateformTeam;
 import fr.pederobien.minecraftgameplateform.impl.element.persistence.AbstractMinecraftPersistence;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
 import fr.pederobien.minecraftgameplateform.interfaces.element.persistence.IMinecraftPersistence;
+import fr.pederobien.minecraftgameplateform.utils.EColor;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.HungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
@@ -35,6 +37,10 @@ public class HungerGamePersistence extends AbstractMinecraftPersistence<IHungerG
 	@Override
 	public void saveDefault() {
 		set(new HungerGameConfiguration(getDefault()));
+		get().add(PlateformTeam.of("knights", EColor.DARK_AQUA));
+		get().add(PlateformTeam.of("vikings", EColor.GREEN));
+		get().add(PlateformTeam.of("barbarics", EColor.DARK_RED));
+		get().add(PlateformTeam.of("spartiates", EColor.GOLD));
 		save();
 		for (IBorderConfiguration border : get().getBorders()) {
 			borderPersistence.set(border);
