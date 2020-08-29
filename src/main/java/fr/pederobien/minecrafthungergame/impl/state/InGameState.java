@@ -1,7 +1,6 @@
 package fr.pederobien.minecrafthungergame.impl.state;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.bukkit.ChatColor;
@@ -11,16 +10,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerRespawnEvent;
 
-import fr.pederobien.minecraftgameplateform.border.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.impl.element.EventListener;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
 import fr.pederobien.minecraftmanagers.MessageManager;
 import fr.pederobien.minecraftmanagers.PlayerManager;
-import fr.pederobien.minecraftmanagers.TeamManager;
-import fr.pederobien.minecraftmanagers.WorldManager;
 
 public class InGameState extends AbstractState {
 	private IEventListener inGameListener, pauseGameListener;
@@ -74,24 +69,6 @@ public class InGameState extends AbstractState {
 			} else {
 				event.setKeepInventory(true);
 				PlayerManager.setGameModeOfPlayer(event.getEntity(), GameMode.SURVIVAL);
-			}
-		}
-
-		@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-		public void onPlayerRespawn(PlayerRespawnEvent event) {
-			if (!isActivated() || event.getPlayer().getKiller() instanceof Player)
-				return;
-
-			Optional<Player> colleague = TeamManager.getRandomColleague(event.getPlayer(), player -> player.getGameMode().equals(GameMode.SURVIVAL));
-			if (colleague.isPresent()) {
-				event.setRespawnLocation(colleague.get().getLocation());
-				return;
-			}
-
-			Optional<IBorderConfiguration> optConf = getConfiguration().getBorder(WorldManager.OVERWORLD);
-			if (optConf.isPresent()) {
-				IBorderConfiguration conf = optConf.get();
-				event.setRespawnLocation(WorldManager.getRandomlyLocationInOverworld(conf.getBorderCenter(), (int) conf.getWorld().getWorldBorder().getSize()));
 			}
 		}
 	}
