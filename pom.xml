@@ -8,7 +8,7 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>minecraft-hungergame</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<properties>
 		<mainClass>${project.groupId}.minecrafthungergame.HGPlugin</mainClass>
 		<author>Pierre-Emmanuel41</author>
@@ -16,8 +16,14 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
-	
+
 	<dependencies>
+		<dependency>
+			<groupId>org.spigotmc</groupId>
+			<artifactId>spigot-api</artifactId>
+			<version>1.13-R0.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>fr.pederobien</groupId>
 			<artifactId>minecraft-game-plateform</artifactId>
@@ -25,7 +31,7 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<finalName>minecraft-hungergame</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
