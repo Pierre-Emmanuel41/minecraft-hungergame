@@ -7,11 +7,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scoreboard.DisplaySlot;
 
-import fr.pederobien.minecraftgameplateform.border.IBorderConfiguration;
+import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.entries.simple.CenterEntry;
 import fr.pederobien.minecraftgameplateform.entries.simple.LocationEntry;
 import fr.pederobien.minecraftgameplateform.entries.simple.TeamPlayerOnModeEntry;
-import fr.pederobien.minecraftgameplateform.entries.simple.WorldBorderSizeCountDownEntry;
+import fr.pederobien.minecraftborder.entries.WorldBorderSizeCountDownEntry;
 import fr.pederobien.minecraftgameplateform.entries.updaters.TimeTaskObserverEntryUpdater;
 import fr.pederobien.minecraftgameplateform.impl.element.GameObjective;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;

@@ -2,7 +2,7 @@ package fr.pederobien.minecrafthungergame.interfaces;
 
 import java.time.LocalTime;
 
-import fr.pederobien.minecraftgameplateform.interfaces.element.IGameBorderConfiguration;
+import fr.pederobien.minecraftborder.interfaces.IGameBorderConfiguration;
 
 public interface IHungerGameConfiguration extends IGameBorderConfiguration {
 

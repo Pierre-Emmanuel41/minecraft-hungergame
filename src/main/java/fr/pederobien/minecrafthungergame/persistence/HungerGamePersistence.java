@@ -3,8 +3,8 @@ package fr.pederobien.minecrafthungergame.persistence;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import fr.pederobien.minecraftgameplateform.border.IBorderConfiguration;
-import fr.pederobien.minecraftgameplateform.border.persistence.BorderPersistence;
+import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
+import fr.pederobien.minecraftborder.persistence.BorderPersistence;
 import fr.pederobien.minecraftgameplateform.impl.element.PlateformTeam;
 import fr.pederobien.minecraftgameplateform.impl.element.persistence.AbstractMinecraftPersistence;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;

@@ -2,7 +2,7 @@ package fr.pederobien.minecrafthungergame.commands;
 
 import org.bukkit.plugin.Plugin;
 
-import fr.pederobien.minecraftgameplateform.impl.editions.AbstractGameBorderConfigurationParent;
+import fr.pederobien.minecraftborder.editions.AbstractGameBorderConfigurationParent;
 import fr.pederobien.minecraftgameplateform.interfaces.editions.IMapPersistenceEdition;
 import fr.pederobien.minecrafthungergame.EHungerGameMessageCode;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;

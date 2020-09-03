@@ -2,7 +2,7 @@ main: fr.pederobien.minecrafthungergame.HGPlugin
 name: minecraft-hungergame
 version: 1.0-SNAPSHOT
 api-version: 1.13
-depend: [minecraft-game-plateform]
+depend: [minecraft-border]
 
 description:
 commands:
