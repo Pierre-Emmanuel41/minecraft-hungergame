@@ -15,7 +15,6 @@ import fr.pederobien.minecrafthungergame.HGPlugin;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.interfaces.state.IGameState;
-import fr.pederobien.minecraftmanagers.PlayerManager;
 
 public abstract class AbstractState implements IGameState {
 	private IHungerGame game;
@@ -29,9 +28,8 @@ public abstract class AbstractState implements IGameState {
 	@Override
 	public void timeChanged(LocalTime time) {
 		if (time.equals(getConfiguration().getPlayerDontReviveTime())) {
-			PlayerManager.getPlayers().parallel().forEach(player -> {
-				Plateform.getNotificationCenter().sendMessage(new MinecraftMessageEvent(player, EHungerGameMessageCode.PLAYER_DONT_REVIVE));
-			});
+			// Permission of message PLAYER_DONT_REVIVE is ALL, we don't need to specify a player for the event.
+			Plateform.getNotificationCenter().sendMessage(new MinecraftMessageEvent(null, EHungerGameMessageCode.PLAYER_DONT_REVIVE));
 			onPlayerDontRevive();
 		}
 	}
