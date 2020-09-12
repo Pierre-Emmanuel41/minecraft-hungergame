@@ -29,7 +29,7 @@ public abstract class AbstractState implements IGameState {
 	public void timeChanged(LocalTime time) {
 		if (time.equals(getConfiguration().getPlayerDontReviveTime())) {
 			// Permission of message PLAYER_DONT_REVIVE is ALL, we don't need to specify a player for the event.
-			Plateform.getNotificationCenter().sendMessage(new MinecraftMessageEvent(null, EHungerGameMessageCode.PLAYER_DONT_REVIVE));
+			Plateform.getNotificationCenter().sendMessage(new MinecraftMessageEvent(EHungerGameMessageCode.PLAYER_DONT_REVIVE));
 			onPlayerDontRevive();
 		}
 	}

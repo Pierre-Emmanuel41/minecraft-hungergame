@@ -74,7 +74,7 @@ public class HungerGame implements IHungerGame {
 	@Override
 	public void onPvpEnabled() {
 		// Permission of message PVP_ENABLED is ALL, we don't need to specify a player for the event.
-		Plateform.getNotificationCenter().getMessage(new MinecraftMessageEvent(null, EHungerGameMessageCode.PVP_ENABLED));
+		Plateform.getNotificationCenter().getMessage(new MinecraftMessageEvent(EHungerGameMessageCode.PVP_ENABLED));
 	}
 
 	@Override
