@@ -116,8 +116,28 @@ public class HungerGame implements IHungerGame {
 	}
 
 	@Override
-	public void timeChanged(LocalTime time) {
-		current.timeChanged(time);
+	public int getCountDown() {
+		return current.getCountDown();
+	}
+
+	@Override
+	public int getCurrentCountDown() {
+		return current.getCurrentCountDown();
+	}
+
+	@Override
+	public void onTime(LocalTime time) {
+		current.onTime(time);
+	}
+
+	@Override
+	public void onCountDownTime(LocalTime currentTime) {
+		current.onCountDownTime(currentTime);
+	}
+
+	@Override
+	public LocalTime getNextNotifiedTime() {
+		return current.getNextNotifiedTime();
 	}
 
 	@Override

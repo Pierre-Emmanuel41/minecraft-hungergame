@@ -9,29 +9,59 @@ import fr.pederobien.minecraftgameplateform.exceptions.StateException;
 import fr.pederobien.minecraftgameplateform.impl.element.EventListener;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
 import fr.pederobien.minecraftgameplateform.interfaces.helpers.IGameConfigurationHelper;
+import fr.pederobien.minecraftgameplateform.utils.EColor;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.EHungerGameMessageCode;
 import fr.pederobien.minecrafthungergame.HGPlugin;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.interfaces.state.IGameState;
+import fr.pederobien.minecraftmanagers.MessageManager;
+import fr.pederobien.minecraftmanagers.MessageManager.DisplayOption;
+import fr.pederobien.minecraftmanagers.MessageManager.TitleMessage;
+import fr.pederobien.minecraftmanagers.PlayerManager;
 
 public abstract class AbstractState implements IGameState {
 	private IHungerGame game;
 	private IGameConfigurationHelper helper;
+	private int currentCountDown;
 
 	protected AbstractState(IHungerGame game) {
 		this.game = game;
 		helper = Plateform.getOrCreateConfigurationHelper(getConfiguration());
+		currentCountDown = getCountDown();
 	}
 
 	@Override
-	public void timeChanged(LocalTime time) {
-		if (time.equals(getConfiguration().getPlayerDontReviveTime())) {
-			// Permission of message PLAYER_DONT_REVIVE is ALL, we don't need to specify a player for the event.
-			Plateform.getNotificationCenter().sendMessage(new MinecraftMessageEvent(EHungerGameMessageCode.PLAYER_DONT_REVIVE));
-			onPlayerDontRevive();
-		}
+	public int getCountDown() {
+		return 5;
+	}
+
+	@Override
+	public int getCurrentCountDown() {
+		return currentCountDown;
+	}
+
+	@Override
+	public void onTime(LocalTime time) {
+		// Permission of message PLAYER_DONT_REVIVE is ALL, we don't need to specify a player for the event.
+		PlayerManager.getPlayers().forEach(player -> {
+			String message = Plateform.getNotificationCenter().getMessage(new MinecraftMessageEvent(player, EHungerGameMessageCode.PLAYER_DONT_REVIVE));
+			MessageManager.sendMessage(DisplayOption.TITLE, player, TitleMessage.of(message, EColor.RED.getName()));
+		});
+		onPlayerDontRevive();
+		currentCountDown = getCountDown();
+	}
+
+	@Override
+	public void onCountDownTime(LocalTime currentTime) {
+		MessageManager.sendMessage(PlayerManager.getPlayers(), EColor.DARK_RED.getInColor("Player dont revive in " + currentCountDown));
+		currentCountDown--;
+	}
+
+	@Override
+	public LocalTime getNextNotifiedTime() {
+		return LocalTime.of(0, 0, 0);
 	}
 
 	@Override
