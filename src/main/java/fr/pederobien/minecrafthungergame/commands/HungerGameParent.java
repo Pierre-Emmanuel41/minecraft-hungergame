@@ -17,7 +17,7 @@ public class HungerGameParent extends AbstractGameBorderConfigurationParent<IHun
 
 	@Override
 	protected IMapPersistenceEdition<IHungerGameConfiguration> getNewEdition() {
-		return HungerGameEditionFactory.newHungerGame().setModifiable(false);
+		return HungerGameEditionFactory.newHungerGame();
 	}
 
 	@Override
@@ -32,12 +32,12 @@ public class HungerGameParent extends AbstractGameBorderConfigurationParent<IHun
 
 	@Override
 	protected IMapPersistenceEdition<IHungerGameConfiguration> getListEdition() {
-		return HungerGameEditionFactory.listHungerGame().setModifiable(false);
+		return HungerGameEditionFactory.listHungerGame();
 	}
 
 	@Override
 	protected IMapPersistenceEdition<IHungerGameConfiguration> getDeleteEdition() {
-		return HungerGameEditionFactory.deleteHungerGame().setModifiable(false);
+		return HungerGameEditionFactory.deleteHungerGame();
 	}
 
 	@Override
@@ -47,6 +47,6 @@ public class HungerGameParent extends AbstractGameBorderConfigurationParent<IHun
 
 	@Override
 	protected IMapPersistenceEdition<IHungerGameConfiguration> getLoadEdition() {
-		return HungerGameEditionFactory.loadHungerGame().setModifiable(false);
+		return HungerGameEditionFactory.loadHungerGame();
 	}
 }
