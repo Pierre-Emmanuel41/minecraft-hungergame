@@ -129,5 +129,9 @@
 			<code>PLAYER_DONT_REVIVE</code>
 			<value>No more resurrection</value>
 		</message>
+		<message>
+			<code>PLAYER_WILL_NOT_REVIVE_IN</code>
+			<value>Players will not revive in %s</value>
+		</message>
 	</messages>
 </dictionary>

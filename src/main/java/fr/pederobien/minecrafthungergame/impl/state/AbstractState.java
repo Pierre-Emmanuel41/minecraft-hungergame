@@ -55,7 +55,11 @@ public abstract class AbstractState implements IGameState {
 
 	@Override
 	public void onCountDownTime(LocalTime currentTime) {
-		MessageManager.sendMessage(PlayerManager.getPlayers(), EColor.DARK_RED.getInColor("Player dont revive in " + currentCountDown));
+		PlayerManager.getPlayers().forEach(player -> {
+			String message = Plateform.getNotificationCenter()
+					.getMessage(new MinecraftMessageEvent(player, EHungerGameMessageCode.PLAYER_WILL_NOT_REVIVE_IN, currentCountDown));
+			MessageManager.sendMessage(DisplayOption.TITLE, player, TitleMessage.of(message, EColor.RED.getName()));
+		});
 		currentCountDown--;
 	}
 
