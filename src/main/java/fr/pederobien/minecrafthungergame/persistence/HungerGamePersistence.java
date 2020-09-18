@@ -84,7 +84,7 @@ public class HungerGamePersistence extends AbstractMinecraftPersistence<IHungerG
 		for (ITeam t : get().getTeams()) {
 			Element team = createElement(doc, HungerGameXmlTag.TEAM);
 			setAttribute(team, HungerGameXmlTag.NAME, t.getName());
-			setAttribute(team, HungerGameXmlTag.COLOR, t.getColor().getName());
+			setAttribute(team, HungerGameXmlTag.COLOR, t.getColor());
 			teams.appendChild(team);
 		}
 		root.appendChild(teams);
