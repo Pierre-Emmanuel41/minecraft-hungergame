@@ -126,12 +126,12 @@
 			<value>Pvp enabled</value>
 		</message>
 		<message>
-			<code>NO_MORE_RESURRECTION</code>
-			<value>No more resurrection</value>
+			<code>NO_RESURRECTION</code>
+			<value>No resurrection</value>
 		</message>
 		<message>
-			<code>NO_MORE_RESURRECTION_COUNT_DOWN</code>
-			<value>No more resurrection in %s</value>
+			<code>NO_RESURRECTION_COUNT_DOWN</code>
+			<value>No resurrection in %s</value>
 		</message>
 	</messages>
 </dictionary>

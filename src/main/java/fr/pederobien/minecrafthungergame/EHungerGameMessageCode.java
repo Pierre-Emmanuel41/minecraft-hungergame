@@ -31,7 +31,7 @@ public enum EHungerGameMessageCode implements IMinecraftMessageCode {
 	PLAYER_DONT_REVIVE_TIME__EXPLANATION, PLAYER_DONT_REVIVE_TIME__TIME_IS_MISSING, PLAYER_DONT_REVIVE_TIME__FROM_THE_BEGINNING, PLAYER_DONT_REVIVE_TIME__TIME_DEFINED,
 
 	// Code for in game messages
-	PVP_ENABLED(Permission.ALL), NO_MORE_RESURRECTION(Permission.ALL), NO_MORE_RESURRECTION_COUNT_DOWN(Permission.ALL);
+	PVP_ENABLED(Permission.ALL), NO_RESURRECTION(Permission.ALL), NO_RESURRECTION_COUNT_DOWN(Permission.ALL);
 
 	private Permission permission;
 

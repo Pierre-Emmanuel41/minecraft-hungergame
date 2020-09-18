@@ -40,14 +40,14 @@ public abstract class AbstractState implements IGameState {
 
 	@Override
 	public void onTime(LocalTime time) {
-		sendNotSynchro(EHungerGameMessageCode.NO_MORE_RESURRECTION, DisplayOption.TITLE, EColor.DARK_RED);
+		sendNotSynchro(EHungerGameMessageCode.NO_RESURRECTION, DisplayOption.TITLE, EColor.DARK_RED);
 		onPlayerDontRevive();
 		currentCountDown = getCountDown();
 	}
 
 	@Override
 	public void onCountDownTime(LocalTime currentTime) {
-		sendNotSynchro(EHungerGameMessageCode.NO_MORE_RESURRECTION_COUNT_DOWN, DisplayOption.TITLE, EColor.GOLD, currentCountDown);
+		sendNotSynchro(EHungerGameMessageCode.NO_RESURRECTION_COUNT_DOWN, DisplayOption.TITLE, EColor.GOLD, currentCountDown);
 		currentCountDown--;
 	}
 
