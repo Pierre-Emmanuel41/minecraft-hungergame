@@ -14,16 +14,16 @@ public class DeleteHungerGame extends CommonDelete<IHungerGameConfiguration> {
 
 	@Override
 	protected void onDidNotDelete(CommandSender sender, String name) {
-		sendMessageToSender(sender, EHungerGameMessageCode.DELETE_HG__DID_NOT_DELETE, name);
+		sendSynchro(sender, EHungerGameMessageCode.DELETE_HG__DID_NOT_DELETE, name);
 	}
 
 	@Override
 	protected void onDeleted(CommandSender sender, String name) {
-		sendMessageToSender(sender, EHungerGameMessageCode.DELETE_HG__CONFIGURATION_DELETED, name);
+		sendSynchro(sender, EHungerGameMessageCode.DELETE_HG__CONFIGURATION_DELETED, name);
 	}
 
 	@Override
 	protected void onNameIsMissing(CommandSender sender) {
-		sendMessageToSender(sender, EHungerGameMessageCode.DELETE_HG__NAME_IS_MISSING);
+		sendSynchro(sender, EHungerGameMessageCode.DELETE_HG__NAME_IS_MISSING);
 	}
 }

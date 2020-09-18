@@ -14,6 +14,6 @@ public class SaveHungerGame extends CommonSave<IHungerGameConfiguration> {
 
 	@Override
 	protected void onSave(CommandSender sender, String name) {
-		sendMessageToSender(sender, EHungerGameMessageCode.SAVE_HG__CONFIGURATION_SAVED, name);
+		sendSynchro(sender, EHungerGameMessageCode.SAVE_HG__CONFIGURATION_SAVED, name);
 	}
 }

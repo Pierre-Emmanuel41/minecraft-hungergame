@@ -14,16 +14,16 @@ public class ListHungerGame extends CommonList<IHungerGameConfiguration> {
 
 	@Override
 	protected void onNoElement(CommandSender sender) {
-		sendMessageToSender(sender, EHungerGameMessageCode.LIST_HG__NO_REGISTERED_CONFIGURATION);
+		sendSynchro(sender, EHungerGameMessageCode.LIST_HG__NO_REGISTERED_CONFIGURATION);
 	}
 
 	@Override
 	protected void onOneElement(CommandSender sender, String name) {
-		sendMessageToSender(sender, EHungerGameMessageCode.LIST_HG__ONE_REGISTERED_CONFIGURATION, name);
+		sendSynchro(sender, EHungerGameMessageCode.LIST_HG__ONE_REGISTERED_CONFIGURATION, name);
 	}
 
 	@Override
 	protected void onSeveralElement(CommandSender sender, String names) {
-		sendMessageToSender(sender, EHungerGameMessageCode.LIST_HG__SEVERAL_ELEMENTS, names);
+		sendSynchro(sender, EHungerGameMessageCode.LIST_HG__SEVERAL_ELEMENTS, names);
 	}
 }

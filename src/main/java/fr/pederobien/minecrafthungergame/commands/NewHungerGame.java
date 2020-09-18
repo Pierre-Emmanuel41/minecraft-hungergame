@@ -18,12 +18,12 @@ public class NewHungerGame extends CommonNew<IHungerGameConfiguration> {
 
 	@Override
 	protected void onNameAlreadyTaken(CommandSender sender, String name) {
-		sendMessageToSender(sender, EHungerGameMessageCode.NEW_HG__NAME_ALREADY_TAKEN, name);
+		sendSynchro(sender, EHungerGameMessageCode.NEW_HG__NAME_ALREADY_TAKEN, name);
 	}
 
 	@Override
 	protected void onNameIsMissing(CommandSender sender) {
-		sendMessageToSender(sender, EHungerGameMessageCode.NEW_HG__NAME_IS_MISSING);
+		sendSynchro(sender, EHungerGameMessageCode.NEW_HG__NAME_IS_MISSING);
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class NewHungerGame extends CommonNew<IHungerGameConfiguration> {
 
 	@Override
 	protected void onCreated(CommandSender sender, String name) {
-		sendMessageToSender(sender, EHungerGameMessageCode.NEW_HG__CONFIGURATION_CREATED, name);
+		sendSynchro(sender, EHungerGameMessageCode.NEW_HG__CONFIGURATION_CREATED, name);
 		setAllAvailable();
 	}
 

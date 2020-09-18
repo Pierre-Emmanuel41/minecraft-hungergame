@@ -14,16 +14,16 @@ public class RenameHungerGame extends CommonRename<IHungerGameConfiguration> {
 
 	@Override
 	protected void onNameAlreadyTaken(CommandSender sender, String currentName, String newName) {
-		sendMessageToSender(sender, EHungerGameMessageCode.RENAME_HG__NAME_ALREADY_TAKEN, currentName, newName);
+		sendSynchro(sender, EHungerGameMessageCode.RENAME_HG__NAME_ALREADY_TAKEN, currentName, newName);
 	}
 
 	@Override
 	protected void onNameIsMissing(CommandSender sender, String oldName) {
-		sendMessageToSender(sender, EHungerGameMessageCode.RENAME_HG__NAME_IS_MISSING, oldName);
+		sendSynchro(sender, EHungerGameMessageCode.RENAME_HG__NAME_IS_MISSING, oldName);
 	}
 
 	@Override
 	protected void onRenamed(CommandSender sender, String oldName, String newName) {
-		sendMessageToSender(sender, EHungerGameMessageCode.RENAME_HG__CONFIGURATION_RENAMED, oldName, newName);
+		sendSynchro(sender, EHungerGameMessageCode.RENAME_HG__CONFIGURATION_RENAMED, oldName, newName);
 	}
 }

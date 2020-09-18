@@ -17,13 +17,13 @@ public class LoadHungerGame extends CommonLoad<IHungerGameConfiguration> {
 
 	@Override
 	protected void onStyleLoaded(CommandSender sender, String name) {
-		sendMessageToSender(sender, EHungerGameMessageCode.LOAD_HG__CONFIGURATION_LOADED, name);
+		sendSynchro(sender, EHungerGameMessageCode.LOAD_HG__CONFIGURATION_LOADED, name);
 		setAllAvailable();
 	}
 
 	@Override
 	protected void onNameIsMissing(CommandSender sender) {
-		sendMessageToSender(sender, EHungerGameMessageCode.LOAD_HG__NAME_IS_MISSING);
+		sendSynchro(sender, EHungerGameMessageCode.LOAD_HG__NAME_IS_MISSING);
 	}
 
 	private void setAllAvailable() {
