@@ -9,9 +9,9 @@ import org.w3c.dom.NodeList;
 import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.impl.element.PlateformTeam;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
-import fr.pederobien.minecraftgameplateform.utils.EColor;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.persistence.HungerGameXmlTag;
+import fr.pederobien.minecraftmanagers.EColor;
 import fr.pederobien.persistence.interfaces.IPersistence;
 import fr.pederobien.persistence.interfaces.xml.IXmlPersistenceLoader;
 

@@ -9,11 +9,11 @@ import fr.pederobien.minecraftgameplateform.impl.element.PlateformTeam;
 import fr.pederobien.minecraftgameplateform.impl.element.persistence.AbstractMinecraftPersistence;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
 import fr.pederobien.minecraftgameplateform.interfaces.element.persistence.IMinecraftPersistence;
-import fr.pederobien.minecraftgameplateform.utils.EColor;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.HungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.persistence.loaders.HungerGameLoaderV10;
+import fr.pederobien.minecraftmanagers.EColor;
 import fr.pederobien.persistence.interfaces.IPersistence;
 
 public class HungerGamePersistence extends AbstractMinecraftPersistence<IHungerGameConfiguration> {

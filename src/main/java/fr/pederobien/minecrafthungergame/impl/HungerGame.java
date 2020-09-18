@@ -11,7 +11,6 @@ import org.bukkit.scoreboard.Scoreboard;
 
 import fr.pederobien.minecraftdictionary.impl.MinecraftMessageEvent;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
-import fr.pederobien.minecraftgameplateform.utils.EColor;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.EHungerGameMessageCode;
 import fr.pederobien.minecrafthungergame.HGPlugin;
@@ -23,6 +22,7 @@ import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameObjective;
 import fr.pederobien.minecrafthungergame.interfaces.state.IGameState;
+import fr.pederobien.minecraftmanagers.EColor;
 import fr.pederobien.minecraftmanagers.MessageManager;
 import fr.pederobien.minecraftmanagers.MessageManager.DisplayOption;
 import fr.pederobien.minecraftmanagers.MessageManager.TitleMessage;
