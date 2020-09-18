@@ -47,7 +47,7 @@ public abstract class AbstractState implements IGameState {
 		// Permission of message PLAYER_DONT_REVIVE is ALL, we don't need to specify a player for the event.
 		PlayerManager.getPlayers().forEach(player -> {
 			String message = Plateform.getNotificationCenter().getMessage(new MinecraftMessageEvent(player, EHungerGameMessageCode.PLAYER_DONT_REVIVE));
-			MessageManager.sendMessage(DisplayOption.TITLE, player, TitleMessage.of(message, EColor.RED.getName()));
+			MessageManager.sendMessage(DisplayOption.TITLE, player, TitleMessage.of(message, EColor.DARK_RED.getName()));
 		});
 		onPlayerDontRevive();
 		currentCountDown = getCountDown();
@@ -58,7 +58,7 @@ public abstract class AbstractState implements IGameState {
 		PlayerManager.getPlayers().forEach(player -> {
 			String message = Plateform.getNotificationCenter()
 					.getMessage(new MinecraftMessageEvent(player, EHungerGameMessageCode.PLAYER_WILL_NOT_REVIVE_IN, currentCountDown));
-			MessageManager.sendMessage(DisplayOption.TITLE, player, TitleMessage.of(message, EColor.RED.getName()));
+			MessageManager.sendMessage(DisplayOption.TITLE, player, TitleMessage.of(message, EColor.GOLD.getName()));
 		});
 		currentCountDown--;
 	}
