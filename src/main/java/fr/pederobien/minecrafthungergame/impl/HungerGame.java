@@ -81,7 +81,7 @@ public class HungerGame implements IHungerGame {
 		PlayerManager.getPlayers().forEach(player -> {
 			// Permission of message PVP_ENABLED is ALL, we don't need to specify a player for the event.
 			String message = Plateform.getNotificationCenter().getMessage(new MinecraftMessageEvent(EHungerGameMessageCode.PVP_ENABLED));
-			MessageManager.sendMessage(DisplayOption.TITLE, player, TitleMessage.of(message, EColor.DARK_RED.toString()));
+			MessageManager.sendMessage(DisplayOption.TITLE, player, TitleMessage.of(message, EColor.DARK_RED));
 		});
 	}
 
