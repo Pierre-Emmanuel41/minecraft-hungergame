@@ -125,12 +125,12 @@
 			<value>Pvp activé</value>
 		</message>
 		<message>
-			<code>PLAYER_DONT_REVIVE</code>
+			<code>NO_MORE_RESURRECTION</code>
 			<value>Plus de résurrection</value>
 		</message>
 		<message>
-			<code>PLAYER_WILL_NOT_REVIVE_IN</code>
-			<value>Les joueurs cesseront de réapparaître dans %s</value>
+			<code>NO_MORE_RESURRECTION_COUNT_DOWN</code>
+			<value>Plus de résurrection dans %s</value>
 		</message>
 	</messages>
 </dictionary>

@@ -9,7 +9,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scoreboard.Scoreboard;
 
-import fr.pederobien.minecraftdictionary.impl.MinecraftMessageEvent;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.EHungerGameMessageCode;
@@ -23,10 +22,7 @@ import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameObjective;
 import fr.pederobien.minecrafthungergame.interfaces.state.IGameState;
 import fr.pederobien.minecraftmanagers.EColor;
-import fr.pederobien.minecraftmanagers.MessageManager;
 import fr.pederobien.minecraftmanagers.MessageManager.DisplayOption;
-import fr.pederobien.minecraftmanagers.MessageManager.TitleMessage;
-import fr.pederobien.minecraftmanagers.PlayerManager;
 
 public class HungerGame implements IHungerGame {
 	private IGameState initialState, startState, inGameState, stopState, current;
@@ -78,11 +74,7 @@ public class HungerGame implements IHungerGame {
 
 	@Override
 	public void onPvpEnabled() {
-		PlayerManager.getPlayers().forEach(player -> {
-			// Permission of message PVP_ENABLED is ALL, we don't need to specify a player for the event.
-			String message = Plateform.getNotificationCenter().getMessage(new MinecraftMessageEvent(EHungerGameMessageCode.PVP_ENABLED));
-			MessageManager.sendMessage(DisplayOption.TITLE, player, TitleMessage.of(message, EColor.DARK_RED));
-		});
+		sendNotSynchro(EHungerGameMessageCode.PVP_ENABLED, DisplayOption.TITLE, EColor.DARK_RED);
 	}
 
 	@Override
