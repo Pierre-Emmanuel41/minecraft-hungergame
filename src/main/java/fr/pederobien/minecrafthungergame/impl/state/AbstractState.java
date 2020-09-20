@@ -2,6 +2,8 @@ package fr.pederobien.minecrafthungergame.impl.state;
 
 import java.time.LocalTime;
 
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 
 import fr.pederobien.minecraftgameplateform.exceptions.StateException;
@@ -57,7 +59,7 @@ public abstract class AbstractState implements IGameState {
 	}
 
 	@Override
-	public boolean initiate() {
+	public boolean initiate(CommandSender sender, Command command, String label, String[] args) {
 		throw new StateException(this);
 	}
 

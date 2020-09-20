@@ -122,6 +122,10 @@
 			<value>Players respawn in spectator mode after %s of play</value>
 		</message>
 		<message>
+			<code>OVERWORLD_BORDER_IS_MISSING</code>
+			<value>Cannot start game %s, the overworld's border is missing</value>
+		</message>
+		<message>
 			<code>PVP_ENABLED</code>
 			<value>Pvp enabled</value>
 		</message>
