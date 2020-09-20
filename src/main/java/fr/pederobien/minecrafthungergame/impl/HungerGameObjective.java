@@ -3,15 +3,16 @@ package fr.pederobien.minecrafthungergame.impl;
 import java.util.function.Function;
 
 import org.bukkit.GameMode;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scoreboard.DisplaySlot;
 
+import fr.pederobien.minecraftborder.entries.WorldBorderSizeCountDownEntry;
 import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.entries.simple.CenterEntry;
 import fr.pederobien.minecraftgameplateform.entries.simple.LocationEntry;
 import fr.pederobien.minecraftgameplateform.entries.simple.TeamPlayerOnModeEntry;
-import fr.pederobien.minecraftborder.entries.WorldBorderSizeCountDownEntry;
 import fr.pederobien.minecraftgameplateform.entries.updaters.TimeTaskObserverEntryUpdater;
 import fr.pederobien.minecraftgameplateform.impl.element.GameObjective;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
@@ -77,7 +78,8 @@ public class HungerGameObjective extends GameObjective<IHungerGameConfiguration>
 
 	@Override
 	public void initiate() {
-		add(score -> new LocationEntry(score).addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
+		Block overworldCenter = getConfiguration().getBorder(WorldManager.OVERWORLD).get().getBorderCenter();
+		add(score -> new LocationEntry(score, overworldCenter).addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
 		add(score -> new CenterEntry(score, getConfiguration().getBorder(WorldManager.OVERWORLD).get().getBorderCenter())
 				.addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
 		emptyEntry(score--);
