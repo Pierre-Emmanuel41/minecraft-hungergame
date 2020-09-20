@@ -2,7 +2,6 @@ package fr.pederobien.minecrafthungergame.commands;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
-import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.command.Command;
@@ -40,6 +39,11 @@ public class PlayerDontReviveTime extends AbstractLabelEdition<IHungerGameConfig
 
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-		return Arrays.asList(getMessage(sender, ECommonMessageCode.COMMON_TIME_TAB_COMPLETE));
+		switch (args.length) {
+		case 1:
+			return asList(getMessage(sender, ECommonMessageCode.COMMON_TIME_TAB_COMPLETE));
+		default:
+			return emptyList();
+		}
 	}
 }
