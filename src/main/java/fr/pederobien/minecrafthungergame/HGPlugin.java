@@ -12,21 +12,21 @@ import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 
 public class HGPlugin extends JavaPlugin {
-	private static IParentCommand<IHungerGameConfiguration> hungerGameCommand;
 	private static Plugin plugin;
-
-	/**
-	 * @return The current hunger game configuration for this plugin.
-	 */
-	public static IHungerGameConfiguration getCurrentConfiguration() {
-		return hungerGameCommand.getParent().get();
-	}
+	private static IParentCommand<IHungerGameConfiguration> hungerGameCommand;
 
 	/**
 	 * @return The plugin associated to this hunger game plugin.
 	 */
 	public static Plugin get() {
 		return plugin;
+	}
+
+	/**
+	 * @return The current hunger game configuration for this plugin.
+	 */
+	public static IHungerGameConfiguration getCurrentHungerGame() {
+		return hungerGameCommand.getParent().get();
 	}
 
 	@Override
