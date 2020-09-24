@@ -13,6 +13,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 import fr.pederobien.minecraftgameplateform.impl.element.EventListener;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
+import fr.pederobien.minecrafthungergame.HGPlugin;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
 import fr.pederobien.minecraftmanagers.MessageManager;
 import fr.pederobien.minecraftmanagers.PlayerManager;
@@ -20,17 +21,22 @@ import fr.pederobien.minecraftmanagers.PlayerManager;
 public class InGameState extends AbstractState {
 	private IEventListener inGameListener, pauseGameListener;
 	private boolean playerRevive;
+	private boolean isRegistered;
 
 	public InGameState(IHungerGame game) {
 		super(game);
 		inGameListener = new InGameListener();
 		pauseGameListener = new PauseGameListener();
 		playerRevive = true;
+		isRegistered = false;
 	}
 
 	@Override
 	public void pause() {
-		pauseGameListener.register(getPlugin());
+		if (!isRegistered) {
+			pauseGameListener.register(HGPlugin.get());
+			isRegistered = true;
+		}
 		pauseGameListener.setActivated(true);
 	}
 

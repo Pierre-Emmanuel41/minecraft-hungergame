@@ -4,7 +4,6 @@ import java.time.LocalTime;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.Plugin;
 
 import fr.pederobien.minecraftgameplateform.exceptions.StateException;
 import fr.pederobien.minecraftgameplateform.impl.element.EventListener;
@@ -12,7 +11,6 @@ import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
 import fr.pederobien.minecraftgameplateform.interfaces.helpers.IGameConfigurationHelper;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.EHungerGameMessageCode;
-import fr.pederobien.minecrafthungergame.HGPlugin;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.interfaces.state.IGameState;
@@ -116,14 +114,5 @@ public abstract class AbstractState implements IGameState {
 	 * not overrided.
 	 */
 	protected void onPlayerDontRevive() {
-	}
-
-	/**
-	 * This is a convenient method and is equivalent to <code>Plateform.getPluginManager().getPlugin(HGPlugin.NAME).get()</code>.
-	 * 
-	 * @return This plugin registered in the plateform.
-	 */
-	protected Plugin getPlugin() {
-		return Plateform.getPluginHelper().getPlugin(HGPlugin.NAME).get();
 	}
 }

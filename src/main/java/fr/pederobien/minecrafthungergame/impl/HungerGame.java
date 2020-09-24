@@ -8,7 +8,6 @@ import java.util.List;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scoreboard.Scoreboard;
 
 import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
@@ -92,7 +91,7 @@ public class HungerGame implements IHungerGame {
 	@Override
 	public IGameState setCurrentState(IGameState current) {
 		this.current.getListener().setActivated(false);
-		current.getListener().register(Plateform.getPluginHelper().getPlugin(HGPlugin.NAME).get());
+		current.getListener().register(HGPlugin.get());
 		current.getListener().setActivated(true);
 		return this.current = current;
 	}
@@ -149,7 +148,7 @@ public class HungerGame implements IHungerGame {
 
 	@Override
 	public void createObjective(Scoreboard scoreboard, Player player) {
-		IHungerGameObjective objective = new HungerGameObjective(getPlugin(), player, "Side bar", "Hunger Game", getConfiguration());
+		IHungerGameObjective objective = new HungerGameObjective(HGPlugin.get(), player, "Side bar", "Hunger Game", getConfiguration());
 		objective.setScoreboard(scoreboard);
 		objectives.add(objective);
 		Plateform.getObjectiveUpdater().register(objective);
@@ -158,14 +157,5 @@ public class HungerGame implements IHungerGame {
 	@Override
 	public List<IHungerGameObjective> getObjectives() {
 		return Collections.unmodifiableList(objectives);
-	}
-
-	/**
-	 * This is a convenient method and is equivalent to <code>Plateform.getPluginManager().getPlugin(HGPlugin.NAME).get()</code>.
-	 * 
-	 * @return This plugin registered in the plateform.
-	 */
-	private Plugin getPlugin() {
-		return Plateform.getPluginHelper().getPlugin(HGPlugin.NAME).get();
 	}
 }
