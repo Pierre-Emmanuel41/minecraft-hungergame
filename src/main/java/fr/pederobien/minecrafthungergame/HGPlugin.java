@@ -7,10 +7,20 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.pederobien.dictionary.interfaces.IDictionaryParser;
+import fr.pederobien.minecraftgameplateform.interfaces.commands.IParentCommand;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
+import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 
 public class HGPlugin extends JavaPlugin {
+	private static IParentCommand<IHungerGameConfiguration> hungerGameCommand;
 	private static Plugin plugin;
+
+	/**
+	 * @return The current hunger game configuration for this plugin.
+	 */
+	public static IHungerGameConfiguration getCurrentConfiguration() {
+		return hungerGameCommand.getParent().get();
+	}
 
 	/**
 	 * @return The plugin associated to this hunger game plugin.
@@ -23,7 +33,7 @@ public class HGPlugin extends JavaPlugin {
 	public void onEnable() {
 		Plateform.getPluginHelper().register(this);
 		plugin = this;
-		new HungerGameCommand(this);
+		hungerGameCommand = new HungerGameCommand(this);
 		registerDictionaries();
 	}
 
