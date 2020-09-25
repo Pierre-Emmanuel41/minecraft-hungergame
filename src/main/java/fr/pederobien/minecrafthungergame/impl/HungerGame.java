@@ -1,16 +1,13 @@
 package fr.pederobien.minecrafthungergame.impl;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.scoreboard.Scoreboard;
 
 import fr.pederobien.minecraftgameplateform.interfaces.element.IEventListener;
+import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.EHungerGameMessageCode;
 import fr.pederobien.minecrafthungergame.HGPlugin;
@@ -24,12 +21,11 @@ import fr.pederobien.minecrafthungergame.interfaces.IHungerGameObjective;
 import fr.pederobien.minecrafthungergame.interfaces.state.IGameState;
 import fr.pederobien.minecraftmanagers.EColor;
 import fr.pederobien.minecraftmanagers.MessageManager.DisplayOption;
+import fr.pederobien.minecraftmanagers.ScoreboardManager;
 
 public class HungerGame implements IHungerGame {
 	private IGameState initialState, startState, inGameState, stopState, current;
 	private IHungerGameConfiguration configuration;
-
-	private List<IHungerGameObjective> objectives;
 
 	public HungerGame(IHungerGameConfiguration configuration) {
 		this.configuration = configuration;
@@ -39,8 +35,6 @@ public class HungerGame implements IHungerGame {
 		inGameState = new InGameState(this);
 		stopState = new StopState(this);
 		current = initialState;
-
-		objectives = new ArrayList<IHungerGameObjective>();
 	}
 
 	@Override
@@ -50,6 +44,12 @@ public class HungerGame implements IHungerGame {
 
 	@Override
 	public void start() {
+		for (ITeam team : getConfiguration().getTeams())
+			for (Player player : team.getPlayers()) {
+				IHungerGameObjective objective = new HungerGameObjective(HGPlugin.get(), player, "Side bar", "Hunger Game", getConfiguration());
+				objective.setScoreboard(ScoreboardManager.createScoreboard());
+				Plateform.getObjectiveUpdater().register(objective);
+			}
 		current.start();
 	}
 
@@ -144,18 +144,5 @@ public class HungerGame implements IHungerGame {
 	@Override
 	public IHungerGameConfiguration getConfiguration() {
 		return configuration;
-	}
-
-	@Override
-	public void createObjective(Scoreboard scoreboard, Player player) {
-		IHungerGameObjective objective = new HungerGameObjective(HGPlugin.get(), player, "Side bar", "Hunger Game", getConfiguration());
-		objective.setScoreboard(scoreboard);
-		objectives.add(objective);
-		Plateform.getObjectiveUpdater().register(objective);
-	}
-
-	@Override
-	public List<IHungerGameObjective> getObjectives() {
-		return Collections.unmodifiableList(objectives);
 	}
 }

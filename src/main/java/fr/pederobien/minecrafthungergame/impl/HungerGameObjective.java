@@ -1,9 +1,9 @@
 package fr.pederobien.minecrafthungergame.impl;
 
+import java.time.LocalTime;
 import java.util.function.Function;
 
 import org.bukkit.GameMode;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scoreboard.DisplaySlot;
@@ -16,6 +16,7 @@ import fr.pederobien.minecraftgameplateform.entries.simple.TeamPlayerOnModeEntry
 import fr.pederobien.minecraftgameplateform.entries.updaters.TimeTaskObserverEntryUpdater;
 import fr.pederobien.minecraftgameplateform.impl.element.GameObjective;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
+import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameObjective;
 import fr.pederobien.minecraftmanagers.WorldManager;
@@ -23,7 +24,6 @@ import fr.pederobien.minecraftscoreboards.impl.updaters.UpdatersFactory;
 import fr.pederobien.minecraftscoreboards.interfaces.IEntry;
 
 public class HungerGameObjective extends GameObjective<IHungerGameConfiguration> implements IHungerGameObjective {
-	private int score;
 
 	/**
 	 * Create an empty objective based on the given parameters.
@@ -39,7 +39,6 @@ public class HungerGameObjective extends GameObjective<IHungerGameConfiguration>
 	public HungerGameObjective(Plugin plugin, Player player, String name, String displayName, String criteria, DisplaySlot displaySlot,
 			IHungerGameConfiguration configuration) {
 		super(plugin, player, name, displayName, criteria, displaySlot, configuration);
-		score = 0;
 	}
 
 	/**
@@ -71,6 +70,34 @@ public class HungerGameObjective extends GameObjective<IHungerGameConfiguration>
 	}
 
 	@Override
+	public int getCountDown() {
+		return 0;
+	}
+
+	@Override
+	public int getCurrentCountDown() {
+		return 0;
+	}
+
+	@Override
+	public void onTime(LocalTime currentTime) {
+		emptyEntry(-entries().size());
+		for (ITeam team : getConfiguration().getTeams())
+			if (!team.getPlayers().isEmpty())
+				add(score -> new TeamPlayerOnModeEntry(score, team, GameMode.SURVIVAL, true).addUpdater(UpdatersFactory.playerGameModeChange()));
+	}
+
+	@Override
+	public void onCountDownTime(LocalTime currentTime) {
+
+	}
+
+	@Override
+	public LocalTime getNextNotifiedTime() {
+		return LocalTime.of(0, 0, 0);
+	}
+
+	@Override
 	public void initialize() {
 		initiate();
 		super.initialize();
@@ -78,25 +105,16 @@ public class HungerGameObjective extends GameObjective<IHungerGameConfiguration>
 
 	@Override
 	public void initiate() {
-		Block overworldCenter = getConfiguration().getBorder(WorldManager.OVERWORLD).get().getBorderCenter();
-		add(score -> new LocationEntry(score, overworldCenter).addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
-		add(score -> new CenterEntry(score, getConfiguration().getBorder(WorldManager.OVERWORLD).get().getBorderCenter())
-				.addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
-		emptyEntry(score--);
+		IBorderConfiguration borderConf = getConfiguration().getBorder(WorldManager.OVERWORLD).get();
+		add(score -> new LocationEntry(score, borderConf.getBorderCenter()).addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
+		add(score -> new CenterEntry(score, borderConf.getBorderCenter()).addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(getPlayer()))));
+		emptyEntry(-entries().size());
 		for (IBorderConfiguration border : getConfiguration().getBorders())
 			add(score -> new WorldBorderSizeCountDownEntry(score, border, "#").setDisplayHalfSize(true).addUpdater(new TimeTaskObserverEntryUpdater()));
-	}
-
-	@Override
-	public void addTeams() {
-		emptyEntry(score--);
-		for (ITeam team : getConfiguration().getTeams())
-			if (!team.getPlayers().isEmpty())
-				add(score -> new TeamPlayerOnModeEntry(score, team, GameMode.SURVIVAL, true).addUpdater(UpdatersFactory.playerGameModeChange()));
+		Plateform.getTimeLine().addObserver(borderConf.getStartTime(), this);
 	}
 
 	private void add(Function<Integer, IEntry> constructor) {
-		addEntry(constructor.apply(score));
-		score--;
+		addEntry(constructor.apply(-entries().size()));
 	}
 }
