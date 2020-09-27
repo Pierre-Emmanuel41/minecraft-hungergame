@@ -60,4 +60,11 @@ public class HungerGameEditionFactory {
 	public static IMapPersistenceEdition<IHungerGameConfiguration> playerDontReviveTime() {
 		return new PlayerDontReviveTime();
 	}
+
+	/**
+	 * @return An edition to set if the uhc mode is enabled or disabled.
+	 */
+	public static IMapPersistenceEdition<IHungerGameConfiguration> isUhc() {
+		return new IsUhcHungerGame();
+	}
 }

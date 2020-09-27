@@ -122,6 +122,18 @@
 			<value>Players respawn in spectator mode after %s of play</value>
 		</message>
 		<message>
+			<code>IS_UHC__EXPLANATION</code>
+			<value>To set if the uhc mode is enabled or disabled</value>
+		</message>
+		<message>
+			<code>IS_UHC__VALUE_IS_MISSING</code>
+			<value>Cannot define if the uhc mode is enabled or disabled, the value is missing</value>
+		</message>
+		<message>
+			<code>IS_UHC__VALUE_DEFINED</code>
+			<value>The uhc mode of configuration %s is set to : %s</value>
+		</message>
+		<message>
 			<code>OVERWORLD_BORDER_IS_MISSING</code>
 			<value>Cannot start game %s, the overworld's border is missing</value>
 		</message>

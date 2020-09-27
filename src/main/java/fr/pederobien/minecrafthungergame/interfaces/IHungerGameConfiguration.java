@@ -21,4 +21,20 @@ public interface IHungerGameConfiguration extends IGameBorderConfiguration {
 	 * @param playerDontReviveTime The time after which a player respawn in spectator mode.
 	 */
 	void setPlayerDontReviveTime(LocalTime playerDontReviveTime);
+
+	/**
+	 * get the uhc mode of this configuration. If true, the game rule natural regeneration is set to false and the
+	 * playerDontReviveTime is set to 0h 0m 0s.
+	 * 
+	 * @return True if the uhc mode is activated, false otherwise.
+	 */
+	Boolean isUhc();
+
+	/**
+	 * Set the uhc mode of this configuration. If true, the game rule natural regeneration is set to false and the
+	 * playerDontReviveTime is set to 0h 0m 0s.
+	 * 
+	 * @param isUhc True if the uhc mode is activated, false otherwise.
+	 */
+	void setIsUhc(boolean isUhc);
 }

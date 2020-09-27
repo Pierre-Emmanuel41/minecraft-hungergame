@@ -13,6 +13,7 @@ public class HungerGameParent extends AbstractGameBorderConfigurationParent<IHun
 	public HungerGameParent(Plugin plugin) {
 		super("hg", EHungerGameMessageCode.HG_EXPLANATION, plugin, HungerGamePersistence.getInstance());
 		addEdition(HungerGameEditionFactory.playerDontReviveTime());
+		addEdition(HungerGameEditionFactory.isUhc());
 	}
 
 	@Override

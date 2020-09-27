@@ -46,4 +46,9 @@ public class PlayerDontReviveTime extends AbstractLabelEdition<IHungerGameConfig
 			return emptyList();
 		}
 	}
+
+	@Override
+	public boolean isAvailable() {
+		return get() != null && !get().isUhc();
+	}
 }
