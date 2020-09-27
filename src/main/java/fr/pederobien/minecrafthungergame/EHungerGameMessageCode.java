@@ -33,6 +33,9 @@ public enum EHungerGameMessageCode implements IMinecraftMessageCode {
 	// Code for command isUhc
 	IS_UHC__EXPLANATION, IS_UHC__VALUE_IS_MISSING, IS_UHC__VALUE_DEFINED,
 
+	// Code for command itemOnPlayerKills
+	ITEM_ON_PLAYER_KILLS__EXPLANATION, ITEM_ON_PLAYER_KILLS__ITEM_IS_MISSING, ITEM_ON_PLAYER_KILLS__ITEM_NOT_FOUND, ITEM_ON_PLAYER_KILLS__ITEM_DEFINED,
+
 	// Code for in game messages
 	OVERWORLD_BORDER_IS_MISSING(Permission.SENDER), PVP_ENABLED(Permission.ALL), NO_RESURRECTION(Permission.ALL), NO_RESURRECTION_COUNT_DOWN(Permission.ALL);
 

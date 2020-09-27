@@ -2,6 +2,8 @@ package fr.pederobien.minecrafthungergame.interfaces;
 
 import java.time.LocalTime;
 
+import org.bukkit.inventory.ItemStack;
+
 import fr.pederobien.minecraftborder.interfaces.IGameBorderConfiguration;
 
 public interface IHungerGameConfiguration extends IGameBorderConfiguration {
@@ -37,4 +39,16 @@ public interface IHungerGameConfiguration extends IGameBorderConfiguration {
 	 * @param isUhc True if the uhc mode is activated, false otherwise.
 	 */
 	void setIsUhc(boolean isUhc);
+
+	/**
+	 * @return The item stack given to a player when it kills another player.
+	 */
+	ItemStack getItemOnPlayerKills();
+
+	/**
+	 * Set the item to give to a player that killed another player.
+	 * 
+	 * @param itemOnPlayerKills The item to give.
+	 */
+	void setItemOnPlayerKills(ItemStack itemOnPlayerKills);
 }

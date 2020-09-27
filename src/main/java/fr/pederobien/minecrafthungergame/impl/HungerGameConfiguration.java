@@ -3,6 +3,9 @@ package fr.pederobien.minecrafthungergame.impl;
 import java.time.LocalTime;
 import java.util.StringJoiner;
 
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+
 import fr.pederobien.minecraftborder.impl.AbstractGameBorderConfiguration;
 import fr.pederobien.minecraftborder.impl.BorderConfiguration;
 import fr.pederobien.minecraftdevelopmenttoolkit.utils.DisplayHelper;
@@ -14,10 +17,12 @@ import fr.pederobien.minecraftmanagers.WorldManager;
 public class HungerGameConfiguration extends AbstractGameBorderConfiguration implements IHungerGameConfiguration {
 	private static final LocalTime DEFAULT_PLAYER_DONT_REVIVE_TIME = LocalTime.of(0, 0, 0);
 	private static final Boolean DEFAULT_UHC_MODE = false;
+	private static final ItemStack DEFAULT_ITEM_ON_PLAYER_KILLS = new ItemStack(Material.GOLDEN_APPLE);
 
 	private IGame game;
 	private LocalTime playerDontReviveTime, playerDontReviveTimeBefore;
 	private Boolean isUhc;
+	private ItemStack itemOnPlayerKills;
 
 	public HungerGameConfiguration(String name) {
 		super(name);
@@ -56,6 +61,16 @@ public class HungerGameConfiguration extends AbstractGameBorderConfiguration imp
 	}
 
 	@Override
+	public ItemStack getItemOnPlayerKills() {
+		return itemOnPlayerKills == null ? DEFAULT_ITEM_ON_PLAYER_KILLS : itemOnPlayerKills;
+	}
+
+	@Override
+	public void setItemOnPlayerKills(ItemStack itemOnPlayerKills) {
+		this.itemOnPlayerKills = itemOnPlayerKills;
+	}
+
+	@Override
 	public String toString() {
 		StringJoiner joiner = new StringJoiner("\n");
 		joiner.add("Name : " + getName());
@@ -72,6 +87,11 @@ public class HungerGameConfiguration extends AbstractGameBorderConfiguration imp
 		joiner.add("IsUhc : " + display(isUhc, isUhc().toString()));
 		joiner.add("Player don't revive time : " + display(playerDontReviveTime, DisplayHelper.toString(getPlayerDontReviveTime(), true)));
 		joiner.add("Pvp time : " + DisplayHelper.toString(getPvpTime(), true));
+		joiner.add("Item on player kills : " + display(itemOnPlayerKills, normalizeMaterial(getItemOnPlayerKills().getType())));
 		return joiner.toString();
+	}
+
+	private String normalizeMaterial(Material material) {
+		return material.toString().toLowerCase().replace("_", " ");
 	}
 }

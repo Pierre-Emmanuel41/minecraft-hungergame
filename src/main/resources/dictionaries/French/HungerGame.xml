@@ -148,5 +148,21 @@
 			<code>NO_RESURRECTION_COUNT_DOWN</code>
 			<value>Pas de résurrection dans %s</value>
 		</message>
+		<message>
+			<code>ITEM_ON_PLAYER_KILLS__EXPLANATION</code>
+			<value>Pour définir l'item à donner à un joueur qui a tué un autre joueur</value>
+		</message>
+		<message>
+			<code>ITEM_ON_PLAYER_KILLS__ITEM_IS_MISSING</code>
+			<value>Impossible de définir l'item à donner à un joueur qui tue un autre joueur, il manque l'item</value>
+		</message>
+		<message>
+			<code>ITEM_ON_PLAYER_KILLS__ITEM_NOT_FOUND</code>
+			<value>Aucune item est associé à %s</value>
+		</message>
+		<message>
+			<code>ITEM_ON_PLAYER_KILLS__ITEM_DEFINED</code>
+			<value>L'item %s sera donné au joueur qui tue un autre joueur</value>
+		</message>
 	</messages>
 </dictionary>

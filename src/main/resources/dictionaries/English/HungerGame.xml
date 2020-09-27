@@ -149,5 +149,21 @@
 			<code>NO_RESURRECTION_COUNT_DOWN</code>
 			<value>No resurrection in %s</value>
 		</message>
+		<message>
+			<code>ITEM_ON_PLAYER_KILLS__EXPLANATION</code>
+			<value>To set the item to give to a player that killed another player</value>
+		</message>
+		<message>
+			<code>ITEM_ON_PLAYER_KILLS__ITEM_IS_MISSING</code>
+			<value>Cannot set the item to give to a player that killed another player, the item is missing</value>
+		</message>
+		<message>
+			<code>ITEM_ON_PLAYER_KILLS__ITEM_NOT_FOUND</code>
+			<value>Any item is associated to %s</value>
+		</message>
+		<message>
+			<code>ITEM_ON_PLAYER_KILLS__ITEM_DEFINED</code>
+			<value>The item %s will be given to a player that killed another player</value>
+		</message>
 	</messages>
 </dictionary>

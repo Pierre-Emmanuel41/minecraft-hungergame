@@ -67,4 +67,11 @@ public class HungerGameEditionFactory {
 	public static IMapPersistenceEdition<IHungerGameConfiguration> isUhc() {
 		return new IsUhcHungerGame();
 	}
+
+	/**
+	 * @return An edition to set the item to give to a player that killed another player.
+	 */
+	public static IMapPersistenceEdition<IHungerGameConfiguration> itemOnPlayerKills() {
+		return new ItemOnPlayerKills();
+	}
 }
