@@ -10,7 +10,7 @@ import fr.pederobien.minecraftgameplateform.impl.element.persistence.AbstractMin
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
 import fr.pederobien.minecraftgameplateform.interfaces.element.persistence.IMinecraftPersistence;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
-import fr.pederobien.minecrafthungergame.HungerGameConfiguration;
+import fr.pederobien.minecrafthungergame.impl.HungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.persistence.loaders.HungerGameLoaderV10;
 import fr.pederobien.minecrafthungergame.persistence.loaders.HungerGameLoaderV11;

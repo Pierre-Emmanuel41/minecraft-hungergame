@@ -1,4 +1,4 @@
-package fr.pederobien.minecrafthungergame;
+package fr.pederobien.minecrafthungergame.impl;
 
 import java.time.LocalTime;
 import java.util.StringJoiner;
@@ -8,7 +8,6 @@ import fr.pederobien.minecraftborder.impl.BorderConfiguration;
 import fr.pederobien.minecraftdevelopmenttoolkit.utils.DisplayHelper;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IGame;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ITeam;
-import fr.pederobien.minecrafthungergame.impl.HungerGame;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecraftmanagers.WorldManager;
 
