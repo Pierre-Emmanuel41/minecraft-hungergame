@@ -39,6 +39,8 @@ public class HungerGameConfiguration extends AbstractGameBorderConfiguration imp
 
 	@Override
 	public void setPlayerDontReviveTime(LocalTime playerDontReviveTime) {
+		if (isUhc())
+			return;
 		this.playerDontReviveTime = playerDontReviveTime;
 		playerDontReviveTimeBefore = getPlayerDontReviveTime();
 	}
