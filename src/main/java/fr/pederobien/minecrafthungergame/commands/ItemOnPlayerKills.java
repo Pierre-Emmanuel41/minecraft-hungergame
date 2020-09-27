@@ -53,6 +53,6 @@ public class ItemOnPlayerKills extends AbstractLabelEdition<IHungerGameConfigura
 	}
 
 	private String normalizeMaterial(Material material) {
-		return material.toString().toLowerCase().replace("_", " ");
+		return material.name().toLowerCase().replace("_", " ");
 	}
 }

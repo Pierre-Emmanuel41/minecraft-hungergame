@@ -1,5 +1,6 @@
 package fr.pederobien.minecrafthungergame.persistence;
 
+import org.bukkit.Material;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -94,7 +95,15 @@ public class HungerGamePersistence extends AbstractMinecraftPersistence<IHungerG
 		}
 		root.appendChild(teams);
 
+		Element itemOnPlayerKills = createElement(doc, HungerGameXmlTag.ITEM_ON_PLAYER_KILLS);
+		itemOnPlayerKills.appendChild(doc.createTextNode(normalizeMaterial(get().getItemOnPlayerKills().getType())));
+		root.appendChild(itemOnPlayerKills);
+
 		saveDocument(doc, get().getName());
 		return true;
+	}
+
+	private String normalizeMaterial(Material material) {
+		return material.name().toLowerCase().replace("_", " ");
 	}
 }

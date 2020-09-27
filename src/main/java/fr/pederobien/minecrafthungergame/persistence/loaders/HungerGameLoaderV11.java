@@ -4,7 +4,6 @@ import org.w3c.dom.Element;
 
 import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
-import fr.pederobien.minecraftmanagers.BukkitManager;
 import fr.pederobien.persistence.interfaces.IPersistence;
 import fr.pederobien.persistence.interfaces.xml.IXmlPersistenceLoader;
 
@@ -16,7 +15,6 @@ public class HungerGameLoaderV11 extends AbstractHungerGameLoader {
 
 	@Override
 	public IXmlPersistenceLoader<IHungerGameConfiguration> load(Element root) {
-		BukkitManager.broadcastMessage("Loader V1.1");
 		createNewElement();
 
 		// Getting configuration name
@@ -33,6 +31,9 @@ public class HungerGameLoaderV11 extends AbstractHungerGameLoader {
 
 		// Getting configuration teams
 		setTeams(root);
+
+		// Getting configuration itemOnPlayerKills
+		setItemOnPlayerKills(root);
 		return this;
 	}
 }

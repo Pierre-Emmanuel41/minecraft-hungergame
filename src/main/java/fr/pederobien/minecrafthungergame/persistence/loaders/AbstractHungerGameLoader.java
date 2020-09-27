@@ -2,6 +2,8 @@ package fr.pederobien.minecrafthungergame.persistence.loaders;
 
 import java.io.FileNotFoundException;
 
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -98,5 +100,23 @@ public abstract class AbstractHungerGameLoader extends AbstractXmlPersistenceLoa
 	protected void setIsUhc(Element root) {
 		Node isUhc = getElementsByTagName(root, HungerGameXmlTag.IS_UHC).item(0);
 		get().setIsUhc(getBooleanNodeValue(isUhc.getChildNodes().item(0)));
+	}
+
+	/**
+	 * Set the configuration's item on player kills.
+	 * 
+	 * @param root The xml root that contains all configuration's parameter
+	 */
+	protected void setItemOnPlayerKills(Element root) {
+		Node itemOnPlayerKills = getElementsByTagName(root, HungerGameXmlTag.ITEM_ON_PLAYER_KILLS).item(0);
+		get().setItemOnPlayerKills(new ItemStack(getMaterial(itemOnPlayerKills.getChildNodes().item(0).getNodeValue())));
+	}
+
+	private Material getMaterial(String name) {
+		String normalizedName = name.toUpperCase().replace(" ", "_");
+		for (Material material : Material.values())
+			if (material.name().equals(normalizedName))
+				return material;
+		return null;
 	}
 }
