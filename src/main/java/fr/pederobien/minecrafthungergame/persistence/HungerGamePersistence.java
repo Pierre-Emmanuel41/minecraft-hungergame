@@ -13,6 +13,7 @@ import fr.pederobien.minecraftgameplateform.utils.Plateform;
 import fr.pederobien.minecrafthungergame.HungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 import fr.pederobien.minecrafthungergame.persistence.loaders.HungerGameLoaderV10;
+import fr.pederobien.minecrafthungergame.persistence.loaders.HungerGameLoaderV11;
 import fr.pederobien.minecraftmanagers.EColor;
 import fr.pederobien.persistence.interfaces.IPersistence;
 
@@ -23,7 +24,7 @@ public class HungerGamePersistence extends AbstractMinecraftPersistence<IHungerG
 	private HungerGamePersistence() {
 		super(Plateform.ROOT.resolve("HungerGame"), "DefaultHungerGameConfiguration");
 		borderPersistence = BorderPersistence.getInstance();
-		register(new HungerGameLoaderV10(borderPersistence));
+		register(new HungerGameLoaderV10(borderPersistence)).register(new HungerGameLoaderV11(borderPersistence));
 	}
 
 	public static IMinecraftPersistence<IHungerGameConfiguration> getInstance() {
@@ -74,6 +75,10 @@ public class HungerGamePersistence extends AbstractMinecraftPersistence<IHungerG
 			borders.appendChild(border);
 		}
 		root.appendChild(borders);
+
+		Element isUhc = createElement(doc, HungerGameXmlTag.IS_UHC);
+		isUhc.appendChild(doc.createTextNode(get().isUhc().toString()));
+		root.appendChild(isUhc);
 
 		Element times = createElement(doc, HungerGameXmlTag.TIMES);
 		setAttribute(times, HungerGameXmlTag.PVP, get().getPvpTime());
