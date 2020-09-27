@@ -11,6 +11,7 @@ import fr.pederobien.minecrafthungergame.EHungerGameMessageCode;
 import fr.pederobien.minecrafthungergame.interfaces.IHungerGame;
 import fr.pederobien.minecraftmanagers.EColor;
 import fr.pederobien.minecraftmanagers.WorldManager;
+import fr.pederobien.minecraftrules.impl.GameRule;
 
 public class InitialState extends AbstractState {
 
@@ -25,8 +26,13 @@ public class InitialState extends AbstractState {
 			sendNotSynchro(sender, EHungerGameMessageCode.OVERWORLD_BORDER_IS_MISSING, EColor.DARK_RED, getConfiguration().getName());
 			return false;
 		}
+
 		getConfiguration().getBorders().forEach(border -> border.apply(Plateform.getTimeLine()));
 		Plateform.getTimeLine().addObserver(getConfiguration().getPlayerDontReviveTime(), getGame());
+
+		if (getConfiguration().isUhc())
+			GameRule.NATURAL_REGENERATION.setValue(false);
+
 		return true;
 	}
 
