@@ -72,6 +72,11 @@ public class InGameState extends AbstractState {
 			if (!playerRevive || event.getEntity().getKiller() instanceof Player) {
 				event.setKeepInventory(false);
 				PlayerManager.setGameModeOfPlayer(event.getEntity(), GameMode.SPECTATOR);
+				Player killer = event.getEntity().getKiller();
+				if (killer.getInventory().firstEmpty() == -1)
+					killer.getWorld().dropItem(killer.getLocation(), getConfiguration().getItemOnPlayerKills());
+				else
+					killer.getInventory().addItem(getConfiguration().getItemOnPlayerKills());
 			} else {
 				event.setKeepInventory(true);
 				PlayerManager.setGameModeOfPlayer(event.getEntity(), GameMode.SURVIVAL);
