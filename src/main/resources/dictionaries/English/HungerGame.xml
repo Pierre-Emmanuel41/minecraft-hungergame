@@ -5,7 +5,9 @@
 	<locales>
 		<locale>en</locale>
 		<locale>en-EN</locale>
+		<locale>en-GB</locale>
 		<locale>en-UK</locale>
+		<locale>en-US</locale>
 		<locale>en-CA</locale>
 	</locales>
 	<messages>
