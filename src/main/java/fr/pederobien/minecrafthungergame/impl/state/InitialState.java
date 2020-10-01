@@ -23,7 +23,7 @@ public class InitialState extends AbstractState {
 	public boolean initiate(CommandSender sender, Command command, String label, String[] args) {
 		Optional<IBorderConfiguration> optOverworldBorder = getConfiguration().getBorder(WorldManager.OVERWORLD);
 		if (!optOverworldBorder.isPresent()) {
-			sendNotSynchro(sender, EHungerGameMessageCode.OVERWORLD_BORDER_IS_MISSING, EColor.DARK_RED, getConfiguration().getName());
+			sendNotSynchro(sender, EHungerGameMessageCode.HG_OVERWORLD_BORDER_IS_MISSING, EColor.DARK_RED, getConfiguration().getName());
 			return false;
 		}
 

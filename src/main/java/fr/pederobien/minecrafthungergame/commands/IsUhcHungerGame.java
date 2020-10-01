@@ -14,16 +14,16 @@ import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 public class IsUhcHungerGame extends AbstractLabelEdition<IHungerGameConfiguration> {
 
 	protected IsUhcHungerGame() {
-		super(EHungerGameLabel.IS_UHC, EHungerGameMessageCode.IS_UHC__EXPLANATION);
+		super(EHungerGameLabel.IS_UHC, EHungerGameMessageCode.IS_UHC_HG__EXPLANATION);
 	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		try {
 			get().setIsUhc(getBoolean(args[0]));
-			sendSynchro(sender, EHungerGameMessageCode.IS_UHC__VALUE_DEFINED, get().getName(), get().isUhc());
+			sendSynchro(sender, EHungerGameMessageCode.IS_UHC_HG__VALUE_DEFINED, get().getName(), get().isUhc());
 		} catch (IndexOutOfBoundsException e) {
-			sendNotSynchro(sender, EHungerGameMessageCode.IS_UHC__VALUE_IS_MISSING);
+			sendNotSynchro(sender, EHungerGameMessageCode.IS_UHC_HG__VALUE_IS_MISSING);
 			return false;
 		} catch (BooleanParseException e) {
 			sendNotSynchro(sender, ECommonMessageCode.COMMON_BAD_BOOLEAN_FORMAT);

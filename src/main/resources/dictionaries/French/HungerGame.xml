@@ -105,64 +105,64 @@
 			<value>La configuration %s a été chargée</value>
 		</message>
 		<message>
-			<code>PLAYER_DONT_REVIVE_TIME__EXPLANATION</code>
+			<code>PLAYER_DONT_REVIVE_TIME_HG__EXPLANATION</code>
 			<value>Pour définir le temps au bout duquel les joueurs réapparaissent en mode spectateur</value>
 		</message>
 		<message>
-			<code>PLAYER_DONT_REVIVE_TIME__TIME_IS_MISSING</code>
+			<code>PLAYER_DONT_REVIVE_TIME_HG__TIME_IS_MISSING</code>
 			<value>Impossible de définir le temps au bout duquel les joueurs réapparaissent en mode spectateur, il manque le temps</value>
 		</message>
 		<message>
-			<code>PLAYER_DONT_REVIVE_TIME__FROM_THE_BEGINNING</code>
+			<code>PLAYER_DONT_REVIVE_TIME_HG__FROM_THE_BEGINNING</code>
 			<value>Les joueurs réapparaissent en mode spectateur dès le début de la partie</value>
 		</message>
 		<message>
-			<code>PLAYER_DONT_REVIVE_TIME__TIME_DEFINED</code>
+			<code>PLAYER_DONT_REVIVE_TIME_HG__TIME_DEFINED</code>
 			<value>Les joueurs réapparaissent en mode spectateur après %s de jeu</value>
 		</message>
 		<message>
-			<code>IS_UHC__EXPLANATION</code>
+			<code>IS_UHC_HG__EXPLANATION</code>
 			<value>Pour définir si le mode uhc est activé ou désactivé</value>
 		</message>
 		<message>
-			<code>IS_UHC__VALUE_IS_MISSING</code>
+			<code>IS_UHC_HG__VALUE_IS_MISSING</code>
 			<value>Impossible de définir si le mode uhc est activé ou désactivé, il manque la valeur</value>
 		</message>
 		<message>
-			<code>IS_UHC__VALUE_DEFINED</code>
+			<code>IS_UHC_HG__VALUE_DEFINED</code>
 			<value>Le mode uhc de la configuration %s est défini à : %s</value>
 		</message>
 		<message>
-			<code>OVERWORLD_BORDER_IS_MISSING</code>
-			<value>Impossible de lancer la partie %s, il manque la bordure de l'overworld</value>
-		</message>
-		<message>
-			<code>PVP_ENABLED</code>
-			<value>Pvp activé</value>
-		</message>
-		<message>
-			<code>NO_RESURRECTION</code>
-			<value>Pas de résurrection</value>
-		</message>
-		<message>
-			<code>NO_RESURRECTION_COUNT_DOWN</code>
-			<value>Pas de résurrection dans %s</value>
-		</message>
-		<message>
-			<code>ITEM_ON_PLAYER_KILLS__EXPLANATION</code>
+			<code>ITEM_ON_PLAYER_KILLS_HG__EXPLANATION</code>
 			<value>Pour définir l'item à donner à un joueur qui a tué un autre joueur</value>
 		</message>
 		<message>
-			<code>ITEM_ON_PLAYER_KILLS__ITEM_IS_MISSING</code>
+			<code>ITEM_ON_PLAYER_KILLS_HG__ITEM_IS_MISSING</code>
 			<value>Impossible de définir l'item à donner à un joueur qui tue un autre joueur, il manque l'item</value>
 		</message>
 		<message>
-			<code>ITEM_ON_PLAYER_KILLS__ITEM_NOT_FOUND</code>
+			<code>ITEM_ON_PLAYER_KILLS_HG__ITEM_NOT_FOUND</code>
 			<value>Aucune item est associé à %s</value>
 		</message>
 		<message>
-			<code>ITEM_ON_PLAYER_KILLS__ITEM_DEFINED</code>
+			<code>ITEM_ON_PLAYER_KILLS_HG__ITEM_DEFINED</code>
 			<value>L'item %s sera donné au joueur qui tue un autre joueur</value>
+		</message>
+		<message>
+			<code>HG_OVERWORLD_BORDER_IS_MISSING</code>
+			<value>Impossible de lancer la partie %s, il manque la bordure de l'overworld</value>
+		</message>
+		<message>
+			<code>HG_PVP_ENABLED</code>
+			<value>Pvp activé</value>
+		</message>
+		<message>
+			<code>HG_NO_RESURRECTION</code>
+			<value>Pas de résurrection</value>
+		</message>
+		<message>
+			<code>HG_NO_RESURRECTION_COUNT_DOWN</code>
+			<value>Pas de résurrection dans %s</value>
 		</message>
 	</messages>
 </dictionary>

@@ -14,7 +14,7 @@ import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 public class ItemOnPlayerKills extends AbstractLabelEdition<IHungerGameConfiguration> {
 
 	protected ItemOnPlayerKills() {
-		super(EHungerGameLabel.ITEM_ON_PLAYER_KILLS, EHungerGameMessageCode.ITEM_ON_PLAYER_KILLS__EXPLANATION);
+		super(EHungerGameLabel.ITEM_ON_PLAYER_KILLS, EHungerGameMessageCode.ITEM_ON_PLAYER_KILLS_HG__EXPLANATION);
 	}
 
 	@Override
@@ -29,14 +29,14 @@ public class ItemOnPlayerKills extends AbstractLabelEdition<IHungerGameConfigura
 				}
 
 			if (material == null) {
-				sendNotSynchro(sender, EHungerGameMessageCode.ITEM_ON_PLAYER_KILLS__ITEM_NOT_FOUND, materialKey);
+				sendNotSynchro(sender, EHungerGameMessageCode.ITEM_ON_PLAYER_KILLS_HG__ITEM_NOT_FOUND, materialKey);
 				return false;
 			}
 
 			get().setItemOnPlayerKills(new ItemStack(material));
-			sendSynchro(sender, EHungerGameMessageCode.ITEM_ON_PLAYER_KILLS__ITEM_DEFINED, normalizeMaterial(get().getItemOnPlayerKills().getType()));
+			sendSynchro(sender, EHungerGameMessageCode.ITEM_ON_PLAYER_KILLS_HG__ITEM_DEFINED, normalizeMaterial(get().getItemOnPlayerKills().getType()));
 		} catch (IndexOutOfBoundsException e) {
-			sendNotSynchro(sender, EHungerGameMessageCode.ITEM_ON_PLAYER_KILLS__ITEM_IS_MISSING);
+			sendNotSynchro(sender, EHungerGameMessageCode.ITEM_ON_PLAYER_KILLS_HG__ITEM_IS_MISSING);
 			return false;
 		}
 		return true;

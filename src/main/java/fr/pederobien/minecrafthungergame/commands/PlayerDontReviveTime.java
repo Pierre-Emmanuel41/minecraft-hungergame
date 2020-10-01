@@ -16,7 +16,7 @@ import fr.pederobien.minecrafthungergame.interfaces.IHungerGameConfiguration;
 public class PlayerDontReviveTime extends AbstractLabelEdition<IHungerGameConfiguration> {
 
 	protected PlayerDontReviveTime() {
-		super(EHungerGameLabel.PLAYER_DONT_REVIVE_TIME, EHungerGameMessageCode.PLAYER_DONT_REVIVE_TIME__EXPLANATION);
+		super(EHungerGameLabel.PLAYER_DONT_REVIVE_TIME, EHungerGameMessageCode.PLAYER_DONT_REVIVE_TIME_HG__EXPLANATION);
 	}
 
 	@Override
@@ -24,12 +24,12 @@ public class PlayerDontReviveTime extends AbstractLabelEdition<IHungerGameConfig
 		try {
 			get().setPlayerDontReviveTime(LocalTime.parse(args[0]));
 			if (get().getPlayerDontReviveTime().equals(LocalTime.of(0, 0, 0)))
-				sendSynchro(sender, EHungerGameMessageCode.PLAYER_DONT_REVIVE_TIME__FROM_THE_BEGINNING);
+				sendSynchro(sender, EHungerGameMessageCode.PLAYER_DONT_REVIVE_TIME_HG__FROM_THE_BEGINNING);
 			else
-				sendSynchro(sender, EHungerGameMessageCode.PLAYER_DONT_REVIVE_TIME__TIME_DEFINED, DisplayHelper.toString(get().getPlayerDontReviveTime(), false));
+				sendSynchro(sender, EHungerGameMessageCode.PLAYER_DONT_REVIVE_TIME_HG__TIME_DEFINED, DisplayHelper.toString(get().getPlayerDontReviveTime(), false));
 			return true;
 		} catch (IndexOutOfBoundsException e) {
-			sendSynchro(sender, EHungerGameMessageCode.PLAYER_DONT_REVIVE_TIME__TIME_IS_MISSING);
+			sendSynchro(sender, EHungerGameMessageCode.PLAYER_DONT_REVIVE_TIME_HG__TIME_IS_MISSING);
 			return false;
 		} catch (DateTimeParseException e) {
 			sendSynchro(sender, ECommonMessageCode.COMMON_BAD_TIME_FORMAT);

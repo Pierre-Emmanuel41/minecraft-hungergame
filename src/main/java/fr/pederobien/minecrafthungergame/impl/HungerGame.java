@@ -75,7 +75,7 @@ public class HungerGame implements IHungerGame {
 
 	@Override
 	public void onPvpEnabled() {
-		sendNotSynchro(EHungerGameMessageCode.PVP_ENABLED, DisplayOption.TITLE, EColor.DARK_RED);
+		sendNotSynchro(EHungerGameMessageCode.HG_PVP_ENABLED, DisplayOption.TITLE, EColor.DARK_RED);
 	}
 
 	@Override
