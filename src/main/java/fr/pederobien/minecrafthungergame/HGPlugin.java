@@ -44,7 +44,7 @@ public class HGPlugin extends JavaPlugin {
 		// Registering English dictionaries
 		registerDictionary("English", "HungerGame.xml");
 
-		// Registering English dictionaries
+		// Registering Turkish dictionaries
 		registerDictionary("Turkish", "HungerGame.xml");
 	}
 
