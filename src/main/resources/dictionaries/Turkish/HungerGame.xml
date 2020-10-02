@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dictionary>
+	<name>Game</name>
+	<version>1.0</version>
+	<locales>
+		<locale>tr-TR</locale>
+	</locales>
+	<messages>
+		<message>
+			<code>HG_EXPLANATION</code>
+			<value>Hunger Game ayarlarını yapılandırmak için</value>
+		</message>
+		<message>
+			<code>NEW_HG__EXPLANATION</code>
+			<value>Hunger Game ayarı oluşturmak için</value>
+		</message>
+		<message>
+			<code>NEW_HG__NAME_IS_MISSING</code>
+			<value>Yeni bir Hunger Game ayarı oluşturulamıyor, isim verilmemiş</value>
+		</message>
+		<message>
+			<code>NEW_HG__NAME_ALREADY_TAKEN</code>
+			<value>%s adlı Hunger Game ayarı zaten var</value>
+		</message>
+		<message>
+			<code>NEW_HG__CONFIGURATION_CREATED</code>
+			<value>%s adlı Hunger Game ayarı oluşturuldu</value>
+		</message>
+		<message>
+			<code>RENAME_HG__EXPLANATION</code>
+			<value>Mevcut Hunger Game ayarlarını yeniden adlandırmak için</value>
+		</message>
+		<message>
+			<code>RENAME_HG__NAME_IS_MISSING</code>
+			<value>%s adlı Hunger Game ayarının ismi değiştirilemiyor, isim verilmemiş</value>
+		</message>
+		<message>
+			<code>RENAME_HG__NAME_ALREADY_TAKEN</code>
+			<value>%s adlı Hunger Game ayarının ismi, %s yapılamadı; bu ayardan başka bir tane var</value>
+		</message>
+		<message>
+			<code>RENAME_HG__CONFIGURATION_RENAMED</code>
+			<value>%s adlı Hunger Game ayarı, %s olarak değiştirildi</value>
+		</message>
+		<message>
+			<code>SAVE_HG__EXPLANATION</code>
+			<value>Mevcut Hunger Game ayarını kaydetmek için</value>
+		</message>
+		<message>
+			<code>SAVE_HG__CONFIGURATION_SAVED</code>
+			<value>%s adlı Hunger Game ayarı kaydedildi</value>
+		</message>
+		<message>
+			<code>LIST_HG__EXPLANATION</code>
+			<value>Kayıtlı Hunger Game ayarlarını görüntülemek için</value>
+		</message>
+		<message>
+			<code>LIST_HG__NO_REGISTERED_CONFIGURATION</code>
+			<value>Burada hiç Hunger Game ayarı yok</value>
+		</message>
+		<message>
+			<code>LIST_HG__ONE_REGISTERED_CONFIGURATION</code>
+			<value>Kayıtlı bir Hunger Game ayarı var :%n%s</value>
+		</message>
+		<message>
+			<code>LIST_HG__SEVERAL_ELEMENTS</code>
+			<value>Kayıtlı Hunger Game ayarlarının listesi :%n%s</value>
+		</message>
+		<message>
+			<code>DELETE_HG__EXPLANATION</code>
+			<value>Hunger Game ayar dosyasını silmek için</value>
+		</message>
+		<message>
+			<code>DELETE_HG__NAME_IS_MISSING</code>
+			<value>Hunger Game ayar dosyası silinemez, isim verilmemiş</value>
+		</message>
+		<message>
+			<code>DELETE_HG__DID_NOT_DELETE</code>
+			<value>%s adlı Hunger Game ayarı silinemedi</value>
+		</message>
+		<message>
+			<code>DELETE_HG__CONFIGURATION_DELETED</code>
+			<value>%s adlı Hunger Game ayarı silindi</value>
+		</message>
+		<message>
+			<code>DETAILS_HG__EXPLANATION</code>
+			<value>Mevcut Hunger Game ayarının özelliklerini görüntülemek için</value>
+		</message>
+		<message>
+			<code>DETAILS_HG__ON_DETAILS</code>
+			<value>Mevcut Hunger Game ayarının özellikleri :%n%s</value>
+		</message>
+		<message>
+			<code>LOAD_HG__EXPLANATION</code>
+			<value>Bir Hunger Game ayarını yüklemek için</value>
+		</message>
+		<message>
+			<code>LOAD_HG__NAME_IS_MISSING</code>
+			<value>Hunger Game ayarı yüklenemedi, isim verilmemiş</value>
+		</message>
+		<message>
+			<code>LOAD_HG__CONFIGURATION_LOADED</code>
+			<value>%s adlı Hunger Game ayarı yüklendi</value>
+		</message>
+		<message>
+			<code>PLAYER_DONT_REVIVE_TIME_HG__EXPLANATION</code>
+			<value>Oyuncuların seyirci modunda doğacağı zamanı ayarlamak için</value>
+		</message>
+		<message>
+			<code>PLAYER_DONT_REVIVE_TIME_HG__TIME_IS_MISSING</code>
+			<value>Oyuncuların seyirci modunda doğacağı zaman belirlenemiyor, süre belirtilmemiş</value>
+		</message>
+		<message>
+			<code>PLAYER_DONT_REVIVE_TIME_HG__FROM_THE_BEGINNING</code>
+			<value>Oyuncular, oyunun başından itibaren seyirci modunda doğarlar</value>
+		</message>
+		<message>
+			<code>PLAYER_DONT_REVIVE_TIME_HG__TIME_DEFINED</code>
+			<value>Oyuncular %s oyunundan sonra seyirci modunda doğacaklar</value>
+		</message>
+		<message>
+			<code>IS_UHC_HG__EXPLANATION</code>
+			<value>UHC Modunu etkin ya da devre dışı yapmak için</value>
+		</message>
+		<message>
+			<code>IS_UHC_HG__VALUE_IS_MISSING</code>
+			<value>UHC Modunun etkin olup olmadığı belirlenemiyor, değişken verilmemiş</value>
+		</message>
+		<message>
+			<code>IS_UHC_HG__VALUE_DEFINED</code>
+			<value>%s adlı ayarın UHC Modu şuna ayarlandı : %s</value>
+		</message>
+		<message>
+			<code>ITEM_ON_PLAYER_KILLS_HG__EXPLANATION</code>
+			<value>Eşyaları başka birini öldüren oyuncuya verecek şekilde ayarlamak için</value>
+		</message>
+		<message>
+			<code>ITEM_ON_PLAYER_KILLS_HG__ITEM_IS_MISSING</code>
+			<value>Bu eşya, başka birini öldüren bir oyuncuya verilecek şekilde ayarlanamaz, eşya belirtilmemiş</value>
+		</message>
+		<message>
+			<code>ITEM_ON_PLAYER_KILLS_HG__ITEM_NOT_FOUND</code>
+			<value>Herhangi bir eşya %s ile ilişkilendirildi</value>
+		</message>
+		<message>
+			<code>ITEM_ON_PLAYER_KILLS_HG__ITEM_DEFINED</code>
+			<value>%s eşyası başka bir oyuncuyu öldüren oyuncuya verilecek</value>
+		</message>
+		<message>
+			<code>HG_OVERWORLD_BORDER_IS_MISSING</code>
+			<value>%s adlı oyun başlatılamıyor, ana dünyanın sınır duvarları eksik</value>
+		</message>
+		<message>
+			<code>HG_PVP_ENABLED</code>
+			<value>PVP etkinleştirildi</value>
+		</message>
+		<message>
+			<code>HG_NO_RESURRECTION</code>
+			<value>Dirilme yok</value>
+		</message>
+		<message>
+			<code>HG_NO_RESURRECTION_COUNT_DOWN</code>
+			<value>%s içinde dirilme yok</value>
+		</message>
+	</messages>
+</dictionary>
