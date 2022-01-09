@@ -1,66 +1,75 @@
 package fr.pederobien.minecraft.hungergame;
 
-import java.io.FileNotFoundException;
-import java.nio.file.Path;
-
+import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import fr.pederobien.dictionary.interfaces.IDictionaryParser;
-import fr.pederobien.minecraft.hungergame.interfaces.IHungerGameConfiguration;
-import fr.pederobien.minecraftgameplateform.interfaces.commands.IParentCommand;
-import fr.pederobien.minecraftgameplateform.utils.Plateform;
+import fr.pederobien.dictionary.impl.JarXmlDictionaryParser;
+import fr.pederobien.minecraft.dictionary.impl.MinecraftDictionaryContext;
+import fr.pederobien.minecraft.hungergame.commands.HungerGameCommandTree;
+import fr.pederobien.minecraft.hungergame.interfaces.IHungerGame;
+import fr.pederobien.minecraft.hungergame.persistence.HungerGamePersistence;
+import fr.pederobien.minecraft.platform.interfaces.IPlatformPersistence;
+import fr.pederobien.utils.AsyncConsole;
 
 public class HGPlugin extends JavaPlugin {
-	private static Plugin plugin;
-	private static IParentCommand<IHungerGameConfiguration> hungerGameCommand;
+	private static final String DICTIONARY_FOLDER = "resources/dictionaries/";
+
+	private static Plugin instance;
+	private static IPlatformPersistence<IHungerGame> persistence;
+	private static HungerGameCommandTree hungerGameTree;
 
 	/**
-	 * @return The plugin associated to this hunger game plugin.
+	 * @return The instance of this plugin.
 	 */
-	public static Plugin get() {
-		return plugin;
+	public static Plugin instance() {
+		return instance;
 	}
 
 	/**
-	 * @return The current hunger game configuration for this plugin.
+	 * @return The persistence that serialize and deserialize hunger game configurations.
 	 */
-	public static IHungerGameConfiguration getCurrentHungerGame() {
-		return hungerGameCommand.getParent().get();
+	public static IPlatformPersistence<IHungerGame> getPersistence() {
+		return persistence;
+	}
+
+	/**
+	 * Get the tree to modify the characteristics of an hunger game.
+	 * 
+	 * @return The hunger game tree associated to this plugin.
+	 */
+	public static HungerGameCommandTree getHungerGameTree() {
+		return hungerGameTree;
 	}
 
 	@Override
 	public void onEnable() {
-		Plateform.getPluginHelper().register(this);
-		plugin = this;
-		hungerGameCommand = new HungerGameCommand(this);
+		instance = this;
+		persistence = new HungerGamePersistence().getPersistence();
+		hungerGameTree = new HungerGameCommandTree(persistence);
+
 		registerDictionaries();
+		registerTabExecutors();
 	}
 
 	private void registerDictionaries() {
-		String[] dictionaries = new String[] { "HungerGame.xml" };
-		// Registering French dictionaries
-		registerDictionary("French", dictionaries);
+		JarXmlDictionaryParser dictionaryParser = new JarXmlDictionaryParser(getFile().toPath());
 
-		// Registering English dictionaries
-		registerDictionary("English", dictionaries);
-
-		// Registering Turkish dictionaries
-		registerDictionary("Turkish", dictionaries);
+		MinecraftDictionaryContext context = MinecraftDictionaryContext.instance();
+		String[] dictionaries = new String[] { "English.xml", "French.xml" };
+		for (String dictionary : dictionaries)
+			try {
+				context.register(dictionaryParser.parse(DICTIONARY_FOLDER.concat(dictionary)));
+			} catch (Exception e) {
+				AsyncConsole.print(e);
+				for (StackTraceElement element : e.getStackTrace())
+					AsyncConsole.print(element);
+			}
 	}
 
-	private void registerDictionary(String parent, String... dictionaryNames) {
-		Path jarPath = Plateform.ROOT.getParent().resolve(getName().concat(".jar"));
-		String dictionariesFolder = "resources/dictionaries/".concat(parent).concat("/");
-		for (String name : dictionaryNames)
-			registerDictionary(Plateform.getDefaultDictionaryParser(dictionariesFolder.concat(name)), jarPath);
-	}
-
-	private void registerDictionary(IDictionaryParser parser, Path jarPath) {
-		try {
-			Plateform.getNotificationCenter().getDictionaryContext().register(parser, jarPath);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+	private void registerTabExecutors() {
+		PluginCommand hg = getCommand(hungerGameTree.getRoot().getLabel());
+		hg.setTabCompleter(hungerGameTree.getRoot());
+		hg.setExecutor(hungerGameTree.getRoot());
 	}
 }

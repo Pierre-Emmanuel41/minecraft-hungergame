@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dictionary>
+	<name>HungerGame</name>
+	<version>1.0</version>
+	<locales>
+		<locale>fr</locale>
+		<locale>fr-FR</locale>
+		<locale>fr-CA</locale>
+	</locales>
+	<messages>
+		<message>
+			<code>HUNGER_GAME__TRUE</code>
+			<value>Vrai</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__FALSE</code>
+			<value>Faux</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__BOOLEAN_BAD_FORMAT</code>
+			<value>Un booléen</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__INTEGER_BAD_FORMAT</code>
+			<value>Un entier</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME_NONE</code>
+			<value>Aucune</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME_NAME</code>
+			<value>Nom : %s</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME_TEAMS</code>
+			<value>Equipes : %s</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME_UHC</code>
+			<value>UHC : %s</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME_PLAYER_DONT_REVIVE_TIME</code>
+			<value>Les joueurs ne revivent plus après : %s de jeu</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME_PVP_TIME</code>
+			<value>PVP activé après : %s</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME_ITEM_ON_PLAYER_KILLS</code>
+			<value>Item lorsqu'un joueur tue : %s</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__RULES</code>
+			<value>Règles : %s</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__RULE</code>
+			<value>%s: valeur = %s, valeur par défaut = %s</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__EXPLANATION</code>
+			<value>Pour configurer une partie de hunger game</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__NEW_GAME__EXPLANATION</code>
+			<value>Pour créer une nouvelle partie de hunger game à configurer</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__NEW_GAME__NAME_IS_MISSING</code>
+			<value>Impossible de créer une nouvelle partie, le nom est manquant</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__NEW_GAME__NAME_ALREADY_USED</code>
+			<value>Impossible de créer une nouvelle partie, la partie %s existe déjà</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__NEW_GAME__GAME_CREATED</code>
+			<value>La partie hunger game %s a été créée</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__DETAILS_GAME__EXPLANATION</code>
+			<value>Pour afficher les caractéristiques d'une partie hunger game</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__DETAILS_GAME__ON_DETAILS</code>
+			<value>Caractéristiques de la partie hunger game :%n%s</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__RENAME_GAME__EXPLANATION</code>
+			<value>Pour renommer une partie hunger game</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__RENAME_GAME__NAME_IS_MISSING</code>
+			<value>Impossible de renommer %s, le nouveau nom est manquant</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__RENAME_GAME__NAME_ALREADY_USED</code>
+			<value>Impossible de renommer %s, cette partie existe déjà</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__RENAME_GAME__GAME_RENAMED</code>
+			<value>La partie hunger game %s a été renommée %s</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__DELETE_GAME__EXPLANATION</code>
+			<value>Pour supprimer le fichier d'une partie hunger game</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__DELETE_GAME__NAME_IS_MISSING</code>
+			<value>Impossible de supprimer le fichier d'une partie hunger game, le nom est manquant</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__DELETE_GAME__GAME_DELETED</code>
+			<value>Le fichier de la partie hunger game %s a été supprimé</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__LOAD_GAME__EXPLANATION</code>
+			<value>Pour charger une partie hunger game</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__LOAD_GAME__NAME_IS_MISSING</code>
+			<value>Impossible de charger une partie hunger game, le nom est manquant</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__LOAD_GAME__GAME_LOADED</code>
+			<value>La partie hunger game %s a été chargée</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME_LIST_GAME__EXPLANATION</code>
+			<value>Pour afficher toutes les parties hunger game</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME_LIST_GAME__NO_ELEMENT</code>
+			<value>Il n'y a pas encore de partie hunger game</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME_LIST_GAME__ONE_ELEMENT</code>
+			<value>Il y a une partie hunger game :%n%s</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME_LIST_GAME__SEVERAL_ELEMENTS</code>
+			<value>Liste des parties hunger game :%n%s</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__SAVE_GAME__EXPLANATION</code>
+			<value>Pour sauvegarder les charactéristiques d'une partie hunger game</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__SAVE_GAME__FAIL_TO_SAVE</code>
+			<value>La sauvegarde de %s a échouée</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__SAVE_GAME__GAME_SAVED</code>
+			<value>La partie hunger game %s a été sauvegardée</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__PLAYER_DONT_REVIVE_TIME__EXPLANATION</code>
+			<value>Pour définir le temps après lequel les joueurs respawn en mode spectateur</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__PLAYER_DONT_REVIVE_TIME__TIME_IS_MISSING</code>
+			<value>Impossible de définir le temps après lequel les joueurs respawn en mode spectateur, le temps est manquant</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__PLAYER_DONT_REVIVE_TIME__FROM_THE_BEGINNING</code>
+			<value>Les joueurs vont respawner en mode spectateur dès le début de la partie</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__PLAYER_DONT_REVIVE_TIME__TIME_UPDATED</code>
+			<value>Les joueurs vont respawner en mode spectateur après %s de jeu</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__UHC__EXPLANATION</code>
+			<value>Pour activer ou désactiver le mode UHC</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__UHC__VALUE_IS_MISSING</code>
+			<value>Impossible d'activer ou désactiver le mode UHC, la valeur est manquante</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__UHC__UHC_ENABLED</code>
+			<value>Le mode UHC est activé pour %s</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__UHC__UHC_DISABLED</code>
+			<value>Le mode UHC est désactivé pour %s</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__ITEM_ON_PLAYER_KILLS__EXPLANATION</code>
+			<value>Pour définir l'item à donner lorsqu'un joueur tue un autre joueur</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__ITEM_ON_PLAYER_KILLS__AMOUNT__COMPLETION</code>
+			<value>&lt;quantité&gt;</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__ITEM_ON_PLAYER_KILLS__ITEM_IS_MISSING</code>
+			<value>Impossible de définir l'item à donner lorsqu'un joueur tue un autre joueur, l'item est manquant</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__ITEM_ON_PLAYER_KILLS__ITEM_NOT_FOUND</code>
+			<value>L'item %s n'existe pas</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__ITEM_ON_PLAYER_KILLS__ITEM_UPDATED</code>
+			<value>L'item %s sera donné à un joueur qui tue un autre joueur</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__OVERWORLD_BORDER_IS_MISSING</code>
+			<value>Impossible de lancer la partie %s, il manque la border dans l'overworld</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__NO_RESURRECTION</code>
+			<value>Plus de résurrection</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME_NO_RESURRECTION_COUNT_DOWN</code>
+			<value>Plus de résurrection dans %s</value>
+		</message>
+	</messages>
+</dictionary>
