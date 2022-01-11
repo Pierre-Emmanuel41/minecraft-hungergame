@@ -64,7 +64,7 @@ public class ItemOnPlayerKillsHungerGameNode extends HungerGameNode {
 		IConfigurable<ItemStack> item = getGame().getItemOnPlayerKills();
 		item.set(new ItemStack(material, amount));
 		String itemFormat = String.format("%s:%s", normalizeMaterial(item.get().getType()), item.get().getAmount());
-		sendSuccessful(sender, EHungerGameCode.HUNGER_GAME__ITEM_ON_PLAYER_KILLS__ITEM_UPDATED, getGame().getName(), itemFormat);
+		sendSuccessful(sender, EHungerGameCode.HUNGER_GAME__ITEM_ON_PLAYER_KILLS__ITEM_UPDATED, itemFormat, getGame().getName());
 		return true;
 	}
 

@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import org.bukkit.GameMode;
 import org.bukkit.GameRule;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -24,12 +25,15 @@ import fr.pederobien.minecraft.hungergame.HGPlugin;
 import fr.pederobien.minecraft.hungergame.interfaces.IHungerGame;
 import fr.pederobien.minecraft.managers.PlayerManager;
 import fr.pederobien.minecraft.managers.PotionManager;
+import fr.pederobien.minecraft.managers.ScoreboardManager;
 import fr.pederobien.minecraft.managers.WorldManager;
 import fr.pederobien.minecraft.platform.Platform;
 import fr.pederobien.minecraft.platform.impl.Configurable;
 import fr.pederobien.minecraft.platform.interfaces.IConfigurable;
 import fr.pederobien.minecraft.rules.impl.RuleList;
 import fr.pederobien.minecraft.rules.interfaces.IRuleList;
+import fr.pederobien.minecraft.scoreboards.interfaces.IObjective;
+import fr.pederobien.minecraft.scoreboards.interfaces.IObjectiveUpdater;
 import fr.pederobien.utils.event.EventHandler;
 import fr.pederobien.utils.event.EventManager;
 import fr.pederobien.utils.event.IEventListener;
@@ -66,6 +70,17 @@ public class HungerGame extends TeamsFeaturesGame implements IHungerGame, ICodeS
 
 		getBorders().add(new Border("HungerGameDefaultBorder"));
 		EventManager.registerListener(this);
+	}
+
+	@Override
+	public void start() {
+		// Step 1: Registering time line observer in order to move border at the start time.
+		for (IBorder border : getBorders().toList()) {
+			border.getWorldBorder().setCenter(border.getCenter().get().getLocation());
+			border.getWorldBorder().setSize(border.getInitialDiameter().get());
+			new BorderTimeLineObserver(border, 5);
+		}
+		super.start();
 	}
 
 	@Override
@@ -125,18 +140,12 @@ public class HungerGame extends TeamsFeaturesGame implements IHungerGame, ICodeS
 		if (!event.getGame().equals(this))
 			return;
 
-		// Step 1: Registering time line observer in order to move border at the start time.
-		for (IBorder border : getBorders().toList()) {
-			border.getWorldBorder().setCenter(border.getCenter().get().getLocation());
-			border.getWorldBorder().setSize(border.getInitialDiameter().get());
-			new BorderTimeLineObserver(border, 5);
-		}
-
 		// Step 2: Modifying player properties
 		giveEffects();
 		updatePlayers();
 		updateOverWorld();
 		teleport();
+		setPlayersObjective();
 
 		// Step 3: Activating event listener
 		Platform.get(getPlugin()).getTimeLine().register(getPlayerDontReviveTime().get(), playerDontReviveTimeObserver);
@@ -195,5 +204,16 @@ public class HungerGame extends TeamsFeaturesGame implements IHungerGame, ICodeS
 		IBorder border = getBorders().getBorder(WorldManager.OVERWORLD).get();
 		for (ITeam team : getTeams())
 			TeamHelper.teleportTeamRandomly(team, border.getWorld().get(), border.getCenter().get(), border.getInitialDiameter().get());
+	}
+
+	private void setPlayersObjective() {
+		IObjectiveUpdater updater = Platform.get(getPlugin()).getObjectiveUpdater();
+		for (ITeam team : getTeams())
+			for (Player player : team.getPlayers()) {
+				IObjective objective = new HungerGameObjective(this, player).getObjective();
+				objective.setScoreboard(ScoreboardManager.createScoreboard());
+				updater.register(objective);
+			}
+		updater.start();
 	}
 }

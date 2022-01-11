@@ -209,7 +209,7 @@
 		</message>
 		<message>
 			<code>HUNGER_GAME__ITEM_ON_PLAYER_KILLS__ITEM_UPDATED</code>
-			<value>The item %s will be given to a player that killed another player</value>
+			<value>The item %s will be given to a player that killed another player while %s is in progress</value>
 		</message>
 		<message>
 			<code>HUNGER_GAME__OVERWORLD_BORDER_IS_MISSING</code>
