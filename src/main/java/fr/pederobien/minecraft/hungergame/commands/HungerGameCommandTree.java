@@ -3,7 +3,7 @@ package fr.pederobien.minecraft.hungergame.commands;
 import fr.pederobien.minecraft.border.commands.borders.BordersCommandTree;
 import fr.pederobien.minecraft.commandtree.impl.MinecraftCodeRootNode;
 import fr.pederobien.minecraft.commandtree.interfaces.IMinecraftCodeRootNode;
-import fr.pederobien.minecraft.game.commands.game.GameFeatureNode;
+import fr.pederobien.minecraft.game.commands.game.GameFeaturesNode;
 import fr.pederobien.minecraft.game.commands.game.GameTeamsNode;
 import fr.pederobien.minecraft.game.commands.game.NodeFactory;
 import fr.pederobien.minecraft.hungergame.impl.EHungerGameCode;
@@ -20,7 +20,7 @@ public class HungerGameCommandTree {
 	private BordersCommandTree bordersNode;
 	private RulesCommandTree rulesNode;
 	private GameTeamsNode teamsNode;
-	private GameFeatureNode featuresNode;
+	private GameFeaturesNode featuresNode;
 	private AsCurrentNode asCurrentNode;
 	private NewHungerGameNode newNode;
 	private DetailsHungerGameNode detailsNode;
@@ -105,7 +105,7 @@ public class HungerGameCommandTree {
 	/**
 	 * @return The node to modify features of the current game.
 	 */
-	public GameFeatureNode getFeaturesNode() {
+	public GameFeaturesNode getFeaturesNode() {
 		return featuresNode;
 	}
 
