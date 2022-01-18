@@ -6,15 +6,30 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 
+import fr.pederobien.minecraft.hungergame.commands.StopArgsNode;
+import fr.pederobien.minecraft.hungergame.interfaces.IHungerGame;
+
 public class HungerGameStopTabExecutor implements TabExecutor {
+	private StopArgsNode startArgsNode;
+
+	/**
+	 * Creates a tab executor in order to specify some arguments to stop a game.
+	 * 
+	 * @param game The game associated to this node.
+	 */
+	public HungerGameStopTabExecutor(IHungerGame game) {
+		startArgsNode = new StopArgsNode();
+		startArgsNode.setGame(game);
+	}
 
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-		return null;
+		return startArgsNode.onTabComplete(sender, command, alias, args);
 	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		return false;
+		startArgsNode.onCommand(sender, command, label, args);
+		return true;
 	}
 }

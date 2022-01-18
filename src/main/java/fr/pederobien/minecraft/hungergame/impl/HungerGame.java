@@ -2,38 +2,28 @@ package fr.pederobien.minecraft.hungergame.impl;
 
 import java.time.LocalTime;
 
-import org.bukkit.GameMode;
-import org.bukkit.GameRule;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import fr.pederobien.minecraft.border.impl.Border;
 import fr.pederobien.minecraft.border.impl.BorderList;
 import fr.pederobien.minecraft.border.impl.BorderTimeLineObserver;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.interfaces.IBorderList;
+import fr.pederobien.minecraft.chat.impl.ChatFeature;
 import fr.pederobien.minecraft.commandtree.interfaces.ICodeSender;
 import fr.pederobien.minecraft.game.event.GameStartPostEvent;
 import fr.pederobien.minecraft.game.event.GameStopPostEvent;
-import fr.pederobien.minecraft.game.impl.TeamHelper;
 import fr.pederobien.minecraft.game.impl.TeamsFeaturesGame;
-import fr.pederobien.minecraft.game.interfaces.ITeam;
 import fr.pederobien.minecraft.hungergame.HGPlugin;
 import fr.pederobien.minecraft.hungergame.interfaces.IHungerGame;
-import fr.pederobien.minecraft.managers.PlayerManager;
-import fr.pederobien.minecraft.managers.PotionManager;
-import fr.pederobien.minecraft.managers.ScoreboardManager;
-import fr.pederobien.minecraft.managers.WorldManager;
+import fr.pederobien.minecraft.hungergame.interfaces.IStartActionList;
+import fr.pederobien.minecraft.hungergame.interfaces.IStopActionList;
 import fr.pederobien.minecraft.platform.Platform;
 import fr.pederobien.minecraft.platform.impl.Configurable;
 import fr.pederobien.minecraft.platform.interfaces.IConfigurable;
 import fr.pederobien.minecraft.rules.impl.RuleList;
 import fr.pederobien.minecraft.rules.interfaces.IRuleList;
-import fr.pederobien.minecraft.scoreboards.interfaces.IObjective;
-import fr.pederobien.minecraft.scoreboards.interfaces.IObjectiveUpdater;
 import fr.pederobien.utils.event.EventHandler;
 import fr.pederobien.utils.event.EventManager;
 import fr.pederobien.utils.event.IEventListener;
@@ -41,6 +31,8 @@ import fr.pederobien.utils.event.IEventListener;
 public class HungerGame extends TeamsFeaturesGame implements IHungerGame, ICodeSender, IEventListener {
 	private IBorderList borders;
 	private IRuleList rules;
+	private IStartActionList startActionList;
+	private IStopActionList stopActionList;
 	private IConfigurable<LocalTime> pvpTime, playerDontReviveTime;
 	private IConfigurable<Boolean> uhc;
 	private IConfigurable<ItemStack> itemOnPlayerKills;
@@ -59,16 +51,19 @@ public class HungerGame extends TeamsFeaturesGame implements IHungerGame, ICodeS
 
 		borders = new BorderList(name);
 		rules = new RuleList(this);
+		startActionList = new StartActionList(this);
+		stopActionList = new StopActionList(this);
 		pvpTime = new Configurable<LocalTime>("pvpTime", LocalTime.of(0, 20, 0));
 		uhc = new Configurable<Boolean>("uhc", false);
 		itemOnPlayerKills = new Configurable<ItemStack>("itemOnPlayerKills", new ItemStack(Material.GOLDEN_APPLE));
 		playerDontReviveTime = new Configurable<LocalTime>("playerDontReviveTime", LocalTime.of(0, 0, 0));
 		startTabExecutor = new HungerGameStartTabExecutor(this);
-		stopTabExecutor = new HungerGameStopTabExecutor();
+		stopTabExecutor = new HungerGameStopTabExecutor(this);
 		eventListener = new HungerGameEventListener(this);
 		playerDontReviveTimeObserver = new PlayerDontReviveTimeObserver();
 
 		getBorders().add(new Border("HungerGameDefaultBorder"));
+		addFeaturesIfPluginPresent();
 		EventManager.registerListener(this);
 	}
 
@@ -109,6 +104,16 @@ public class HungerGame extends TeamsFeaturesGame implements IHungerGame, ICodeS
 	}
 
 	@Override
+	public IStartActionList getStartActionList() {
+		return startActionList;
+	}
+
+	@Override
+	public IStopActionList getStopActionList() {
+		return stopActionList;
+	}
+
+	@Override
 	public IConfigurable<Boolean> getUhc() {
 		return uhc;
 	}
@@ -140,19 +145,12 @@ public class HungerGame extends TeamsFeaturesGame implements IHungerGame, ICodeS
 		if (!event.getGame().equals(this))
 			return;
 
-		// Step 2: Modifying player properties
-		giveEffects();
-		updatePlayers();
-		updateOverWorld();
-		teleport();
-		setPlayersObjective();
+		startActionList.start();
 
-		// Step 3: Activating event listener
 		Platform.get(getPlugin()).getTimeLine().register(getPlayerDontReviveTime().get(), playerDontReviveTimeObserver);
 		eventListener.register(getPlugin());
 		eventListener.setActivated(true);
 
-		// Step 4: Updating world game rule
 		if (getUhc().get())
 			getRules().getNaturalRegenerationGameRule().setValue(false);
 	}
@@ -162,58 +160,19 @@ public class HungerGame extends TeamsFeaturesGame implements IHungerGame, ICodeS
 		if (!event.getGame().equals(this))
 			return;
 
-		// Step 1: Reseting borders and removing teams from the server.
-		getBorders().toList().forEach(border -> border.getWorldBorder().reset());
-		getTeams().forEach(team -> {
-			TeamHelper.removeTeamFromServer(team);
-			team.getPlayers().forEach(player -> player.setGameMode(GameMode.CREATIVE));
-		});
+		stopActionList.stop();
 
-		// Step 2: Unregistering time line observers and stopping objective updater.
 		Platform platform = Platform.get(getPlugin());
 		platform.getTimeLine().unregister(getPlayerDontReviveTime().get(), playerDontReviveTimeObserver);
 		platform.getObjectiveUpdater().stop(true);
 		eventListener.setActivated(false);
 	}
 
-	private void giveEffects() {
-		PotionEffect resistance = PotionManager.createEffect(PotionEffectType.DAMAGE_RESISTANCE, 600, 1);
-		PotionEffect regeneration = PotionManager.createEffect(PotionEffectType.REGENERATION, 600, 1);
-		PotionEffect saturation = PotionManager.createEffect(PotionEffectType.SATURATION, 600, 1);
-		PlayerManager.getPlayers().forEach(player -> PotionManager.giveEffects(player, resistance, regeneration, saturation));
-	}
-
-	private void updatePlayers() {
-		PlayerManager.maxFoodForPlayers();
-		PlayerManager.resetMaxHealthOfPlayers();
-		PlayerManager.maxLifeToPlayers();
-		PlayerManager.removeInventoryOfPlayers();
-		PlayerManager.resetLevelOfPlayers();
-		PlayerManager.setGameModeOfAllPlayers(GameMode.SURVIVAL);
-	}
-
-	private void updateOverWorld() {
-		WorldManager.setTime(WorldManager.OVERWORLD, 0);
-		WorldManager.setStorm(WorldManager.OVERWORLD, false);
-		WorldManager.setThundering(WorldManager.OVERWORLD, false);
-		WorldManager.setGameRule(WorldManager.OVERWORLD, GameRule.DO_DAYLIGHT_CYCLE, true);
-	}
-
-	private void teleport() {
-		TeamHelper.createTeamsOnServer(getTeams().toList());
-		IBorder border = getBorders().getBorder(WorldManager.OVERWORLD).get();
-		for (ITeam team : getTeams())
-			TeamHelper.teleportTeamRandomly(team, border.getWorld().get(), border.getCenter().get(), border.getInitialDiameter().get());
-	}
-
-	private void setPlayersObjective() {
-		IObjectiveUpdater updater = Platform.get(getPlugin()).getObjectiveUpdater();
-		for (ITeam team : getTeams())
-			for (Player player : team.getPlayers()) {
-				IObjective objective = new HungerGameObjective(this, player).getObjective();
-				objective.setScoreboard(ScoreboardManager.createScoreboard());
-				updater.register(objective);
-			}
-		updater.start();
+	private void addFeaturesIfPluginPresent() {
+		try {
+			getFeatures().add(new ChatFeature(this));
+		} catch (NoClassDefFoundError e) {
+			// do nothing
+		}
 	}
 }

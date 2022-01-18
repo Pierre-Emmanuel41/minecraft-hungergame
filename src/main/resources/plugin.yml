@@ -3,6 +3,7 @@ name: minecraft-hungergame
 version: 1.0_MC_1.13.2-SNAPSHOT
 api-version: 1.13
 depend: [minecraft-border, minecraft-rules]
+softdepend: [minecraft-chat]
 
 description:
 commands:

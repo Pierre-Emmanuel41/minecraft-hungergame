@@ -157,6 +157,9 @@ public enum EHungerGameCode implements IMinecraftCode {
 	// Code when the item stack is updated
 	HUNGER_GAME__ITEM_ON_PLAYER_KILLS__ITEM_UPDATED,
 
+	// Code for the start arguments ----------------------------------------------
+	HUNGER_GAME__SKIP__EXPLANATION,
+
 	// Code for in game messages--------------------------------------------------
 
 	// Code when the overworld's border is missing
