@@ -45,6 +45,12 @@ and then double click on the deploy.bat file. This will deploy this project and 
 	<version>1.0_MC_1.13.2-SNAPSHOT</version>
 	<scope>provided</scope>
 </dependency>
+<dependency>
+	<groupId>fr.pederobien.minecraft</groupId>
+	<artifactId>chat</artifactId>
+	<version>1.0_MC_1.13.2-SNAPSHOT</version>
+	<scope>provided</scope>
+</dependency>
 ```
 
 This plugins depends on the minecraft-border and minecraft-rules plugins, that is why they should be present on the server plugins folder. Moreover, like them, this plugin should also be present on the minecraft server in order to be used by several other plugins. That is why it is declared as <code>provided</code> for the dependency scope.
