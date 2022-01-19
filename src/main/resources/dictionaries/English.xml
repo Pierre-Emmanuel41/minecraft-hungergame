@@ -220,6 +220,14 @@
 			<value>Cannot start %s, the overworld's border is missing</value>
 		</message>
 		<message>
+			<code>HUNGER_GAME__PAUSE__CANT_MOVE</code>
+			<value>Game paused, you can't move</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__RESURRECT</code>
+			<value>Player can resurrect</value>
+		</message>
+		<message>
 			<code>HUNGER_GAME__NO_RESURRECTION</code>
 			<value>No resurrection</value>
 		</message>

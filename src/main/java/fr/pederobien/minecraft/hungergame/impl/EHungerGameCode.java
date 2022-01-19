@@ -165,6 +165,12 @@ public enum EHungerGameCode implements IMinecraftCode {
 	// Code when the overworld's border is missing
 	HUNGER_GAME__OVERWORLD_BORDER_IS_MISSING,
 
+	// Code when the game has been paused
+	HUNGER_GAME__PAUSE__CANT_MOVE,
+
+	// Code when there is no resurrection
+	HUNGER_GAME__RESURRECT(PlayerGroup.ALL),
+
 	// Code when there is no resurrection
 	HUNGER_GAME__NO_RESURRECTION(PlayerGroup.ALL),
 

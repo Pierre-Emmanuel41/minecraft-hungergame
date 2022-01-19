@@ -39,7 +39,6 @@ public class HungerGame extends TeamsFeaturesGame implements IHungerGame, ICodeS
 	private HungerGameStartTabExecutor startTabExecutor;
 	private HungerGameStopTabExecutor stopTabExecutor;
 	private HungerGameEventListener eventListener;
-	private PlayerDontReviveTimeObserver playerDontReviveTimeObserver;
 
 	/**
 	 * Creates an hunger game to configure.
@@ -60,7 +59,6 @@ public class HungerGame extends TeamsFeaturesGame implements IHungerGame, ICodeS
 		startTabExecutor = new HungerGameStartTabExecutor(this);
 		stopTabExecutor = new HungerGameStopTabExecutor(this);
 		eventListener = new HungerGameEventListener(this);
-		playerDontReviveTimeObserver = new PlayerDontReviveTimeObserver();
 
 		getBorders().add(new Border("HungerGameDefaultBorder"));
 		addFeaturesIfPluginPresent();
@@ -133,13 +131,6 @@ public class HungerGame extends TeamsFeaturesGame implements IHungerGame, ICodeS
 		return getName();
 	}
 
-	/**
-	 * @return The time line observer that can specify if a player can revive or not.
-	 */
-	public PlayerDontReviveTimeObserver getPlayerDontReviveTimeObserver() {
-		return playerDontReviveTimeObserver;
-	}
-
 	@EventHandler
 	private void onGameStart(GameStartPostEvent event) {
 		if (!event.getGame().equals(this))
@@ -147,7 +138,6 @@ public class HungerGame extends TeamsFeaturesGame implements IHungerGame, ICodeS
 
 		startActionList.start();
 
-		Platform.get(getPlugin()).getTimeLine().register(getPlayerDontReviveTime().get(), playerDontReviveTimeObserver);
 		eventListener.register(getPlugin());
 		eventListener.setActivated(true);
 
@@ -163,7 +153,6 @@ public class HungerGame extends TeamsFeaturesGame implements IHungerGame, ICodeS
 		stopActionList.stop();
 
 		Platform platform = Platform.get(getPlugin());
-		platform.getTimeLine().unregister(getPlayerDontReviveTime().get(), playerDontReviveTimeObserver);
 		platform.getObjectiveUpdater().stop(true);
 		eventListener.setActivated(false);
 	}
