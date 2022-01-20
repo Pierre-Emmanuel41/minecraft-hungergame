@@ -4,13 +4,13 @@ import java.util.function.Function;
 
 import org.bukkit.entity.Player;
 
+import fr.pederobien.minecraft.border.entries.BorderCenterEntry;
+import fr.pederobien.minecraft.border.entries.BorderLocationEntry;
 import fr.pederobien.minecraft.border.entries.BorderSizeCountDownEntry;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.hungergame.interfaces.IHungerGame;
 import fr.pederobien.minecraft.managers.WorldManager;
 import fr.pederobien.minecraft.platform.Platform;
-import fr.pederobien.minecraft.platform.entries.simple.CenterEntry;
-import fr.pederobien.minecraft.platform.entries.simple.LocationSynchronizedEntry;
 import fr.pederobien.minecraft.platform.entries.updaters.TimeTaskObserverEntryUpdater;
 import fr.pederobien.minecraft.scoreboards.impl.Objective;
 import fr.pederobien.minecraft.scoreboards.impl.updaters.UpdatersFactory;
@@ -31,8 +31,8 @@ public class HungerGameObjective {
 		borderMoveObserver = new BorderMoveTimeLineObserver(game, objective);
 
 		IBorder ov = game.getBorders().getBorder(WorldManager.OVERWORLD).get();
-		add(score -> new LocationSynchronizedEntry(score).addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(objective.getPlayer()))));
-		add(score -> new CenterEntry(score, ov.getCenter().get()).addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(objective.getPlayer()))));
+		add(score -> new BorderLocationEntry(score).addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(objective.getPlayer()))));
+		add(score -> new BorderCenterEntry(score).addUpdater(UpdatersFactory.playerMove().condition(e -> e.getPlayer().equals(objective.getPlayer()))));
 		objective.emptyEntry(-objective.entries().size());
 		for (IBorder border : game.getBorders().toList())
 			add(score -> new BorderSizeCountDownEntry(score, border, "#").setDisplayHalfSize(true).addUpdater(new TimeTaskObserverEntryUpdater()));
