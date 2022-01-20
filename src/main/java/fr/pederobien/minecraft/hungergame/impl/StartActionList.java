@@ -8,6 +8,7 @@ import org.bukkit.GameRule;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import fr.pederobien.minecraft.border.impl.BorderTimeLineObserver;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.game.impl.TeamHelper;
 import fr.pederobien.minecraft.hungergame.interfaces.IHungerGame;
@@ -48,6 +49,15 @@ public class StartActionList implements IStartActionList {
 	@Override
 	public void start() {
 		Platform platform = Platform.get(game.getPlugin());
+
+		game.getBorders().toList().forEach(border -> {
+			doIf(StartAction.INITIALIZE_BORDERS, () -> {
+				border.getWorldBorder().setCenter(border.getCenter().get().getLocation());
+				border.getWorldBorder().setSize(border.getInitialDiameter().get());
+			});
+			new BorderTimeLineObserver(border, game);
+		});
+
 		IBorder border = game.getBorders().getBorder(WorldManager.OVERWORLD).get();
 		IObjectiveUpdater objectiveUpdater = platform.getObjectiveUpdater();
 

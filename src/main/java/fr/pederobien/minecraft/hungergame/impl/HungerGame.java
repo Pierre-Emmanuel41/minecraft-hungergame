@@ -7,8 +7,6 @@ import org.bukkit.inventory.ItemStack;
 
 import fr.pederobien.minecraft.border.impl.Border;
 import fr.pederobien.minecraft.border.impl.BorderList;
-import fr.pederobien.minecraft.border.impl.BorderTimeLineObserver;
-import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.interfaces.IBorderList;
 import fr.pederobien.minecraft.chat.impl.ChatFeature;
 import fr.pederobien.minecraft.commandtree.interfaces.ICodeSender;
@@ -63,17 +61,6 @@ public class HungerGame extends TeamsFeaturesGame implements IHungerGame, ICodeS
 		getBorders().add(new Border("HungerGameDefaultBorder"));
 		addFeaturesIfPluginPresent();
 		EventManager.registerListener(this);
-	}
-
-	@Override
-	public void start() {
-		// Step 1: Registering time line observer in order to move border at the start time.
-		for (IBorder border : getBorders().toList()) {
-			border.getWorldBorder().setCenter(border.getCenter().get().getLocation());
-			border.getWorldBorder().setSize(border.getInitialDiameter().get());
-			new BorderTimeLineObserver(border, 5);
-		}
-		super.start();
 	}
 
 	@Override

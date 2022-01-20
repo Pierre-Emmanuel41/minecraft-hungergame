@@ -30,6 +30,11 @@ public interface IStartActionList {
 
 	public enum StartAction {
 		/**
+		 * Action to initialize the world border according to border properties.
+		 */
+		INITIALIZE_BORDERS("initializeBorders"),
+
+		/**
 		 * Action to give resistance, regeneration and saturation to each player
 		 */
 		GIVE_EFFECT("giveEffects"),
