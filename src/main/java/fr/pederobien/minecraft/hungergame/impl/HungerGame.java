@@ -46,7 +46,7 @@ public class HungerGame extends TeamsFeaturesGame implements IHungerGame, ICodeS
 	public HungerGame(String name) {
 		super(name, HGPlugin.instance());
 
-		borders = new BorderList(name);
+		borders = new BorderList(this);
 		rules = new RuleList(this);
 		startActionList = new StartActionList(this);
 		stopActionList = new StopActionList(this);
