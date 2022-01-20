@@ -81,7 +81,7 @@ public class StartActionList implements IStartActionList {
 				objectiveUpdater.register(objective);
 			});
 
-			doIf(StartAction.CREATE_SERVER_TEAM, () -> TeamHelper.createTeamOnServer(team));
+			doIf(StartAction.CREATE_SERVER_TEAM, () -> team.createOnserver());
 			doIf(StartAction.TELEPORT, () -> TeamHelper.teleportTeamRandomly(team, border.getWorld().get(), border.getCenter().get(), border.getInitialDiameter().get()));
 		});
 
