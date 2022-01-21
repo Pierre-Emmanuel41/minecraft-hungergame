@@ -3,13 +3,13 @@ package fr.pederobien.minecraft.hungergame.commands;
 import fr.pederobien.minecraft.border.commands.borders.BordersCommandTree;
 import fr.pederobien.minecraft.commandtree.impl.MinecraftCodeRootNode;
 import fr.pederobien.minecraft.commandtree.interfaces.IMinecraftCodeRootNode;
-import fr.pederobien.minecraft.game.commands.game.GameFeatureNode;
-import fr.pederobien.minecraft.game.commands.game.GameTeamsNode;
-import fr.pederobien.minecraft.game.commands.game.NodeFactory;
+import fr.pederobien.minecraft.game.commands.features.FeaturesCommandTree;
+import fr.pederobien.minecraft.game.commands.teams.TeamsCommandTree;
 import fr.pederobien.minecraft.hungergame.impl.EHungerGameCode;
 import fr.pederobien.minecraft.hungergame.interfaces.IHungerGame;
+import fr.pederobien.minecraft.platform.commands.PlatformNodeFactory;
+import fr.pederobien.minecraft.platform.commands.PvpTimeNode;
 import fr.pederobien.minecraft.platform.commands.common.AsCurrentNode;
-import fr.pederobien.minecraft.platform.commands.common.NodeBuilderFactory;
 import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNodeFactory;
 import fr.pederobien.minecraft.platform.interfaces.IPlatformPersistence;
 import fr.pederobien.minecraft.rules.commands.RulesCommandTree;
@@ -19,9 +19,10 @@ public class HungerGameCommandTree {
 	private PersistenceNodeFactory<IHungerGame> factory;
 	private BordersCommandTree bordersNode;
 	private RulesCommandTree rulesNode;
-	private GameTeamsNode teamsNode;
-	private GameFeatureNode featuresNode;
+	private TeamsCommandTree teamsNode;
+	private FeaturesCommandTree featuresNode;
 	private AsCurrentNode asCurrentNode;
+	private PvpTimeNode pvpTimeNode;
 	private NewHungerGameNode newNode;
 	private DetailsHungerGameNode detailsNode;
 	private RenameHungerGameNode renameNode;
@@ -40,10 +41,10 @@ public class HungerGameCommandTree {
 
 		root.add((bordersNode = new BordersCommandTree(() -> getHungerGame())).getRoot().export());
 		root.add((rulesNode = new RulesCommandTree(() -> getHungerGame())).getRoot().export());
-
-		root.add(teamsNode = NodeFactory.teams(() -> getHungerGame()));
-		root.add(featuresNode = NodeFactory.features(() -> getHungerGame()));
-		root.add(asCurrentNode = NodeBuilderFactory.asCurrentNode(() -> getHungerGame()));
+		root.add((teamsNode = new TeamsCommandTree(() -> getHungerGame())).getRoot().export());
+		root.add((featuresNode = new FeaturesCommandTree(() -> getHungerGame())).getRoot().export());
+		root.add(asCurrentNode = PlatformNodeFactory.asCurrentNode(() -> getHungerGame()));
+		root.add(pvpTimeNode = PlatformNodeFactory.pvpTimeNode(() -> getHungerGame()));
 
 		root.add((newNode = new NewHungerGameNode(factory)).getNode());
 		root.add((detailsNode = new DetailsHungerGameNode(factory, bordersNode.getDetailsNode())).getNode());
@@ -98,14 +99,14 @@ public class HungerGameCommandTree {
 	/**
 	 * @return The node to modify the teams of the current game.
 	 */
-	public GameTeamsNode getTeamsNode() {
+	public TeamsCommandTree getTeamsNode() {
 		return teamsNode;
 	}
 
 	/**
 	 * @return The node to modify features of the current game.
 	 */
-	public GameFeatureNode getFeaturesNode() {
+	public FeaturesCommandTree getFeaturesNode() {
 		return featuresNode;
 	}
 
@@ -114,6 +115,13 @@ public class HungerGameCommandTree {
 	 */
 	public AsCurrentNode getAsCurrentNode() {
 		return asCurrentNode;
+	}
+
+	/**
+	 * @return The node to set the time after which the PVP is enabled while the game is in progress.
+	 */
+	public PvpTimeNode getPvpTimeNode() {
+		return pvpTimeNode;
 	}
 
 	/**

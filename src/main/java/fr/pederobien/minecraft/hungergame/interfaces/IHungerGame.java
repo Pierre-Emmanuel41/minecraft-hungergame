@@ -28,6 +28,16 @@ public interface IHungerGame extends IGame, INominable, ITeamConfigurable, IFeat
 	HungerGameStopTabExecutor getStopTabExecutor();
 
 	/**
+	 * @return The list of action to execute before starting a game.
+	 */
+	IStartActionList getStartActionList();
+
+	/**
+	 * @return The list of action to execute before stopping a game.
+	 */
+	IStopActionList getStopActionList();
+
+	/**
 	 * @return A configurable object for the UHC mode.
 	 */
 	IConfigurable<Boolean> getUhc();

@@ -209,8 +209,20 @@
 			<value>L'item %s sera donné à un joueur qui tue un autre joueur pendant le déroulement de %s</value>
 		</message>
 		<message>
+			<code>HUNGER_GAME__SKIP__EXPLANATION</code>
+			<value>Pour sauter certaines actions avant de commencer la partie</value>
+		</message>
+		<message>
 			<code>HUNGER_GAME__OVERWORLD_BORDER_IS_MISSING</code>
 			<value>Impossible de lancer la partie %s, il manque la border dans l'overworld</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__PAUSE__CANT_MOVE</code>
+			<value>Partie en pause, vous ne pouvez pas bouger</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__RESURRECT</code>
+			<value>Les joueur peuvent ressusciter</value>
 		</message>
 		<message>
 			<code>HUNGER_GAME__NO_RESURRECTION</code>

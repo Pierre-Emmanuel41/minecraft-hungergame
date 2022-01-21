@@ -212,8 +212,20 @@
 			<value>The item %s will be given to a player that killed another player while %s is in progress</value>
 		</message>
 		<message>
+			<code>HUNGER_GAME__SKIP__EXPLANATION</code>
+			<value>To skip some actions before starting an hunger game</value>
+		</message>
+		<message>
 			<code>HUNGER_GAME__OVERWORLD_BORDER_IS_MISSING</code>
 			<value>Cannot start %s, the overworld's border is missing</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__PAUSE__CANT_MOVE</code>
+			<value>Game paused, you can't move</value>
+		</message>
+		<message>
+			<code>HUNGER_GAME__RESURRECT</code>
+			<value>Player can resurrect</value>
 		</message>
 		<message>
 			<code>HUNGER_GAME__NO_RESURRECTION</code>
