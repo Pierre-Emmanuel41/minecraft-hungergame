@@ -1,6 +1,6 @@
 # Presentation
 
-An hunger game is defined by a list of teams, a list of features, a list of borders. The borders are defined by an initial diameter, a final diameter and a speed. For more details about the configuration of a border, please have a look [there](https://github.com/Pierre-Emmanuel41/minecraft-border/blob/1.0_MC_1.13.2-SNAPSHOT/README.md). The course of a game is divided into 2 stages :
+An hunger game is defined by a list of teams, a list of features, a list of borders. The borders are defined by an initial diameter, a final diameter and a speed. For more details about the configuration of a border, please have a look [there](https://github.com/Pierre-Emmanuel41/minecraft-border/blob/1.0_MC_1.16.5-SNAPSHOT/README.md). The course of a game is divided into 2 stages :
 
 * The first one correspond to the time during which players mine in order to get stuff.
 * The second one correspond to the time during which borders shrink and when players fight for the win.
