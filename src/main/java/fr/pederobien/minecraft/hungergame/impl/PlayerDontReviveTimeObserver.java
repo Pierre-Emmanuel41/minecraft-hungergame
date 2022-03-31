@@ -65,7 +65,6 @@ public class PlayerDontReviveTimeObserver extends EventListener implements IObsT
 		// Action to perform when the count down is over.
 		onTimeAction = time -> setCanRevive(false);
 
-		countDown = new CountDown(5, countDownAction, onTimeAction);
 		deathInfo = new HashMap<Player, PlayerDeathInfo>();
 		canRevive = true;
 
@@ -161,12 +160,12 @@ public class PlayerDontReviveTimeObserver extends EventListener implements IObsT
 					killer.getWorld().dropItem(killer.getLocation(), game.getItemOnPlayerKills().get());
 				else
 					killer.getInventory().addItem(game.getItemOnPlayerKills().get());
-			} else {
-				IndestructibleChest indestructibleChest = new IndestructibleChest(game, event.getEntity().getWorld(), event.getEntity().getLocation(), event.getDrops());
-				indestructibleChest.pop();
-				LocalTime gameTime = Platform.get(game.getPlugin()).getTimeLine().getTimeTask().getGameTime();
-				deathInfo.put(event.getEntity(), new PlayerDeathInfo(event.getEntity(), gameTime, event.getEntity().getLocation()));
 			}
+
+			IndestructibleChest indestructibleChest = new IndestructibleChest(game, event.getEntity().getWorld(), event.getEntity().getLocation(), event.getDrops());
+			indestructibleChest.pop();
+			LocalTime gameTime = Platform.get(game.getPlugin()).getTimeLine().getTimeTask().getGameTime();
+			deathInfo.put(event.getEntity(), new PlayerDeathInfo(event.getEntity(), gameTime, event.getEntity().getLocation()));
 			PlayerManager.setGameModeOfPlayer(event.getEntity(), GameMode.SPECTATOR);
 			event.getEntity().getInventory().clear();
 		} else {

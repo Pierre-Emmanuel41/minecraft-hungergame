@@ -97,7 +97,12 @@ public interface IStartActionList {
 		/**
 		 * Action to set the game rule {@link GameRule#DO_FIRE_TICK} to false.
 		 */
-		DO_FIRE_TICK("doFireTick");
+		DO_FIRE_TICK("doFireTick"),
+
+		/**
+		 * Action to set the game rule {@link GameRule#NATURAL_REGENERATION} to true.
+		 */
+		NATURAL_REGENERATION("naturalRegeneration");
 
 		private static final Map<String, StartAction> BY_NAME;
 

@@ -92,6 +92,10 @@ public class StartActionList implements IStartActionList {
 		});
 		doIf(StartAction.DO_DAY_LIGHT_CYCLE, () -> WorldManager.setGameRule(WorldManager.OVERWORLD, GameRule.DO_DAYLIGHT_CYCLE, true));
 		doIf(StartAction.DO_FIRE_TICK, () -> WorldManager.setGameRule(WorldManager.OVERWORLD, GameRule.DO_FIRE_TICK, false));
+		doIf(StartAction.NATURAL_REGENERATION, () -> {
+			if (!game.getUhc().get())
+				WorldManager.setGameRule(WorldManager.OVERWORLD, GameRule.NATURAL_REGENERATION, true);
+		});
 	}
 
 	private void doIf(StartAction startAction, Runnable runnable) {
