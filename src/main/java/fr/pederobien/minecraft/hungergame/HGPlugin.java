@@ -9,6 +9,7 @@ import fr.pederobien.minecraft.dictionary.impl.MinecraftDictionaryContext;
 import fr.pederobien.minecraft.hungergame.commands.HungerGameCommandTree;
 import fr.pederobien.minecraft.hungergame.interfaces.IHungerGame;
 import fr.pederobien.minecraft.hungergame.persistence.HungerGamePersistence;
+import fr.pederobien.minecraft.platform.GamePlatformPlugin;
 import fr.pederobien.minecraft.platform.interfaces.IPlatformPersistence;
 import fr.pederobien.utils.AsyncConsole;
 
@@ -50,6 +51,12 @@ public class HGPlugin extends JavaPlugin {
 
 		registerDictionaries();
 		registerTabExecutors();
+	}
+
+	@Override
+	public void onDisable() {
+		if (GamePlatformPlugin.getGameTree().getGame() != null)
+			GamePlatformPlugin.getGameTree().getGame().stop();
 	}
 
 	private void registerDictionaries() {
