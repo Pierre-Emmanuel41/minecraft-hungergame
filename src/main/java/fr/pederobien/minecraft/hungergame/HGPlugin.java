@@ -45,12 +45,12 @@ public class HGPlugin extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
+		registerDictionaries();
+		registerTabExecutors();
+
 		instance = this;
 		persistence = new HungerGamePersistence().getPersistence();
 		hungerGameTree = new HungerGameCommandTree(persistence);
-
-		registerDictionaries();
-		registerTabExecutors();
 	}
 
 	@Override

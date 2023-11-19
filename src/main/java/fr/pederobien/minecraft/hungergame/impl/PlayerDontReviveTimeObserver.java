@@ -65,9 +65,8 @@ public class PlayerDontReviveTimeObserver extends EventListener implements IObsT
 		// Action to perform when the count down is over.
 		onTimeAction = time -> setCanRevive(false);
 
-		countDown = new CountDown(5, countDownAction, onTimeAction);
 		deathInfo = new HashMap<Player, PlayerDeathInfo>();
-		canRevive = true;
+		setCanRevive(true);
 
 		register(game.getPlugin());
 	}
@@ -82,13 +81,6 @@ public class PlayerDontReviveTimeObserver extends EventListener implements IObsT
 		return null;
 	}
 
-	/**
-	 * @return True if a player can revive, false otherwise.
-	 */
-	public boolean canRevive() {
-		return canRevive;
-	}
-
 	@fr.pederobien.utils.event.EventHandler
 	private void onGameStart(GameStartPostEvent event) {
 		if (!event.getGame().equals(game))
@@ -96,10 +88,10 @@ public class PlayerDontReviveTimeObserver extends EventListener implements IObsT
 
 		setActivated(true);
 		ITimeLine timeLine = Platform.get(game.getPlugin()).getTimeLine();
-		LocalTime playerDontReviveTime = game.getPlayerDontReviveTime().get();
-		LocalTime realPlayerDontReviveTime = playerDontReviveTime.equals(LocalTime.MIN) ? LocalTime.of(0, 0, 1) : playerDontReviveTime;
-		countDown = new CountDown(playerDontReviveTime.toSecondOfDay() < 5 ? playerDontReviveTime.toSecondOfDay() : 5, countDownAction, onTimeAction);
-		timeLine.register(realPlayerDontReviveTime, this);
+		LocalTime initial = game.getPlayerDontReviveTime().get();
+		LocalTime modified = initial.toSecondOfDay() < 30 ? LocalTime.of(0, 0, 30) : initial;
+		countDown = new CountDown(5, countDownAction, onTimeAction);
+		timeLine.register(modified, this);
 		canDestroy = false;
 	}
 
@@ -171,8 +163,8 @@ public class PlayerDontReviveTimeObserver extends EventListener implements IObsT
 			event.getEntity().getInventory().clear();
 		} else {
 			PlayerManager.setGameModeOfPlayer(event.getEntity(), GameMode.SURVIVAL);
+			event.setKeepInventory(true);
 		}
-		event.setKeepInventory(true);
 	}
 
 	private void setCanRevive(boolean canRevive) {

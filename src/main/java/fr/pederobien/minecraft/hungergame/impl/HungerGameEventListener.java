@@ -37,9 +37,10 @@ public class HungerGameEventListener extends EventListener implements IEventList
 
 		alivePlayers = new ArrayList<Player>();
 
-		register(game.getPlugin());
 		EventManager.registerListener(new PlayerDontReviveTimeObserver(game));
 		EventManager.registerListener(this);
+
+		register(game.getPlugin());
 	}
 
 	@fr.pederobien.utils.event.EventHandler
