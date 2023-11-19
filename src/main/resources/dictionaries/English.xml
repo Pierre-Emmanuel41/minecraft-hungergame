@@ -225,11 +225,11 @@
 		</message>
 		<message>
 			<code>HUNGER_GAME__RESURRECT</code>
-			<value>Player can resurrect</value>
+			<value>Player can resurrect, you are lucky ...</value>
 		</message>
 		<message>
 			<code>HUNGER_GAME__NO_RESURRECTION</code>
-			<value>No resurrection</value>
+			<value>No resurrection, brace yourself ...</value>
 		</message>
 		<message>
 			<code>HUNGER_GAME_NO_RESURRECTION_COUNT_DOWN</code>

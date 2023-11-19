@@ -222,11 +222,11 @@
 		</message>
 		<message>
 			<code>HUNGER_GAME__RESURRECT</code>
-			<value>Les joueur peuvent ressusciter</value>
+			<value>Les joueur peuvent ressusciter, vous êtes chanceux ...</value>
 		</message>
 		<message>
 			<code>HUNGER_GAME__NO_RESURRECTION</code>
-			<value>Plus de résurrection</value>
+			<value>Plus de résurrection, préparez-vous ...</value>
 		</message>
 		<message>
 			<code>HUNGER_GAME_NO_RESURRECTION_COUNT_DOWN</code>
