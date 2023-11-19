@@ -124,8 +124,6 @@ public class HungerGame extends TeamsFeaturesGame implements IHungerGame, ICodeS
 			return;
 
 		startActionList.start();
-
-		eventListener.register(getPlugin());
 		eventListener.setActivated(true);
 
 		if (getUhc().get())
